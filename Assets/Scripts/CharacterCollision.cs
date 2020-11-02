@@ -226,7 +226,7 @@ public class CharacterCollision : MonoBehaviour
     {
         if (isGrounded == true)
             return;
-        speedY -= gravityForce;
+        speedY -= gravityForce * Time.deltaTime;
         if (speedY < gravityForceMax)
             speedY = gravityForceMax;
     }

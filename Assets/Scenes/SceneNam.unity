@@ -1126,12 +1126,12 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   collision: 1
   offsetRaycastX: 0.001
-  offsetRaycastY: 0.01
+  offsetRaycastY: 0.001
   numberRaycastVertical: 3
   numberRaycastHorizontal: 2
   moveSpeed: 2
-  gravityForce: 0.1
-  gravityForceMax: -2
+  gravityForce: 1
+  gravityForceMax: -20
 --- !u!65 &1792020144
 BoxCollider:
   m_ObjectHideFlags: 0
