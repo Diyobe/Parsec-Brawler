@@ -5,25 +5,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    CharacterCollision characterCollision;
+
+    [SerializeField]
+    float jumpImpulsion;
+
     public void UpdateBuffer(List<input> buffer)
     {
-
+        CheckJump(buffer);
     }
 
     void CheckJump(List<input> buffer)
     {
-        foreach(input input in buffer)
+        for (int i = 0; i < buffer.Count; i++)
         {
-            if (input.jump)
+            if (buffer[i].jump && characterCollision.IsGrounded)
             {
-                buffer.Remove(input);
-                Jump();
+                buffer[i].jump = false;
+                characterCollision.Jump(jumpImpulsion);
             }
         }
     }
 
-    private void Jump()
-    {
-
-    }
 }

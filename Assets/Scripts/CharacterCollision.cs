@@ -42,6 +42,8 @@ public class CharacterCollision : MonoBehaviour
     protected float moveSpeed = 2;
     [SerializeField]
     protected float gravityForce = 2;
+    [SerializeField]
+    protected float gravityForceMax = 5;
 
 
     protected float characterMotionSpeed = 1;
@@ -72,7 +74,13 @@ public class CharacterCollision : MonoBehaviour
 
     Transform collisionInfo;
 
-    bool isGrounded = true;
+    private bool isGrounded = false;
+    public bool IsGrounded
+    {
+        get { return isGrounded; }
+        //set { isGrounded = value; }
+    }
+
 
     protected void Update()
     {
@@ -106,14 +114,13 @@ public class CharacterCollision : MonoBehaviour
             UpdatePositionY();
         }
 
-        transform.position = new Vector3(transform.position.x + (actualSpeedX * Time.deltaTime), transform.position.y + (actualSpeedY * Time.deltaTime),
-                                         transform.position.y + (actualSpeedY * Time.deltaTime));
+        transform.position = new Vector3(transform.position.x + (actualSpeedX * Time.deltaTime), transform.position.y + (actualSpeedY * Time.deltaTime), 0);
     }
 
     private void UpdatePositionX()
     {
 
-        RaycastHit2D raycastX;
+        RaycastHit raycastX;
         Vector2 originRaycast;
 
         if (actualSpeedX < 0)
@@ -122,7 +129,7 @@ public class CharacterCollision : MonoBehaviour
             originRaycast = bottomLeft - new Vector2(offsetRaycastX, 0);
             for (int i = 0; i < numberRaycastHorizontal; i++)
             {
-                raycastX = Physics2D.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
+                Physics.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), out raycastX, Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
                 Debug.DrawRay(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), Color.red);
                 if (raycastX.collider != null)
                 {
@@ -144,7 +151,7 @@ public class CharacterCollision : MonoBehaviour
             originRaycast = bottomRight + new Vector2(offsetRaycastX, 0);
             for (int i = 0; i < numberRaycastHorizontal; i++)
             {
-                raycastX = Physics2D.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
+                Physics.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), out raycastX, Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
                 Debug.DrawRay(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), Color.red);
                 if (raycastX.collider != null)
                 {
@@ -165,22 +172,22 @@ public class CharacterCollision : MonoBehaviour
 
     private void UpdatePositionY()
     {
-        RaycastHit2D raycastY;
+        RaycastHit raycastY;
         Vector2 originRaycast;
 
         if (actualSpeedY < 0)
         {
             // ======================================================================================================
-            originRaycast = bottomLeft - new Vector2(0, offsetRaycastY);
+            originRaycast = bottomLeft;// - new Vector2(0, offsetRaycastY);
             for (int i = 0; i < numberRaycastVertical; i++)
             {
-                raycastY = Physics2D.Raycast(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), Mathf.Abs(actualSpeedY * Time.deltaTime) + offsetRaycastY, layerMask);
-                Debug.DrawRay(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), Color.yellow);
+                Physics.Raycast(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), out raycastY, Mathf.Abs(actualSpeedY * Time.deltaTime) + offsetRaycastY, layerMask);
+                Debug.DrawRay(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime + offsetRaycastY), Color.red);
                 if (raycastY.collider != null)
                 {
                     collisionInfo = raycastY.collider.transform;
-                    float distance = raycastY.point.y - bottomLeft.y;
-                    distance += offsetRaycastY;
+                    float distance = raycastY.point.y + offsetRaycastY - bottomLeft.y;
+                    //distance += offsetRaycastY;
                     actualSpeedY = distance / Time.deltaTime;
 
                     // A dégager pour plus de clareté
@@ -199,7 +206,7 @@ public class CharacterCollision : MonoBehaviour
             originRaycast = upperLeft + new Vector2(0, offsetRaycastY);
             for (int i = 0; i < numberRaycastVertical; i++)
             {
-                raycastY = Physics2D.Raycast(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), Mathf.Abs(actualSpeedY * Time.deltaTime) + offsetRaycastY, layerMask);
+                Physics.Raycast(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), out raycastY, Mathf.Abs(actualSpeedY * Time.deltaTime) + offsetRaycastY, layerMask);
                 Debug.DrawRay(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), Color.yellow);
                 if (raycastY.collider != null)
                 {
@@ -217,8 +224,11 @@ public class CharacterCollision : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if(isGrounded == false)
-            actualSpeedY -= gravityForce;
+        if (isGrounded == true)
+            return;
+        speedY -= gravityForce;
+        if (speedY < gravityForceMax)
+            speedY = gravityForceMax;
     }
 
 

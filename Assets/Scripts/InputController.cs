@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class input
 {
     public bool jump;
@@ -34,29 +35,24 @@ public class InputController : MonoBehaviour
     private void Start()
     {
         inputBuffer = new List<input>(bufferLength);
+        for (int i = 0; i < bufferLength; i++)
+        {
+            inputBuffer.Add(new input());
+        }
     }
 
     private void Update()
     {
-        for (int i = bufferLength; i < 0; --i)
+        for (int i = bufferLength - 1; i > 0; --i)
         {
-            if (i == inputBuffer.Count)
-            {
-                inputBuffer.RemoveAt(i);
-            }
-            else if (i != inputBuffer.Count && i > 0)
-            {
-                inputBuffer[i] = inputBuffer[i - 1];
-            }
-            else
-            {
-                inputBuffer[i] = new input();
-            }
+            inputBuffer[i] = inputBuffer[i - 1];
         }
+        inputBuffer[0] = new input();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inputBuffer[0].jump = true;
+
         }
 
         playerController.UpdateBuffer(inputBuffer);
