@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,12 +50,71 @@ public class InputController : MonoBehaviour
         }
         inputBuffer[0] = new input();
 
+        InputJump();
+        InputDash();
+        InputHit();
+        InputHorizontal();
+        InputVertical();
+
+        playerController.UpdateBuffer(inputBuffer);
+    }
+
+    private void InputHorizontal()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            inputBuffer[0].horizontal = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            inputBuffer[0].horizontal = 1;
+        }
+        else
+        {
+            inputBuffer[0].horizontal = 0;
+        }
+    }
+
+    private void InputVertical()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            inputBuffer[0].vertical = -1;
+        }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            inputBuffer[0].vertical = 1;
+        }
+        else
+        {
+            inputBuffer[0].vertical = 0;
+        }
+    }
+
+    void InputJump()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inputBuffer[0].jump = true;
 
         }
+    }
 
-        playerController.UpdateBuffer(inputBuffer);
+    void InputHit()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            inputBuffer[0].hit = true;
+
+        }
+    }
+
+    void InputDash()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            inputBuffer[0].dash = true;
+
+        }
     }
 }

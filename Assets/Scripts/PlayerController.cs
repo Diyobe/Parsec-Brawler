@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    float speed = 5;
+
+    [SerializeField]
     CharacterCollision characterCollision;
 
     [SerializeField]
@@ -18,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        characterCollision.doAction += ResetJump; 
+        characterCollision.doAction += ResetJump;
     }
 
     private void ResetJump()
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateBuffer(List<input> buffer)
     {
         CheckJump(buffer);
+        CheckHorizontal(buffer);
     }
 
     void CheckJump(List<input> buffer)
@@ -44,4 +48,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void CheckHorizontal(List<input> buffer)
+    {
+        characterCollision.Move(buffer[0].horizontal * speed);
+    }
 }
