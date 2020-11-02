@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class CharacterCollision : MonoBehaviour
 {
+    public delegate void Action();
+    public event Action doAction;
 
     [Header("CharacterController")]
     [SerializeField]
@@ -191,7 +193,11 @@ public class CharacterCollision : MonoBehaviour
                     actualSpeedY = distance / Time.deltaTime;
 
                     // A dégager pour plus de clareté
-                    isGrounded = true;
+                    if (!isGrounded)
+                    {
+                        isGrounded = true;
+                        doAction.Invoke();
+                    }
 
                     return;
                 }
