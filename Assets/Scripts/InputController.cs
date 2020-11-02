@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 [System.Serializable]
 public class input
@@ -28,10 +29,14 @@ public class input
 public class InputController : MonoBehaviour
 {
 
+    [SerializeField]
+    protected int playerID = 0;
+
     public List<input> inputBuffer;
     public int bufferLength = 6;
 
     public PlayerController playerController;
+    protected Player player;
 
     private void Start()
     {
@@ -40,6 +45,7 @@ public class InputController : MonoBehaviour
         {
             inputBuffer.Add(new input());
         }
+        player = ReInput.players.GetPlayer(playerID);
     }
 
     private void Update()
@@ -61,6 +67,7 @@ public class InputController : MonoBehaviour
 
     private void InputHorizontal()
     {
+        //player.GetButtonDown("Reset")
         if (Input.GetKey(KeyCode.Q))
         {
             inputBuffer[0].horizontal = -1;

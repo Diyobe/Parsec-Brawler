@@ -3,6 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum CharacterState
+{
+    Idle,
+    Acting,
+    Hit,
+    Dead
+}
+
+
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]

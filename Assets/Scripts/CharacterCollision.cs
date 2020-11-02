@@ -11,8 +11,6 @@ public class CharacterCollision : MonoBehaviour
     [Header("CharacterController")]
     [SerializeField]
     protected BoxCollider characterCollider;
-    /*[SerializeField]
-    protected Animator characterAnimator;*/
 
     [SerializeField]
     protected SpriteRenderer spriteRenderer;
@@ -40,8 +38,6 @@ public class CharacterCollision : MonoBehaviour
     protected int numberRaycastHorizontal = 2;
 
     [Header("Controls")]
-    [SerializeField]
-    protected float moveSpeed = 2;
     [SerializeField]
     protected float gravityForce = 2;
     [SerializeField]
@@ -128,7 +124,7 @@ public class CharacterCollision : MonoBehaviour
         if (actualSpeedX < 0)
         {
             // ======================================================================================================
-            originRaycast = bottomLeft - new Vector2(offsetRaycastX, 0);
+            originRaycast = bottomLeft;// - new Vector2(offsetRaycastX, 0);
             for (int i = 0; i < numberRaycastHorizontal; i++)
             {
                 Physics.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), out raycastX, Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
@@ -150,7 +146,7 @@ public class CharacterCollision : MonoBehaviour
         else if (actualSpeedX > 0)
         {
             // ======================================================================================================
-            originRaycast = bottomRight + new Vector2(offsetRaycastX, 0);
+            originRaycast = bottomRight;// + new Vector2(offsetRaycastX, 0);
             for (int i = 0; i < numberRaycastHorizontal; i++)
             {
                 Physics.Raycast(originRaycast, new Vector2(actualSpeedX * Time.deltaTime, 0), out raycastX, Mathf.Abs(actualSpeedX * Time.deltaTime) + offsetRaycastX, layerMask);
@@ -209,7 +205,7 @@ public class CharacterCollision : MonoBehaviour
         else if (actualSpeedY > 0)
         {
             // ======================================================================================================
-            originRaycast = upperLeft + new Vector2(0, offsetRaycastY);
+            originRaycast = upperLeft;// + new Vector2(0, offsetRaycastY);
             for (int i = 0; i < numberRaycastVertical; i++)
             {
                 Physics.Raycast(originRaycast, new Vector2(0, actualSpeedY * Time.deltaTime), out raycastY, Mathf.Abs(actualSpeedY * Time.deltaTime) + offsetRaycastY, layerMask);
