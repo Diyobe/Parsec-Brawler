@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class input
+{
+    public bool jump;
+    public bool hit;
+    public bool dash;
+
+    public float horizontal;
+    public float vertical;
+
+    public input()
+    {
+        jump = false;
+        hit = false;
+        dash = false;
+
+        horizontal = 0;
+        vertical = 0;
+    }
+}
+
+
 public class InputController : MonoBehaviour
 {
-    public class input
-    {
-        public bool jump;
-        public bool hit;
-        public bool dash;
-
-        public float horizontal;
-        public float vertical;
-
-        public input()
-        {
-            jump = false;
-            hit = false;
-            dash = false;
-
-            horizontal = 0;
-            vertical = 0;
-        }
-    }
 
     public List<input> inputBuffer;
-
     public int bufferLength = 6;
+
+    public PlayerController playerController;
 
     private void Start()
     {
@@ -55,5 +58,7 @@ public class InputController : MonoBehaviour
         {
             inputBuffer[0].jump = true;
         }
+
+        playerController.UpdateBuffer(inputBuffer);
     }
 }
