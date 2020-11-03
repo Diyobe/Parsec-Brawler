@@ -85,7 +85,6 @@ public class AttackController : MonoBehaviour
 
     PlayerController user;
     IEnumerator attackCoroutine;
-    //float motionSpeed = 1f;
 
 
     public void CreateAttack(PlayerController cUser)
