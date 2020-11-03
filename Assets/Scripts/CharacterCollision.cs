@@ -199,6 +199,7 @@ public class CharacterCollision : MonoBehaviour
                 }
                 originRaycast += new Vector2(Mathf.Abs(bottomRight.x - bottomLeft.x) / (numberRaycastVertical - 1), 0);
             }
+            isGrounded = false;
             // ======================================================================================================
 
         }
