@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     ShakeSprite shakeSprite;
     [SerializeField]
     ParticleSystem smoke;
+    [SerializeField]
+    AfterImageEffect afterImageEffect;
 
 
     [Space]
@@ -145,9 +147,13 @@ public class PlayerController : MonoBehaviour
         {
             UpdateKnockback();
         }
-        else
+        else if (state == CharacterState.Idle)
         {
             UpdateControls();
+            ApplyGravity();
+        }
+        else if (state == CharacterState.Acting)
+        {
             ApplyGravity();
         }
         SetAnimation();
@@ -394,7 +400,8 @@ public class PlayerController : MonoBehaviour
 
     private void Knockback(AttackController attack)
     {
-
+        if (attack == null)
+            return;
         state = CharacterState.Hit;
         currentSpeedX = 0;
         Vector2 direction = this.transform.position - attack.transform.position;
@@ -407,6 +414,7 @@ public class PlayerController : MonoBehaviour
         FeedbackManager.Instance.CameraZoomDeSesMorts();
         smoke.Play();
 
+        afterImageEffect.StartAfterImage();
         KnockbackAnimation();
     }
 
@@ -426,6 +434,8 @@ public class PlayerController : MonoBehaviour
         {
             state = CharacterState.Idle;
             characterAnimator.SetTrigger("Idle");
+            Debug.Log(this.gameObject.name);
+            afterImageEffect.EndAfterImage();
             smoke.Stop();
         }
     }
