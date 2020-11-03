@@ -63,6 +63,11 @@ public class AttackController : MonoBehaviour
     [Space]
     [SerializeField]
     private float targetShakePower;
+    public float TargetShakePower
+    {
+        get { return targetShakePower; }
+    }
+
     [SerializeField]
     private float zoom;
 

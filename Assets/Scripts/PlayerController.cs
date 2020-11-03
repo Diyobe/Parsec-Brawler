@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator characterAnimator;
 
+    [Header("Feedback")]
+    [SerializeField]
+    ShakeSprite shakeSprite;
+    [SerializeField]
+    ParticleSystem smoke;
+
 
     [Space]
     [Header("Movement")]
@@ -71,6 +77,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float knockbackWallBounce;
 
+    [SerializeField]
+    float hitStopOnWall = 0.1f;
+    [SerializeField]
+    float shakePowerOnWall = 0.2f;
 
 
     protected Vector2 knockbackPower;
@@ -338,21 +348,30 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = this.transform.position - attack.transform.position;
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
-
+        shakeSprite.Shake(attack.TargetShakePower, attack.HitStop);
         attack.HasHit(this);
-
+        FeedbackManager.Instance.BackgroundFlash();
+        FeedbackManager.Instance.HitSpeedline();
+        FeedbackManager.Instance.CameraZoomDeSesMorts();
+        smoke.Play();
     }
 
     protected void UpdateKnockback()
     {
         if (GetMotionSpeed() == 0)
+        {
+            characterCollision.Move(0, 0);
             return;
+        }
         characterCollision.Move(knockbackPower.x, knockbackPower.y);
         float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
         knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
+        smoke.transform.localEulerAngles = new Vector3(0, 0, Vector3.Angle(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower, transform.forward));
+        //smoke.transform.LookAt(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower);
         if(knockbackPower.magnitude < knockbackPowerForWallBounce )
         {
             state = CharacterState.Idle;
+            smoke.Stop();
         }
     }
 
@@ -365,7 +384,10 @@ public class PlayerController : MonoBehaviour
         if(state == CharacterState.Hit)
         {
             knockbackPower.x = -knockbackPower.x;
-            //SetCharacterMotionSpeed(0, 10);
+            shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
+            SetCharacterMotionSpeed(0, hitStopOnWall);
+            //FeedbackManager.Instance.BackgroundFlash();
+            FeedbackManager.Instance.HitSpeedline();
         }
     }
 
@@ -374,7 +396,16 @@ public class PlayerController : MonoBehaviour
         if (state == CharacterState.Hit)
         {
             knockbackPower.y = -knockbackPower.y;
-            //SetCharacterMotionSpeed(0, 10);
+            shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
+            SetCharacterMotionSpeed(0, hitStopOnWall);
+            //FeedbackManager.Instance.BackgroundFlash();
+            FeedbackManager.Instance.HitSpeedline();
+        }
+        else if (characterCollision.IsGrounded == false)
+        {
+            Debug.Log("Allo");
+            characterCollision.MoveY(0);
+            //characterCollision.IsGrounded = false;
         }
     }
 

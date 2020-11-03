@@ -80,6 +80,7 @@ public class CharacterCollision : MonoBehaviour
     public bool IsGrounded
     {
         get { return isGrounded; }
+        set { isGrounded = value; }
     }
 
 
