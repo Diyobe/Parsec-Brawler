@@ -80,11 +80,9 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Knockback")]
     [SerializeField]
-    float knockbackPowerReduce;
+    float baseKnockbackTime;
     [SerializeField]
     float knockbackPowerForWallBounce;
-    [SerializeField]
-    float knockbackWallBounce;
 
     [SerializeField]
     float hitStopOnWall = 0.1f;
@@ -94,10 +92,14 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Action")]
     [SerializeField]
+    AttackController crouchJump;
+    [SerializeField]
     AttackController smash;
 
     protected Vector2 knockbackPower;
     int knockbackAnimation;
+    float knockbackTime;
+    float knockbackMaxTime;
 
     CharacterState state = CharacterState.Idle;
 
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
     }
 
     float currentSpeedX;
+    float currentSpeedY;
 
     int currentNumberOfJumps;
 
@@ -143,11 +146,12 @@ public class PlayerController : MonoBehaviour
             canEndAction = true;
 
         // Input
-        if (state == CharacterState.Hit)
+        if (knockbackPower != Vector2.zero)
         {
             UpdateKnockback();
         }
-        else if (state == CharacterState.Idle)
+
+        if (state == CharacterState.Idle)
         {
             UpdateControls();
             ApplyGravity();
@@ -156,7 +160,8 @@ public class PlayerController : MonoBehaviour
         {
             ApplyGravity();
         }
-        characterCollision.Move(currentSpeedX + knockbackPower.x, knockbackPower.y);
+
+        characterCollision.Move(currentSpeedX + knockbackPower.x, currentSpeedY + knockbackPower.y);
         SetAnimation();
 
 
@@ -168,6 +173,10 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         currentNumberOfJumps = numberOfJumps;
+        if(state == CharacterState.Idle)
+        {
+            knockbackPower = Vector2.zero;
+        }
     }
 
     void UpdateControls()
@@ -185,8 +194,7 @@ public class PlayerController : MonoBehaviour
             {
                 buffer[i].jump = false;
                 --currentNumberOfJumps;
-                direction = (int)Mathf.Sign(currentSpeedX);
-                characterCollision.Jump(jumpImpulsion);
+                Jump(jumpImpulsion);
             }
         }
     }
@@ -243,13 +251,21 @@ public class PlayerController : MonoBehaviour
 
     public void MoveForward(float value)
     {
-        //characterCollision.MoveX(value * direction);
+        currentSpeedX = value * direction;
     }
-
+    public void Jump(float jumpImpulse)
+    {
+        currentSpeedY = jumpImpulse;
+        characterCollision.IsGrounded = false;
+        if(currentSpeedX != 0)
+            direction = (int)Mathf.Sign(currentSpeedX);
+    }
 
     private void ApplyGravity()
     {
-        characterCollision.ApplyGravity(gravityForce, gravityForceMax);
+        currentSpeedY -= gravityForce * Time.deltaTime;
+        if (currentSpeedY < gravityForceMax)
+            currentSpeedY = gravityForceMax;
     }
 
 
@@ -258,7 +274,7 @@ public class PlayerController : MonoBehaviour
     // ==========================================================================================================
     //    A C T I O N
     // ==========================================================================================================
-
+    #region Action 
 
     public void Action(AttackController action)
     {
@@ -272,6 +288,9 @@ public class PlayerController : MonoBehaviour
 
         endAction = false;
         canEndAction = false;
+
+        currentSpeedX = 0;
+        currentSpeedY = 0;
 
         state = CharacterState.Acting;
     }
@@ -288,6 +307,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Appelé par les anims
+    // Uniquement utilisable pour l'action principale
+    public void ActionUnactive()
+    {
+        if (currentAttackController != null)
+        {
+            currentAttackController.ActionUnactive();
+        }
+    }
 
     // Appelé par les anims
     // Uniquement utilisable pour dire d'arrêter l'action
@@ -306,13 +334,13 @@ public class PlayerController : MonoBehaviour
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
     }
-
+    #endregion
 
 
     // ==========================================================================================================
     //    A N I M A T I O N
     // ==========================================================================================================
-
+    #region Animation 
 
     protected void SetAnimation()
     {
@@ -337,8 +365,6 @@ public class PlayerController : MonoBehaviour
     {
         characterCollision.CharacterMotionSpeed = newSpeed;
         characterAnimator.speed = newSpeed;
-        /*if (currentAttackController != null)
-            currentAttackController.AttackMotionSpeed(newSpeed);*/
         if (time > 0)
         {
             if (motionSpeedCoroutine != null)
@@ -358,8 +384,6 @@ public class PlayerController : MonoBehaviour
         }
         characterCollision.CharacterMotionSpeed = 1;
         characterAnimator.speed = 1;
-        /*if (currentAttackController != null)
-            currentAttackController.AttackMotionSpeed(characterMotionSpeed);*/
     }
 
 
@@ -368,7 +392,7 @@ public class PlayerController : MonoBehaviour
         return characterAnimator.speed;
     }
 
-
+    #endregion
 
 
 
@@ -400,6 +424,7 @@ public class PlayerController : MonoBehaviour
             return;
         state = CharacterState.Hit;
         currentSpeedX = 0;
+        currentSpeedY = 0;
         Vector2 direction = this.transform.position - attack.transform.position;
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
@@ -410,6 +435,9 @@ public class PlayerController : MonoBehaviour
         FeedbackManager.Instance.CameraZoomDeSesMorts();
         smoke.Play();
 
+        knockbackTime = 0;
+        knockbackMaxTime = baseKnockbackTime + (direction.magnitude);
+
         afterImageEffect.StartAfterImage();
         KnockbackAnimation();
     }
@@ -418,19 +446,22 @@ public class PlayerController : MonoBehaviour
     {
         if (GetMotionSpeed() == 0)
         {
-            characterCollision.Move(0, 0);
             return;
         }
-        //characterCollision.Move(knockbackPower.x, knockbackPower.y);
-        float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
-        knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
-        //smoke.transform.localEulerAngles = new Vector3(0, 0, Vector3.Angle(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower, transform.forward));
-        if(knockbackPower.magnitude < knockbackPowerForWallBounce)
+        //float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
+        knockbackTime += Time.deltaTime * GetMotionSpeed();
+        knockbackPower = Vector2.Lerp(knockbackPower, Vector2.zero, knockbackTime / knockbackMaxTime);
+        //knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
+        if(knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
-            characterAnimator.SetTrigger("Idle");
+            //characterAnimator.SetTrigger("Idle");
             afterImageEffect.EndAfterImage();
             smoke.Stop();
+        }
+        else if (knockbackPower.magnitude < 1f)
+        {
+            knockbackPower = Vector2.zero;
         }
     }
 
@@ -453,10 +484,10 @@ public class PlayerController : MonoBehaviour
             knockbackPower.x = -knockbackPower.x;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
-            //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             direction = -direction;
+            CheckCollisionComponent(collider);
         }
     }
 
@@ -467,15 +498,23 @@ public class PlayerController : MonoBehaviour
             knockbackPower.y = -knockbackPower.y;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
-            //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
+            CheckCollisionComponent(collider);
         }
         else if (characterCollision.IsGrounded == false)
         {
             characterCollision.MoveY(0);
             //characterCollision.IsGrounded = false;
         }
+    }
+
+    // a refactor éventuellement
+    private void CheckCollisionComponent(Transform collider)
+    {
+        WallDestructible a = collider.GetComponent<WallDestructible>();
+        if (a != null)
+            a.Damage();
     }
 
 }

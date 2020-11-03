@@ -244,18 +244,6 @@ public class CharacterCollision : MonoBehaviour
         speedY = newSpeedY;
     }
 
-    public void Jump(float jumpImpulse)
-    {
-        speedY = jumpImpulse;
-        isGrounded = false;
-    }
-
-    public void ApplyGravity(float gravity, float gravityMax)
-    {
-        speedY -= gravity * Time.deltaTime;
-        if (speedY < gravityMax)
-            speedY = gravityMax;
-    }
 
 
 }
