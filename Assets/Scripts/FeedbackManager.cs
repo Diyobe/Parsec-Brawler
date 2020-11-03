@@ -23,6 +23,8 @@ public class FeedbackManager : MonoBehaviour
         }
         else
         {
+            QualitySettings.vSyncCount = 1;
+            Application.targetFrameRate = 60;
             Instance = this;
             DontDestroyOnLoad(this);
         }

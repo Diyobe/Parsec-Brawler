@@ -156,7 +156,9 @@ public class PlayerController : MonoBehaviour
         {
             ApplyGravity();
         }
+        characterCollision.Move(currentSpeedX + knockbackPower.x, knockbackPower.y);
         SetAnimation();
+
 
         // Cette ligne est pour empêcher qu'il y ait un bug d'animation au moment où le perso joue une action pile à la frame ou le perso termine son action précédente
         if (endAction == true)
@@ -166,7 +168,6 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         currentNumberOfJumps = numberOfJumps;
-        direction = (int)Mathf.Sign(currentSpeedX);
     }
 
     void UpdateControls()
@@ -184,6 +185,7 @@ public class PlayerController : MonoBehaviour
             {
                 buffer[i].jump = false;
                 --currentNumberOfJumps;
+                direction = (int)Mathf.Sign(currentSpeedX);
                 characterCollision.Jump(jumpImpulsion);
             }
         }
@@ -200,6 +202,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Pas FPS indépendant à refaire
     void CheckHorizontal(List<input> buffer)
     {
         if(characterCollision.IsGrounded == true)
@@ -230,8 +233,6 @@ public class PlayerController : MonoBehaviour
             }
         }
         currentSpeedX = Mathf.Clamp(currentSpeedX, -speedMax, speedMax);
-        characterCollision.MoveX(currentSpeedX);
-
     }
 
 
@@ -242,17 +243,12 @@ public class PlayerController : MonoBehaviour
 
     public void MoveForward(float value)
     {
-        characterCollision.MoveX(value * direction);
+        //characterCollision.MoveX(value * direction);
     }
 
 
     private void ApplyGravity()
     {
-        /*if (characterCollision.IsGrounded == true)
-        {
-            //currentSpeedY = 0;
-            return;
-        }*/
         characterCollision.ApplyGravity(gravityForce, gravityForceMax);
     }
 
@@ -425,16 +421,14 @@ public class PlayerController : MonoBehaviour
             characterCollision.Move(0, 0);
             return;
         }
-        characterCollision.Move(knockbackPower.x, knockbackPower.y);
+        //characterCollision.Move(knockbackPower.x, knockbackPower.y);
         float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
         knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
-        smoke.transform.localEulerAngles = new Vector3(0, 0, Vector3.Angle(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower, transform.forward));
-        //smoke.transform.LookAt(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower);
-        if(knockbackPower.magnitude < knockbackPowerForWallBounce )
+        //smoke.transform.localEulerAngles = new Vector3(0, 0, Vector3.Angle(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower, transform.forward));
+        if(knockbackPower.magnitude < knockbackPowerForWallBounce)
         {
             state = CharacterState.Idle;
             characterAnimator.SetTrigger("Idle");
-            Debug.Log(this.gameObject.name);
             afterImageEffect.EndAfterImage();
             smoke.Stop();
         }
