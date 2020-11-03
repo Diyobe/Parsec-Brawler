@@ -67,15 +67,18 @@ public class InputController : MonoBehaviour
 
     private void InputHorizontal()
     {
-        //player.GetButtonDown("Reset")
-        if (Input.GetKey(KeyCode.Q))
+        if (player.GetAxis("Horizontal") != 0)
+        {
+            inputBuffer[0].horizontal = Mathf.Sign(player.GetAxis("Horizontal"));
+        }
+        /*if (Input.GetKey(KeyCode.Q))
         {
             inputBuffer[0].horizontal = -1;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             inputBuffer[0].horizontal = 1;
-        }
+        }*/
         else
         {
             inputBuffer[0].horizontal = 0;
@@ -100,11 +103,15 @@ public class InputController : MonoBehaviour
 
     void InputJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(player.GetButtonDown("Jump"))
+        {
+            inputBuffer[0].jump = true;
+        }
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             inputBuffer[0].jump = true;
 
-        }
+        }*/
     }
 
     void InputHit()
