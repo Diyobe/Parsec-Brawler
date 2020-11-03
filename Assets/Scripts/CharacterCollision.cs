@@ -8,6 +8,10 @@ public class CharacterCollision : MonoBehaviour
     public delegate void Action();
     public event Action doAction;
 
+    public delegate void ActionCollision(Transform transform);
+    public event ActionCollision OnWallCollision;
+    public event ActionCollision OnGroundCollision;
+
     [Header("CharacterController")]
     [SerializeField]
     protected BoxCollider characterCollider;
@@ -37,14 +41,14 @@ public class CharacterCollision : MonoBehaviour
     [SerializeField]
     protected int numberRaycastHorizontal = 2;
 
-    [Header("Controls")]
-    [SerializeField]
-    protected float gravityForce = 2;
-    [SerializeField]
-    protected float gravityForceMax = 5;
-
 
     protected float characterMotionSpeed = 1;
+    public float CharacterMotionSpeed
+    {
+        get { return characterMotionSpeed; }
+        set { characterMotionSpeed = value; }
+    }
+
 
     protected float speedX = 0;
     public float SpeedX
@@ -76,13 +80,13 @@ public class CharacterCollision : MonoBehaviour
     public bool IsGrounded
     {
         get { return isGrounded; }
-        //set { isGrounded = value; }
+        set { isGrounded = value; }
     }
 
 
     protected void Update()
     {
-        ApplyGravity();
+        //ApplyGravity();
         UpdateCollision();
     }
 
@@ -135,7 +139,7 @@ public class CharacterCollision : MonoBehaviour
                     float distance = raycastX.point.x - bottomLeft.x;
                     distance += offsetRaycastX;
                     actualSpeedX = distance / Time.deltaTime;
-                    //OnWallCollision();
+                    OnWallCollision.Invoke(collisionInfo);
                     return;
                 }
                 originRaycast += new Vector2(0, Mathf.Abs(upperLeft.y - bottomLeft.y) / (numberRaycastHorizontal - 1));
@@ -157,7 +161,7 @@ public class CharacterCollision : MonoBehaviour
                     float distance = raycastX.point.x - bottomRight.x;
                     distance -= offsetRaycastX;
                     actualSpeedX = distance / Time.deltaTime;
-                    //OnWallCollision();
+                    OnWallCollision.Invoke(collisionInfo);
                     return;
                 }
                 originRaycast += new Vector2(0, Mathf.Abs(upperRight.y - bottomRight.y) / (numberRaycastHorizontal - 1));
@@ -194,7 +198,7 @@ public class CharacterCollision : MonoBehaviour
                         isGrounded = true;
                         doAction.Invoke();
                     }
-
+                    OnGroundCollision.Invoke(collisionInfo);
                     return;
                 }
                 originRaycast += new Vector2(Mathf.Abs(bottomRight.x - bottomLeft.x) / (numberRaycastVertical - 1), 0);
@@ -217,6 +221,7 @@ public class CharacterCollision : MonoBehaviour
                     float distance = raycastY.point.y - upperLeft.y;
                     distance -= offsetRaycastY;
                     actualSpeedY = distance / Time.deltaTime;
+                    OnGroundCollision.Invoke(collisionInfo);
                     return;
                 }
                 originRaycast += new Vector2(Mathf.Abs(upperRight.x - upperLeft.x) / (numberRaycastVertical - 1), 0);
@@ -225,21 +230,19 @@ public class CharacterCollision : MonoBehaviour
         }
     }
 
-    private void ApplyGravity()
-    {
-        if (isGrounded == true)
-            return;
-        speedY -= gravityForce * Time.deltaTime;
-        if (speedY < gravityForceMax)
-            speedY = gravityForceMax;
-    }
 
-
-
-
-    public void Move(float newSpeedX)
+    public void MoveX(float newSpeedX)
     {
         speedX = newSpeedX;
+    }
+    public void MoveY(float newSpeedY)
+    {
+        speedY = newSpeedY;
+    }
+    public void Move(float newSpeedX, float newSpeedY)
+    {
+        speedX = newSpeedX;
+        speedY = newSpeedY;
     }
 
     public void Jump(float jumpImpulse)
@@ -247,4 +250,13 @@ public class CharacterCollision : MonoBehaviour
         speedY = jumpImpulse;
         isGrounded = false;
     }
+
+    public void ApplyGravity(float gravity, float gravityMax)
+    {
+        speedY -= gravity * Time.deltaTime;
+        if (speedY < gravityMax)
+            speedY = gravityMax;
+    }
+
+
 }
