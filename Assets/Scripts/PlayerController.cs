@@ -30,6 +30,13 @@ public class PlayerController : MonoBehaviour
     CharacterCollision characterCollision;
     [SerializeField]
     Animator characterAnimator;
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+    public SpriteRenderer SpriteRenderer
+    {
+        get { return spriteRenderer; }
+    }
+
 
     [Header("Feedback")]
     [SerializeField]
@@ -82,10 +89,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float shakePowerOnWall = 0.2f;
 
+    [Space]
+    [Header("Action")]
+    [SerializeField]
+    AttackController smash;
 
     protected Vector2 knockbackPower;
+    int knockbackAnimation;
 
-    CharacterState state;
+    CharacterState state = CharacterState.Idle;
 
     private int direction;
     public int Direction
@@ -138,6 +150,7 @@ public class PlayerController : MonoBehaviour
             UpdateControls();
             ApplyGravity();
         }
+        SetAnimation();
 
         // Cette ligne est pour empêcher qu'il y ait un bug d'animation au moment où le perso joue une action pile à la frame ou le perso termine son action précédente
         if (endAction == true)
@@ -153,6 +166,7 @@ public class PlayerController : MonoBehaviour
     void UpdateControls()
     {
         CheckJump(buffer);
+        CheckAttack(buffer);
         CheckHorizontal(buffer);
     }
 
@@ -165,6 +179,17 @@ public class PlayerController : MonoBehaviour
                 buffer[i].jump = false;
                 --currentNumberOfJumps;
                 characterCollision.Jump(jumpImpulsion);
+            }
+        }
+    }
+    void CheckAttack(List<input> buffer)
+    {
+        for (int i = 0; i < buffer.Count; i++)
+        {
+            if (buffer[i].hit)
+            {
+                buffer[i].hit = false;
+                Action(smash);
             }
         }
     }
@@ -209,16 +234,19 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    public void MoveForward(float value)
+    {
+        characterCollision.MoveX(value * direction);
+    }
 
 
     private void ApplyGravity()
     {
-        if (characterCollision.IsGrounded == true)
+        /*if (characterCollision.IsGrounded == true)
         {
             //currentSpeedY = 0;
             return;
-        }
+        }*/
         characterCollision.ApplyGravity(gravityForce, gravityForceMax);
     }
 
@@ -242,6 +270,8 @@ public class PlayerController : MonoBehaviour
 
         endAction = false;
         canEndAction = false;
+
+        state = CharacterState.Acting;
     }
 
 
@@ -271,6 +301,8 @@ public class PlayerController : MonoBehaviour
     {
         if (currentAttackController != null)
             currentAttackController.ActionEnd();
+        state = CharacterState.Idle;
+        characterAnimator.SetTrigger("Idle");
     }
 
 
@@ -278,6 +310,26 @@ public class PlayerController : MonoBehaviour
     // ==========================================================================================================
     //    A N I M A T I O N
     // ==========================================================================================================
+
+
+    protected void SetAnimation()
+    {
+        if (direction == 1)
+            spriteRenderer.flipX = false;
+        else if (direction == -1)
+            spriteRenderer.flipX = true;
+
+        characterAnimator.SetBool("AerialUp", !characterCollision.IsGrounded);
+
+        if (characterCollision.IsGrounded == false && characterCollision.SpeedY <= 0)
+            characterAnimator.SetBool("AerialDown", true);
+        else
+            characterAnimator.SetBool("AerialDown", false);
+
+        if (state == CharacterState.Idle)
+            characterAnimator.SetBool("Moving", characterCollision.SpeedX != 0);
+    }
+
 
     public void SetCharacterMotionSpeed(float newSpeed, float time = 0)
     {
@@ -354,6 +406,8 @@ public class PlayerController : MonoBehaviour
         FeedbackManager.Instance.HitSpeedline();
         FeedbackManager.Instance.CameraZoomDeSesMorts();
         smoke.Play();
+
+        KnockbackAnimation();
     }
 
     protected void UpdateKnockback()
@@ -371,11 +425,20 @@ public class PlayerController : MonoBehaviour
         if(knockbackPower.magnitude < knockbackPowerForWallBounce )
         {
             state = CharacterState.Idle;
+            characterAnimator.SetTrigger("Idle");
             smoke.Stop();
         }
     }
 
 
+    private void KnockbackAnimation()
+    {
+        knockbackAnimation += 1;
+        if (knockbackAnimation == 2)
+            knockbackAnimation = 0;
+        characterAnimator.SetTrigger("Hit");
+        characterAnimator.SetInteger("HitAnimation", knockbackAnimation);
+    }
 
 
 
@@ -388,6 +451,8 @@ public class PlayerController : MonoBehaviour
             SetCharacterMotionSpeed(0, hitStopOnWall);
             //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
+            KnockbackAnimation();
+            direction = -direction;
         }
     }
 
@@ -400,10 +465,10 @@ public class PlayerController : MonoBehaviour
             SetCharacterMotionSpeed(0, hitStopOnWall);
             //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
+            KnockbackAnimation();
         }
         else if (characterCollision.IsGrounded == false)
         {
-            Debug.Log("Allo");
             characterCollision.MoveY(0);
             //characterCollision.IsGrounded = false;
         }

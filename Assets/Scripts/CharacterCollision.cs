@@ -86,7 +86,6 @@ public class CharacterCollision : MonoBehaviour
 
     protected void Update()
     {
-        //ApplyGravity();
         UpdateCollision();
     }
 

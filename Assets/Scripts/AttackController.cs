@@ -97,7 +97,7 @@ public class AttackController : MonoBehaviour
                                                 user.transform.localScale.z);
 
         // hitbox
-        hitbox.enabled = false;
+        hitbox.enabled = true;
 
         // Link to user
         this.transform.SetParent(cUser.transform);
@@ -132,7 +132,7 @@ public class AttackController : MonoBehaviour
             Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity);
         if (HitStop > 0)
         {
-            //user.SetCharacterMotionSpeed(0, HitStop);
+            user.SetCharacterMotionSpeed(0, HitStop);
             target.SetCharacterMotionSpeed(0, HitStop);
         }
         ActionEnd();

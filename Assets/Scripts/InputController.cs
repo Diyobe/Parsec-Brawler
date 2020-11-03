@@ -107,19 +107,13 @@ public class InputController : MonoBehaviour
         {
             inputBuffer[0].jump = true;
         }
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inputBuffer[0].jump = true;
-
-        }*/
     }
 
     void InputHit()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (player.GetButtonDown("Action"))
         {
             inputBuffer[0].hit = true;
-
         }
     }
 
