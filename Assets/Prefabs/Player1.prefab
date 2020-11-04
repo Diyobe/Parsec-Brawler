@@ -216,7 +216,12 @@ MonoBehaviour:
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: 48797722984526d4b8d127fe15bd3b4f, type: 3}
-  smash: {fileID: 1975021917538315906, guid: 19e3c2e1673379c4a8151b5e70b618d4, type: 3}
+  attackLeft: {fileID: 8530654087378751973, guid: 5c5be07093545e64ca711c9179584f9a, type: 3}
+  attackUp: {fileID: 6711955271010886810, guid: ee6ceab823a64904296b1333843b85fd, type: 3}
+  attackDown: {fileID: 6711955271010886810, guid: ee6ceab823a64904296b1333843b85fd, type: 3}
+  attackLeftAerial: {fileID: 8530654087378751973, guid: 5710b7e4365ea2644a5645632eea7d30, type: 3}
+  attackUpAerial: {fileID: 6711955271010886810, guid: 85f13b96ccb921f4a84de6ee84d7f882, type: 3}
+  attackDownAerial: {fileID: 1975021917538315906, guid: 19e3c2e1673379c4a8151b5e70b618d4, type: 3}
 --- !u!95 &5071424631730491935
 Animator:
   serializedVersion: 3
