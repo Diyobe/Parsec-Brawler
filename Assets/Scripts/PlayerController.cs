@@ -496,6 +496,7 @@ public class PlayerController : MonoBehaviour
             state = CharacterState.Idle;
             //characterAnimator.SetTrigger("Idle");
             afterImageEffect.EndAfterImage();
+            currentSpeedX = knockbackPower.x;
             smoke.Stop();
         }
         else if (knockbackPower.magnitude < 1f)
@@ -528,6 +529,7 @@ public class PlayerController : MonoBehaviour
             KnockbackAnimation();
             direction = -direction;
             CheckCollisionComponent(collider);
+            currentSpeedY = 0;
         }
         else if (characterCollision.IsGrounded == false)
         {
@@ -547,6 +549,7 @@ public class PlayerController : MonoBehaviour
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             CheckCollisionComponent(collider);
+            currentSpeedY = 0;
         }
         else if (characterCollision.IsGrounded == false)
         {

@@ -212,7 +212,7 @@ MonoBehaviour:
   numberOfJumps: 2
   crouchTime: 0.08
   baseKnockbackTime: 0.5
-  knockbackPowerForWallBounce: 8
+  knockbackPowerForWallBounce: 10
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: 48797722984526d4b8d127fe15bd3b4f, type: 3}
