@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
         {
             if (character == blastedCharacter)
             {
-                Instantiate(blastExplosion, character.transform.position, Quaternion.identity);
                 character.SetActive(false);
                 RespawnCharacter(character);
             }
