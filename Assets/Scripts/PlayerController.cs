@@ -96,7 +96,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     AttackController crouchJump;
     [SerializeField]
-    AttackController smash;
+    AttackController attackLeft;
+    [SerializeField]
+    AttackController attackUp;
+    [SerializeField]
+    AttackController attackDown;
+
+    [Header("ActionAerial")]
+    [SerializeField]
+    AttackController attackLeftAerial;
+    [SerializeField]
+    AttackController attackUpAerial;
+    [SerializeField]
+    AttackController attackDownAerial;
 
     protected Vector2 knockbackPower;
     int knockbackAnimation;
@@ -186,9 +198,9 @@ public class PlayerController : MonoBehaviour
 
     void UpdateControls()
     {
+        CheckHorizontal(buffer);
         CheckJump(buffer);
         CheckAttack(buffer);
-        CheckHorizontal(buffer);
     }
 
     void CheckJump(List<input> buffer)
@@ -220,7 +232,34 @@ public class PlayerController : MonoBehaviour
             if (buffer[i].hit)
             {
                 buffer[i].hit = false;
-                Action(smash);
+                if (characterCollision.IsGrounded == true)
+                {
+                    if (Mathf.Abs(buffer[i].vertical) > Mathf.Abs(buffer[i].horizontal))
+                    {
+                        if (buffer[i].vertical > 0)
+                            Action(attackUp);
+                        else
+                            Action(attackDown);
+                    }
+                    else
+                    {
+                        Action(attackLeft);
+                    }
+                }
+                else
+                {
+                    if (Mathf.Abs(buffer[i].vertical) > Mathf.Abs(buffer[i].horizontal))
+                    {
+                        if (buffer[i].vertical > 0)
+                            Action(attackUpAerial);
+                        else
+                            Action(attackDownAerial);
+                    }
+                    else
+                    {
+                        Action(attackLeftAerial);
+                    }
+                }
             }
         }
     }
@@ -232,7 +271,7 @@ public class PlayerController : MonoBehaviour
         {
             if (buffer[0].horizontal != 0)
             {
-                currentSpeedX += buffer[0].horizontal * acceleration;
+                currentSpeedX += Mathf.Sign(buffer[0].horizontal) * acceleration;
                 direction = (int) Mathf.Sign(currentSpeedX);
             }
             else
@@ -248,7 +287,7 @@ public class PlayerController : MonoBehaviour
         {
             if (buffer[0].horizontal != 0)
             {
-                currentSpeedX += buffer[0].horizontal * (acceleration - airFriction);
+                currentSpeedX += Mathf.Sign(buffer[0].horizontal) * (acceleration - airFriction);
             }
             else
             {
@@ -259,7 +298,6 @@ public class PlayerController : MonoBehaviour
         }
         currentSpeedX = Mathf.Clamp(currentSpeedX, -speedMax, speedMax);
     }
-
 
 
 
@@ -306,7 +344,21 @@ public class PlayerController : MonoBehaviour
             currentSpeedY = gravityForceMax;
     }
 
+    public void ResetToIdle()
+    {
+        currentCrouchTime = 0;
+        currentSpeedX = 0;
+        currentSpeedY = 0;
+        afterImageEffect.EndAfterImage();
+        knockbackTime = 0;
 
+        knockbackPower = Vector2.zero;
+        canEndAction = false;
+        endAction = false;
+
+        state = CharacterState.Idle;
+        characterAnimator.SetTrigger("Idle");
+    }
 
 
     // ==========================================================================================================
@@ -327,8 +379,11 @@ public class PlayerController : MonoBehaviour
         endAction = false;
         canEndAction = false;
 
-        currentSpeedX = 0;
-        currentSpeedY = 0;
+        if (action.KeepMomentum == false)
+        {
+            currentSpeedX = 0;
+            currentSpeedY = 0;
+        }
 
         state = CharacterState.Acting;
     }
