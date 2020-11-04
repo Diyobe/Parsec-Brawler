@@ -43,6 +43,13 @@ public class AttackController : MonoBehaviour
         get { return knockbackPower; }
     }
 
+    [SerializeField]
+    private Vector3 knockbackAngle;
+    public Vector3 KnockbackAngle
+    {
+        get { return knockbackAngle; }
+    }
+    
 
     [SerializeField]
     private bool hitStopUser = true;

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8530654087378751973}
   - component: {fileID: 8530654087378751970}
   m_Layer: 9
-  m_Name: LeftAttack
+  m_Name: LeftAttackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,8 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimation: {fileID: 7400000, guid: 91c803b1fbfc07946b4b88d762ed93eb, type: 2}
   lifetime: 1
+  keepMomentum: 0
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   knockbackPower: 50
+  knockbackAngle: {x: 0, y: -0.2, z: 0}
   hitStopUser: 1
   hitStop: 0.5
   targetShakePower: 0.2

@@ -523,7 +523,7 @@ public class PlayerController : MonoBehaviour
         currentSpeedX = 0;
         currentSpeedY = 0;
         currentCrouchTime = 0;
-        Vector2 direction = this.transform.position - attack.transform.position;
+        Vector2 direction = this.transform.position - (attack.transform.position + attack.KnockbackAngle);
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
         shakeSprite.Shake(attack.TargetShakePower, attack.HitStop);
