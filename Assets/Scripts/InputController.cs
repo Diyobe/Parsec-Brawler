@@ -35,8 +35,14 @@ public class InputController : MonoBehaviour
     public List<input> inputBuffer;
     public int bufferLength = 6;
 
-    public PlayerController playerController;
+    public InputControllable playerController;
     protected Player player;
+
+
+    public void SetPlayerID(int newID)
+    {
+        playerID = newID;
+    }
 
     private void Start()
     {
@@ -62,12 +68,12 @@ public class InputController : MonoBehaviour
         InputHorizontal();
         InputVertical();
 
-        playerController.UpdateBuffer(inputBuffer);
+        playerController.UpdateBuffer(inputBuffer, playerID);
     }
 
     private void InputHorizontal()
     {
-        if (player.GetAxis("Horizontal") != 0)
+        if (Mathf.Abs(player.GetAxis("Horizontal")) > .35)
         {
             inputBuffer[0].horizontal = player.GetAxis("Horizontal");
         }
@@ -79,7 +85,7 @@ public class InputController : MonoBehaviour
 
     private void InputVertical()
     {
-        if (player.GetAxis("Vertical") != 0)
+        if (Mathf.Abs(player.GetAxis("Vertical")) > .35)
         {
             inputBuffer[0].vertical = player.GetAxis("Vertical");
         }

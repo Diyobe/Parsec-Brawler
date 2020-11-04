@@ -47,9 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimation: {fileID: 7400000, guid: 78f9f0fa3c2d2664482f38af12365398, type: 2}
   lifetime: 1
-  knockbackTime: 1
+  keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   knockbackPower: 50
+  knockbackAngle: {x: 0, y: 1, z: 0}
   hitStopUser: 1
   hitStop: 0.5
   targetShakePower: 0.2
