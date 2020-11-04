@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
         {
             if (character == blastedCharacter)
             {
-                camera.targets.Remove(blastedCharacter.transform);
                 character.ResetToIdle();
+                camera.targets.Remove(blastedCharacter.transform);
                 character.gameObject.SetActive(false);
                 StartCoroutine(RespawnCharacter(character.gameObject, 2f));
             }
