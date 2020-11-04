@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> characters;
+    [SerializeField] private List<PlayerController> characters;
     [SerializeField] private GameObject blastExplosion;
     [SerializeField] private Transform respawnPosition;
 
@@ -22,19 +23,20 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
     }
 
-    public void BlastCharacter(GameObject blastedCharacter)
+    public void BlastCharacter(PlayerController blastedCharacter)
     {
-        foreach(GameObject character in characters)
+        foreach(PlayerController character in characters)
         {
             if (character == blastedCharacter)
             {
                 camera.targets.Remove(blastedCharacter.transform);
-                character.SetActive(false);
-                StartCoroutine(RespawnCharacter(character, 2f));
+                character.ResetToIdle();
+                character.gameObject.SetActive(false);
+                StartCoroutine(RespawnCharacter(character.gameObject, 2f));
             }
         }
     }
