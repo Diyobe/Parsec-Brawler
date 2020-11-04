@@ -38,6 +38,12 @@ public class InputController : MonoBehaviour
     public InputControllable playerController;
     protected Player player;
 
+
+    public void SetPlayerID(int newID)
+    {
+        playerID = newID;
+    }
+
     private void Start()
     {
         inputBuffer = new List<input>(bufferLength);
