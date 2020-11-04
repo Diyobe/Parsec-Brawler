@@ -2848,7 +2848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &710491418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3001,6 +3001,10 @@ PrefabInstance:
     - target: {fileID: 5071424631730491909, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
       propertyPath: m_TagString
       value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071424631730491909, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5071424631730491930, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8265,7 +8269,6 @@ MonoBehaviour:
   characters:
   - {fileID: 1792020146}
   - {fileID: 2077297374}
-  - {fileID: 713624158}
   blastExplosion: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   respawnPosition: {fileID: 583181599}
   camera: {fileID: 1624467731}
@@ -8720,11 +8723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ca5f50f375b954dafb46ee0dd4373f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1331321524 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5071424631730491930, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
-  m_PrefabInstance: {fileID: 713624157}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1343851568
 GameObject:
   m_ObjectHideFlags: 0
@@ -9820,7 +9818,6 @@ MonoBehaviour:
   targets:
   - {fileID: 1792020145}
   - {fileID: 720985261}
-  - {fileID: 1331321524}
   offset: {x: 0, y: 2, z: -10}
   smoothTime: 0.5
 --- !u!1 &1647297280
