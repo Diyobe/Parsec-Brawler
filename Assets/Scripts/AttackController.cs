@@ -144,7 +144,11 @@ public class AttackController : MonoBehaviour
         ActionEnd();
     }
 
-
+    public void DoSomething(PlayerController target)
+    {
+        user.SetCharacterMotionSpeed(0.2f, HitStop);
+        target.SetCharacterMotionSpeed(0.2f, HitStop);
+    }
 
 
     public void ActionActive()
