@@ -106,6 +106,7 @@ public class CharacterCollision : MonoBehaviour
             upperRight = new Vector2(characterCollider.bounds.max.x, characterCollider.bounds.max.y);
 
             UpdatePositionX();
+            transform.position = new Vector3(transform.position.x + (actualSpeedX * Time.deltaTime), transform.position.y, 0);
 
             bottomLeft = new Vector2(characterCollider.bounds.min.x, characterCollider.bounds.min.y);
             upperLeft = new Vector2(characterCollider.bounds.min.x, characterCollider.bounds.max.y);
@@ -113,9 +114,10 @@ public class CharacterCollision : MonoBehaviour
             upperRight = new Vector2(characterCollider.bounds.max.x, characterCollider.bounds.max.y);
 
             UpdatePositionY();
+            transform.position = new Vector3(transform.position.x, transform.position.y + (actualSpeedY * Time.deltaTime), 0);
         }
 
-        transform.position = new Vector3(transform.position.x + (actualSpeedX * Time.deltaTime), transform.position.y + (actualSpeedY * Time.deltaTime), 0);
+        //transform.position = new Vector3(transform.position.x + (actualSpeedX * Time.deltaTime), transform.position.y + (actualSpeedY * Time.deltaTime), 0);
     }
 
     private void UpdatePositionX()
@@ -194,9 +196,9 @@ public class CharacterCollision : MonoBehaviour
                     // A dégager pour plus de clareté
                     if (!isGrounded)
                     {
-                        isGrounded = true;
                         doAction.Invoke();
                     }
+                    isGrounded = true;
                     OnGroundCollision.Invoke(collisionInfo);
                     return;
                 }
@@ -244,18 +246,6 @@ public class CharacterCollision : MonoBehaviour
         speedY = newSpeedY;
     }
 
-    public void Jump(float jumpImpulse)
-    {
-        speedY = jumpImpulse;
-        isGrounded = false;
-    }
-
-    public void ApplyGravity(float gravity, float gravityMax)
-    {
-        speedY -= gravity * Time.deltaTime;
-        if (speedY < gravityMax)
-            speedY = gravityMax;
-    }
 
 
 }

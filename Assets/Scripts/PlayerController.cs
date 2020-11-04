@@ -75,16 +75,16 @@ public class PlayerController : MonoBehaviour
     float jumpImpulsion;
     [SerializeField]
     int numberOfJumps = 2;
+    [SerializeField]
+    float crouchTime = 0.1f;
 
 
     [Space]
     [Header("Knockback")]
     [SerializeField]
-    float knockbackPowerReduce;
+    float baseKnockbackTime;
     [SerializeField]
     float knockbackPowerForWallBounce;
-    [SerializeField]
-    float knockbackWallBounce;
 
     [SerializeField]
     float hitStopOnWall = 0.1f;
@@ -94,10 +94,14 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Action")]
     [SerializeField]
+    AttackController crouchJump;
+    [SerializeField]
     AttackController smash;
 
     protected Vector2 knockbackPower;
     int knockbackAnimation;
+    float knockbackTime;
+    float knockbackMaxTime;
 
     CharacterState state = CharacterState.Idle;
 
@@ -108,8 +112,11 @@ public class PlayerController : MonoBehaviour
     }
 
     float currentSpeedX;
+    float currentSpeedY;
 
     int currentNumberOfJumps;
+    float currentCrouchTime;
+    float crouchSaveSpeedX = 0; // Ptet à dégager ?
 
     bool endAction = false;
     bool canEndAction = false;
@@ -143,20 +150,25 @@ public class PlayerController : MonoBehaviour
             canEndAction = true;
 
         // Input
-        if (state == CharacterState.Hit)
+        if (knockbackPower != Vector2.zero)
         {
             UpdateKnockback();
         }
-        else if (state == CharacterState.Idle)
+
+        if (state == CharacterState.Idle)
         {
-            UpdateControls();
             ApplyGravity();
+            UpdateControls();
         }
         else if (state == CharacterState.Acting)
         {
+            CheckCrouch();
             ApplyGravity();
         }
+
+        characterCollision.Move(currentSpeedX + knockbackPower.x, currentSpeedY + knockbackPower.y);
         SetAnimation();
+
 
         // Cette ligne est pour empêcher qu'il y ait un bug d'animation au moment où le perso joue une action pile à la frame ou le perso termine son action précédente
         if (endAction == true)
@@ -166,7 +178,10 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         currentNumberOfJumps = numberOfJumps;
-        direction = (int)Mathf.Sign(currentSpeedX);
+        if(state == CharacterState.Idle)
+        {
+            knockbackPower = Vector2.zero;
+        }
     }
 
     void UpdateControls()
@@ -184,9 +199,19 @@ public class PlayerController : MonoBehaviour
             {
                 buffer[i].jump = false;
                 --currentNumberOfJumps;
-                characterCollision.Jump(jumpImpulsion);
+                if (characterCollision.IsGrounded == true)
+                {
+                    // Crouch
+                    Action(crouchJump);
+                    crouchSaveSpeedX = currentSpeedX;
+                    currentCrouchTime = crouchTime;
+                    return;
+                }
+                else
+                    Jump(jumpImpulsion);
             }
         }
+        
     }
     void CheckAttack(List<input> buffer)
     {
@@ -200,6 +225,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Pas FPS indépendant à refaire
     void CheckHorizontal(List<input> buffer)
     {
         if(characterCollision.IsGrounded == true)
@@ -212,7 +238,9 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentSpeedX -= (decceleration * direction);
-                if (currentSpeedX <= decceleration && currentSpeedX >= -decceleration)
+                if (currentSpeedX <= decceleration && direction == 1)
+                    currentSpeedX = 0;
+                else if (currentSpeedX >= -decceleration && direction == -1)
                     currentSpeedX = 0;
             }
         }
@@ -230,8 +258,6 @@ public class PlayerController : MonoBehaviour
             }
         }
         currentSpeedX = Mathf.Clamp(currentSpeedX, -speedMax, speedMax);
-        characterCollision.MoveX(currentSpeedX);
-
     }
 
 
@@ -242,18 +268,42 @@ public class PlayerController : MonoBehaviour
 
     public void MoveForward(float value)
     {
-        characterCollision.MoveX(value * direction);
+        currentSpeedX = value * direction;
     }
 
+    private void CheckCrouch()
+    {
+        if (currentCrouchTime > 0)
+        {
+            currentCrouchTime -= Time.deltaTime * GetMotionSpeed();
+            if (currentCrouchTime <= 0)
+            {
+                state = CharacterState.Idle;
+                characterAnimator.SetTrigger("Idle");
+                characterCollision.IsGrounded = false;
+                currentSpeedX = crouchSaveSpeedX;
+                Jump(jumpImpulsion);
+            }
+        }
+    }
+
+    public void Jump(float jumpImpulse)
+    {
+        currentSpeedY = jumpImpulse;
+        characterCollision.IsGrounded = false;
+        if(currentSpeedX != 0)
+            direction = (int)Mathf.Sign(currentSpeedX);
+    }
 
     private void ApplyGravity()
     {
-        /*if (characterCollision.IsGrounded == true)
+        if (characterCollision.IsGrounded == true)
         {
-            //currentSpeedY = 0;
-            return;
-        }*/
-        characterCollision.ApplyGravity(gravityForce, gravityForceMax);
+            currentSpeedY = 0;
+        }
+        currentSpeedY -= gravityForce * Time.deltaTime;
+        if (currentSpeedY < gravityForceMax)
+            currentSpeedY = gravityForceMax;
     }
 
 
@@ -262,7 +312,7 @@ public class PlayerController : MonoBehaviour
     // ==========================================================================================================
     //    A C T I O N
     // ==========================================================================================================
-
+    #region Action 
 
     public void Action(AttackController action)
     {
@@ -276,6 +326,9 @@ public class PlayerController : MonoBehaviour
 
         endAction = false;
         canEndAction = false;
+
+        currentSpeedX = 0;
+        currentSpeedY = 0;
 
         state = CharacterState.Acting;
     }
@@ -292,6 +345,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Appelé par les anims
+    // Uniquement utilisable pour l'action principale
+    public void ActionUnactive()
+    {
+        if (currentAttackController != null)
+        {
+            currentAttackController.ActionUnactive();
+        }
+    }
 
     // Appelé par les anims
     // Uniquement utilisable pour dire d'arrêter l'action
@@ -310,13 +372,13 @@ public class PlayerController : MonoBehaviour
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
     }
-
+    #endregion
 
 
     // ==========================================================================================================
     //    A N I M A T I O N
     // ==========================================================================================================
-
+    #region Animation 
 
     protected void SetAnimation()
     {
@@ -341,8 +403,6 @@ public class PlayerController : MonoBehaviour
     {
         characterCollision.CharacterMotionSpeed = newSpeed;
         characterAnimator.speed = newSpeed;
-        /*if (currentAttackController != null)
-            currentAttackController.AttackMotionSpeed(newSpeed);*/
         if (time > 0)
         {
             if (motionSpeedCoroutine != null)
@@ -362,8 +422,6 @@ public class PlayerController : MonoBehaviour
         }
         characterCollision.CharacterMotionSpeed = 1;
         characterAnimator.speed = 1;
-        /*if (currentAttackController != null)
-            currentAttackController.AttackMotionSpeed(characterMotionSpeed);*/
     }
 
 
@@ -372,7 +430,7 @@ public class PlayerController : MonoBehaviour
         return characterAnimator.speed;
     }
 
-
+    #endregion
 
 
 
@@ -404,6 +462,8 @@ public class PlayerController : MonoBehaviour
             return;
         state = CharacterState.Hit;
         currentSpeedX = 0;
+        currentSpeedY = 0;
+        currentCrouchTime = 0;
         Vector2 direction = this.transform.position - attack.transform.position;
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
@@ -414,6 +474,9 @@ public class PlayerController : MonoBehaviour
         FeedbackManager.Instance.CameraZoomDeSesMorts();
         smoke.Play();
 
+        knockbackTime = 0;
+        knockbackMaxTime = baseKnockbackTime + (direction.magnitude);
+
         afterImageEffect.StartAfterImage();
         KnockbackAnimation();
     }
@@ -422,21 +485,23 @@ public class PlayerController : MonoBehaviour
     {
         if (GetMotionSpeed() == 0)
         {
-            characterCollision.Move(0, 0);
             return;
         }
-        characterCollision.Move(knockbackPower.x, knockbackPower.y);
-        float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
-        knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
-        smoke.transform.localEulerAngles = new Vector3(0, 0, Vector3.Angle(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower, transform.forward));
-        //smoke.transform.LookAt(new Vector2(this.transform.position.x, this.transform.position.y) + knockbackPower);
-        if(knockbackPower.magnitude < knockbackPowerForWallBounce )
+        //float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
+        knockbackTime += Time.deltaTime * GetMotionSpeed();
+        knockbackPower = Vector2.Lerp(knockbackPower, Vector2.zero, knockbackTime / knockbackMaxTime);
+        //knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
+        if (knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
-            characterAnimator.SetTrigger("Idle");
-            Debug.Log(this.gameObject.name);
+            //characterAnimator.SetTrigger("Idle");
             afterImageEffect.EndAfterImage();
+            currentSpeedX = knockbackPower.x;
             smoke.Stop();
+        }
+        else if (knockbackPower.magnitude < 1f)
+        {
+            knockbackPower = Vector2.zero;
         }
     }
 
@@ -463,6 +528,13 @@ public class PlayerController : MonoBehaviour
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             direction = -direction;
+            CheckCollisionComponent(collider);
+            currentSpeedY = 0;
+        }
+        else if (characterCollision.IsGrounded == false)
+        {
+            currentSpeedX = 0;
+            //characterCollision.IsGrounded = false;
         }
     }
 
@@ -476,12 +548,22 @@ public class PlayerController : MonoBehaviour
             //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
+            CheckCollisionComponent(collider);
+            currentSpeedY = 0;
         }
         else if (characterCollision.IsGrounded == false)
         {
-            characterCollision.MoveY(0);
+            currentSpeedY = 0;
             //characterCollision.IsGrounded = false;
         }
+    }
+
+    // a refactor éventuellement
+    private void CheckCollisionComponent(Transform collider)
+    {
+        WallDestructible a = collider.GetComponent<WallDestructible>();
+        if (a != null)
+            a.Damage();
     }
 
 }

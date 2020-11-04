@@ -49,7 +49,7 @@ MonoBehaviour:
   lifetime: 1
   knockbackTime: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
-  knockbackPower: 100
+  knockbackPower: 50
   hitStopUser: 1
   hitStop: 0.5
   targetShakePower: 0.2
