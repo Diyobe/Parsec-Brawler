@@ -15,7 +15,7 @@ public enum CharacterState
 
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : InputControllable
 {
 
 
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         characterCollision.OnWallCollision += WallBounce;
         characterCollision.OnGroundCollision += GroundBounce;
     }
-    public void UpdateBuffer(List<input> inputBuffer)
+    public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
         buffer = inputBuffer;
     }
@@ -160,7 +160,6 @@ public class PlayerController : MonoBehaviour
         // Cette ligne est pour empêcher qu'il y ait un bug d'animation au moment où le perso joue une action pile à la frame ou le perso termine son action précédente
         if (canEndAction == false)
             canEndAction = true;
-
         // Input
         if (knockbackPower != Vector2.zero)
         {
@@ -177,7 +176,6 @@ public class PlayerController : MonoBehaviour
             CheckCrouch();
             ApplyGravity();
         }
-
         characterCollision.Move(currentSpeedX + knockbackPower.x, currentSpeedY + knockbackPower.y);
         SetAnimation();
 
@@ -309,6 +307,12 @@ public class PlayerController : MonoBehaviour
         currentSpeedX = value * direction;
     }
 
+    public void AddForce(float forceX, float forceY)
+    {
+        knockbackMaxTime += new Vector2(forceX, forceY).magnitude;
+        knockbackPower += new Vector2(forceX, forceY);
+    }
+
     private void CheckCrouch()
     {
         if (currentCrouchTime > 0)
@@ -358,6 +362,9 @@ public class PlayerController : MonoBehaviour
 
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
+
+        if (currentAttackController != null)
+            currentAttackController.ActionEnd();
     }
 
 
@@ -444,7 +451,7 @@ public class PlayerController : MonoBehaviour
 
         characterAnimator.SetBool("AerialUp", !characterCollision.IsGrounded);
 
-        if (characterCollision.IsGrounded == false && characterCollision.SpeedY <= 0)
+        if (characterCollision.IsGrounded == false && (characterCollision.SpeedY) <= 0)
             characterAnimator.SetBool("AerialDown", true);
         else
             characterAnimator.SetBool("AerialDown", false);
@@ -519,7 +526,7 @@ public class PlayerController : MonoBehaviour
         currentSpeedX = 0;
         currentSpeedY = 0;
         currentCrouchTime = 0;
-        Vector2 direction = this.transform.position - attack.transform.position;
+        Vector2 direction = this.transform.position - (attack.transform.position + attack.KnockbackAngle);
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
         shakeSprite.Shake(attack.TargetShakePower, attack.HitStop);
@@ -542,10 +549,9 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        //float reduce = knockbackPowerReduce * Time.deltaTime * GetMotionSpeed();
         knockbackTime += Time.deltaTime * GetMotionSpeed();
         knockbackPower = Vector2.Lerp(knockbackPower, Vector2.zero, knockbackTime / knockbackMaxTime);
-        //knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
+
         if (knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
@@ -554,8 +560,11 @@ public class PlayerController : MonoBehaviour
             currentSpeedX = knockbackPower.x;
             smoke.Stop();
         }
-        else if (knockbackPower.magnitude < 1f)
+
+        if (knockbackPower.magnitude < 1f)
         {
+            knockbackTime = 0;
+            knockbackMaxTime = 0;
             knockbackPower = Vector2.zero;
         }
     }
