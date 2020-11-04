@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject blastExplosion;
     [SerializeField] private Transform respawnPosition;
 
+    [SerializeField] private MultipleTargetCamera camera;
+
     public static GameManager Instance;
 
     void Awake()
@@ -30,15 +32,19 @@ public class GameManager : MonoBehaviour
         {
             if (character == blastedCharacter)
             {
+                camera.targets.Remove(blastedCharacter.transform);
                 character.SetActive(false);
-                RespawnCharacter(character);
+                StartCoroutine(RespawnCharacter(character, 2f));
             }
         }
     }
 
-    private void RespawnCharacter(GameObject character)
+    IEnumerator RespawnCharacter(GameObject character, float time)
     {
+        yield return new WaitForSeconds(time);
+
         character.SetActive(true);
+        camera.targets.Add(character.transform);
         character.transform.position = respawnPosition.position;
     }
 }
