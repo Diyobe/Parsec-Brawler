@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BlastZone : MonoBehaviour
 {
+    public delegate void ActionPlayerController(PlayerController playerController);
+    public event ActionPlayerController OnBlast;
+
     [SerializeField] private GameObject BlastParticle;
 
     //[Serializable]
@@ -23,7 +26,8 @@ public class BlastZone : MonoBehaviour
         if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2" || other.gameObject.tag == "Player3" || other.gameObject.tag == "Player4")
         {
             InstantiateBlast(other.transform.position);
-            GameManager.Instance.BlastCharacter(other.GetComponent<PlayerController>());
+            OnBlast.Invoke(other.GetComponent<PlayerController>());
+            //GameManager.Instance.BlastCharacter(other.GetComponent<PlayerController>());
         }
     }
 
