@@ -178,8 +178,8 @@ MonoBehaviour:
   characterCollider: {fileID: 5071424631730491931}
   spriteRenderer: {fileID: 0}
   collision: 1
-  offsetRaycastX: 0.001
-  offsetRaycastY: 0.001
+  offsetRaycastX: 0.01
+  offsetRaycastY: 0.01
   numberRaycastVertical: 3
   numberRaycastHorizontal: 3
 --- !u!114 &5071424631730491929
@@ -204,16 +204,18 @@ MonoBehaviour:
   speedMax: 5
   acceleration: 2
   decceleration: 2
-  airFriction: 1.6
+  airFriction: 1.4
   airStop: 0.97
   gravityForce: 15
   gravityForceMax: -10
   jumpImpulsion: 6
   numberOfJumps: 2
+  crouchTime: 0.08
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
+  crouchJump: {fileID: 5009905772876635485, guid: 48797722984526d4b8d127fe15bd3b4f, type: 3}
   smash: {fileID: 1975021917538315906, guid: 19e3c2e1673379c4a8151b5e70b618d4, type: 3}
 --- !u!95 &5071424631730491935
 Animator:

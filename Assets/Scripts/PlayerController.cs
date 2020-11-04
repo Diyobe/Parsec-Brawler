@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
     float jumpImpulsion;
     [SerializeField]
     int numberOfJumps = 2;
+    [SerializeField]
+    float crouchTime = 0.1f;
 
 
     [Space]
@@ -113,6 +115,8 @@ public class PlayerController : MonoBehaviour
     float currentSpeedY;
 
     int currentNumberOfJumps;
+    float currentCrouchTime;
+    float crouchSaveSpeedX = 0; // Ptet à dégager ?
 
     bool endAction = false;
     bool canEndAction = false;
@@ -153,11 +157,12 @@ public class PlayerController : MonoBehaviour
 
         if (state == CharacterState.Idle)
         {
-            UpdateControls();
             ApplyGravity();
+            UpdateControls();
         }
         else if (state == CharacterState.Acting)
         {
+            CheckCrouch();
             ApplyGravity();
         }
 
@@ -194,9 +199,19 @@ public class PlayerController : MonoBehaviour
             {
                 buffer[i].jump = false;
                 --currentNumberOfJumps;
-                Jump(jumpImpulsion);
+                if (characterCollision.IsGrounded == true)
+                {
+                    // Crouch
+                    Action(crouchJump);
+                    crouchSaveSpeedX = currentSpeedX;
+                    currentCrouchTime = crouchTime;
+                    return;
+                }
+                else
+                    Jump(jumpImpulsion);
             }
         }
+        
     }
     void CheckAttack(List<input> buffer)
     {
@@ -223,7 +238,9 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentSpeedX -= (decceleration * direction);
-                if (currentSpeedX <= decceleration && currentSpeedX >= -decceleration)
+                if (currentSpeedX <= decceleration && direction == 1)
+                    currentSpeedX = 0;
+                else if (currentSpeedX >= -decceleration && direction == -1)
                     currentSpeedX = 0;
             }
         }
@@ -253,6 +270,23 @@ public class PlayerController : MonoBehaviour
     {
         currentSpeedX = value * direction;
     }
+
+    private void CheckCrouch()
+    {
+        if (currentCrouchTime > 0)
+        {
+            currentCrouchTime -= Time.deltaTime * GetMotionSpeed();
+            if (currentCrouchTime <= 0)
+            {
+                state = CharacterState.Idle;
+                characterAnimator.SetTrigger("Idle");
+                characterCollision.IsGrounded = false;
+                currentSpeedX = crouchSaveSpeedX;
+                Jump(jumpImpulsion);
+            }
+        }
+    }
+
     public void Jump(float jumpImpulse)
     {
         currentSpeedY = jumpImpulse;
@@ -263,6 +297,10 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (characterCollision.IsGrounded == true)
+        {
+            currentSpeedY = 0;
+        }
         currentSpeedY -= gravityForce * Time.deltaTime;
         if (currentSpeedY < gravityForceMax)
             currentSpeedY = gravityForceMax;
@@ -425,6 +463,7 @@ public class PlayerController : MonoBehaviour
         state = CharacterState.Hit;
         currentSpeedX = 0;
         currentSpeedY = 0;
+        currentCrouchTime = 0;
         Vector2 direction = this.transform.position - attack.transform.position;
         direction *= attack.KnockbackPower;
         knockbackPower = direction;
@@ -452,7 +491,7 @@ public class PlayerController : MonoBehaviour
         knockbackTime += Time.deltaTime * GetMotionSpeed();
         knockbackPower = Vector2.Lerp(knockbackPower, Vector2.zero, knockbackTime / knockbackMaxTime);
         //knockbackPower -= new Vector2(reduce * Mathf.Sign(knockbackPower.x), reduce * Mathf.Sign(knockbackPower.y));
-        if(knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
+        if (knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
             //characterAnimator.SetTrigger("Idle");
@@ -484,10 +523,16 @@ public class PlayerController : MonoBehaviour
             knockbackPower.x = -knockbackPower.x;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
+            //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             direction = -direction;
             CheckCollisionComponent(collider);
+        }
+        else if (characterCollision.IsGrounded == false)
+        {
+            currentSpeedX = 0;
+            //characterCollision.IsGrounded = false;
         }
     }
 
@@ -498,13 +543,14 @@ public class PlayerController : MonoBehaviour
             knockbackPower.y = -knockbackPower.y;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
+            //FeedbackManager.Instance.BackgroundFlash();
             FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             CheckCollisionComponent(collider);
         }
         else if (characterCollision.IsGrounded == false)
         {
-            characterCollision.MoveY(0);
+            currentSpeedY = 0;
             //characterCollision.IsGrounded = false;
         }
     }
