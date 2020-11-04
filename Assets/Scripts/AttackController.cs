@@ -20,13 +20,6 @@ public class AttackController : MonoBehaviour
     }
 
     [SerializeField]
-    float knockbackTime = 1;
-    public float KnockbackTime
-    {
-        get { return knockbackTime; }
-    }
-
-    [SerializeField]
     private GameObject onHitAnimation;
     public GameObject OnHitAnimation
     {
