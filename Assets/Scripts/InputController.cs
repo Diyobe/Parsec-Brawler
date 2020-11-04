@@ -69,16 +69,8 @@ public class InputController : MonoBehaviour
     {
         if (player.GetAxis("Horizontal") != 0)
         {
-            inputBuffer[0].horizontal = Mathf.Sign(player.GetAxis("Horizontal"));
+            inputBuffer[0].horizontal = player.GetAxis("Horizontal");
         }
-        /*if (Input.GetKey(KeyCode.Q))
-        {
-            inputBuffer[0].horizontal = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            inputBuffer[0].horizontal = 1;
-        }*/
         else
         {
             inputBuffer[0].horizontal = 0;
@@ -87,13 +79,9 @@ public class InputController : MonoBehaviour
 
     private void InputVertical()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (player.GetAxis("Vertical") != 0)
         {
-            inputBuffer[0].vertical = -1;
-        }
-        else if (Input.GetKey(KeyCode.Z))
-        {
-            inputBuffer[0].vertical = 1;
+            inputBuffer[0].vertical = player.GetAxis("Vertical");
         }
         else
         {
