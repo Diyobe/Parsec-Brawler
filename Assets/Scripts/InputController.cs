@@ -35,7 +35,7 @@ public class InputController : MonoBehaviour
     public List<input> inputBuffer;
     public int bufferLength = 6;
 
-    public PlayerController playerController;
+    public InputControllable playerController;
     protected Player player;
 
     private void Start()
@@ -62,7 +62,7 @@ public class InputController : MonoBehaviour
         InputHorizontal();
         InputVertical();
 
-        playerController.UpdateBuffer(inputBuffer);
+        playerController.UpdateBuffer(inputBuffer, playerID);
     }
 
     private void InputHorizontal()

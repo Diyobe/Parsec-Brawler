@@ -22,13 +22,14 @@ public class SelectScreenController: InputControllable
 
     private void Start()
     {
+        playerData.PlayerID.Clear();
         DrawPlayers();
     }
 
 
-    public override void UpdateBuffer(List<input> inputBuffer, int inputID = 0)
+    public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
-        if(inputBuffer[0].jump == true)
+        if(inputBuffer[0].jump == true && playerData.PlayerID.Contains(inputID) == false)
         {
             playerData.PlayerID.Add(inputID);
             DrawPlayers();
@@ -48,7 +49,7 @@ public class SelectScreenController: InputControllable
         for (int i = 0; i < playerData.PlayerID.Count; i++)
         {
             imageCharacterFace[i].gameObject.SetActive(true);
-            textPlayerID[i].text = playerData.PlayerID[i].ToString();
+            textPlayerID[i].text = (playerData.PlayerID[i]+1)+"P";
         }
         for (int i = playerData.PlayerID.Count; i < imageCharacterFace.Length; i++)
         {

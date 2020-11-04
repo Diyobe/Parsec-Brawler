@@ -15,7 +15,7 @@ public enum CharacterState
 
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : InputControllable
 {
 
 
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         characterCollision.OnWallCollision += WallBounce;
         characterCollision.OnGroundCollision += GroundBounce;
     }
-    public void UpdateBuffer(List<input> inputBuffer)
+    public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
         buffer = inputBuffer;
     }
@@ -362,6 +362,9 @@ public class PlayerController : MonoBehaviour
 
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
+
+        if (currentAttackController != null)
+            currentAttackController.ActionEnd();
     }
 
 
