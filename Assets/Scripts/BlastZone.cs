@@ -23,7 +23,7 @@ public class BlastZone : MonoBehaviour
         if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2" || other.gameObject.tag == "Player3" || other.gameObject.tag == "Player4")
         {
             InstantiateBlast(other.transform.position);
-            GameManager.Instance.BlastCharacter(other.gameObject);
+            GameManager.Instance.BlastCharacter(other.GetComponent<PlayerController>());
         }
     }
 
