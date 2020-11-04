@@ -67,7 +67,7 @@ public class InputController : MonoBehaviour
 
     private void InputHorizontal()
     {
-        if (player.GetAxis("Horizontal") != 0)
+        if (Mathf.Abs(player.GetAxis("Horizontal")) > .35)
         {
             inputBuffer[0].horizontal = player.GetAxis("Horizontal");
         }
@@ -79,7 +79,7 @@ public class InputController : MonoBehaviour
 
     private void InputVertical()
     {
-        if (player.GetAxis("Vertical") != 0)
+        if (Mathf.Abs(player.GetAxis("Vertical")) > .35)
         {
             inputBuffer[0].vertical = player.GetAxis("Vertical");
         }
