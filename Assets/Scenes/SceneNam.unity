@@ -8260,11 +8260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1792020146}
+  - {fileID: 2077297374}
   blastExplosion: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   respawnPosition: {fileID: 583181599}
-  camera: {fileID: 0}
+  camera: {fileID: 1624467731}
 --- !u!4 &861066667
 Transform:
   m_ObjectHideFlags: 0
