@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 
@@ -10,7 +11,8 @@ public enum CharacterState
     Acting,
     Hit,
     Ejected,
-    Dead
+    Dead,
+    Dash
 }
 
 
@@ -78,6 +80,14 @@ public class PlayerController : InputControllable
     [SerializeField]
     float crouchTime = 0.1f;
 
+    [Space]
+    [Header("Dash")]
+    [SerializeField] float dashImpulsion;
+    [SerializeField] int numberOfDashes = 1;
+    int currentNumberOfDashes;
+
+    [SerializeField]float dashDuration = .2f;
+    float dashTimer;
 
     [Space]
     [Header("Knockback")]
@@ -85,6 +95,8 @@ public class PlayerController : InputControllable
     float baseKnockbackTime;
     [SerializeField]
     float knockbackPowerForWallBounce;
+
+    [SerializeField] float knockbackImpactReductionRate = 0.8f;
 
     [SerializeField]
     float hitStopOnWall = 0.1f;
@@ -144,6 +156,7 @@ public class PlayerController : InputControllable
     private void Start()
     {
         characterCollision.doAction += ResetJump;
+        characterCollision.doAction += ResetDash;
         characterCollision.OnWallCollision += WallBounce;
         characterCollision.OnGroundCollision += GroundBounce;
     }
@@ -176,6 +189,10 @@ public class PlayerController : InputControllable
             CheckCrouch();
             ApplyGravity();
         }
+        else if(state == CharacterState.Dash)
+        {
+            UpdateDash();
+        }
         characterCollision.Move(currentSpeedX + knockbackPower.x, currentSpeedY + knockbackPower.y);
         SetAnimation();
 
@@ -185,13 +202,43 @@ public class PlayerController : InputControllable
             EndAction();
     }
 
+    private void UpdateDash()
+    {
+        if(dashTimer >= dashDuration)
+        {
+            state = CharacterState.Idle;
+            afterImageEffect.EndAfterImage();
+            dashTimer = 0;
+            if (characterCollision.IsGrounded && currentNumberOfDashes <= 0)
+            {
+                currentNumberOfDashes = numberOfDashes;
+            }
+        }
+        else
+        {
+            dashTimer += Time.deltaTime * GetMotionSpeed();
+        }
+    }
+
     private void ResetJump()
     {
         currentNumberOfJumps = numberOfJumps;
-        if(state == CharacterState.Idle)
+        if (state == CharacterState.Idle)
         {
             knockbackPower = Vector2.zero;
         }
+        else if(state == CharacterState.Acting)
+        {
+            currentSpeedX = 0;
+        }
+    }
+
+    private void ResetDash()
+    {
+        dashTimer = 0;
+        currentNumberOfDashes = numberOfDashes;
+        afterImageEffect.EndAfterImage();
+
     }
 
     void UpdateControls()
@@ -199,6 +246,44 @@ public class PlayerController : InputControllable
         CheckHorizontal(buffer);
         CheckJump(buffer);
         CheckAttack(buffer);
+        CheckDash(buffer);
+    }
+
+    void CheckDash(List<input> buffer)
+    {
+        float vertical;
+        float horizontal;
+        if (state != CharacterState.Idle)
+            return;
+
+        for (int i = 0; i < buffer.Count; i++)
+        {
+            if(buffer[i].dash && currentNumberOfDashes > 0)
+            {
+                buffer[i].dash = false;
+                --currentNumberOfDashes;
+                
+                if(Mathf.Abs(buffer[i].vertical) > 0.35f)
+                {
+                    vertical = Mathf.Sign(buffer[i].vertical);
+                }
+                else
+                {
+                    vertical = 0;
+                }
+
+                if (Mathf.Abs(buffer[i].horizontal) > 0.35f)
+                {
+                    horizontal = Mathf.Sign(buffer[i].horizontal);
+                }
+                else
+                {
+                    horizontal = 0;
+                }
+
+                Dash(horizontal, vertical);
+            }
+        }
     }
 
     void CheckJump(List<input> buffer)
@@ -221,7 +306,7 @@ public class PlayerController : InputControllable
                     Jump(jumpImpulsion);
             }
         }
-        
+
     }
     void CheckAttack(List<input> buffer)
     {
@@ -265,12 +350,12 @@ public class PlayerController : InputControllable
     // Pas FPS indépendant à refaire
     void CheckHorizontal(List<input> buffer)
     {
-        if(characterCollision.IsGrounded == true)
+        if (characterCollision.IsGrounded == true)
         {
             if (buffer[0].horizontal != 0)
             {
                 currentSpeedX += Mathf.Sign(buffer[0].horizontal) * acceleration;
-                direction = (int) Mathf.Sign(currentSpeedX);
+                direction = (int)Mathf.Sign(currentSpeedX);
             }
             else
             {
@@ -333,8 +418,20 @@ public class PlayerController : InputControllable
     {
         currentSpeedY = jumpImpulse;
         characterCollision.IsGrounded = false;
-        if(currentSpeedX != 0)
+        if (currentSpeedX != 0)
             direction = (int)Mathf.Sign(currentSpeedX);
+    }
+
+    public void Dash(float horizontal, float vertical)
+    {
+        state = CharacterState.Dash;
+
+        characterCollision.IsGrounded = false;
+
+        afterImageEffect.StartAfterImage();
+        currentSpeedX = dashImpulsion * horizontal;
+        //currentSpeedX = 0;
+        currentSpeedY = dashImpulsion * vertical;
     }
 
     private void ApplyGravity()
@@ -421,7 +518,7 @@ public class PlayerController : InputControllable
     // Uniquement utilisable pour dire d'arrêter l'action
     public void CanEndAction()
     {
-        if(canEndAction == true)
+        if (canEndAction == true)
         {
             endAction = true;
         }
@@ -511,9 +608,13 @@ public class PlayerController : InputControllable
     private void OnTriggerEnter(Collider other)
     {
         //Attaque ennemi détecté
-        if(other.tag != this.transform.tag)
+        if (other.tag != this.transform.tag && state != CharacterState.Dash)
         {
             Knockback(other.GetComponent<AttackController>());
+        }
+        else if (other.tag != this.transform.tag && state == CharacterState.Dash)
+        {
+            other.GetComponent<AttackController>().DoSomething(this);
         }
 
     }
@@ -559,6 +660,9 @@ public class PlayerController : InputControllable
             afterImageEffect.EndAfterImage();
             currentSpeedX = knockbackPower.x;
             smoke.Stop();
+            currentSpeedY = knockbackPower.y;
+            knockbackPower = Vector2.zero;
+            //currentSpeedY = 0;
         }
 
         if (knockbackPower.magnitude < 1f)
@@ -583,7 +687,7 @@ public class PlayerController : InputControllable
 
     public void WallBounce(Transform collider)
     {
-        if(state == CharacterState.Hit)
+        if (state == CharacterState.Hit)
         {
             knockbackPower.x = -knockbackPower.x;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
@@ -594,6 +698,7 @@ public class PlayerController : InputControllable
             direction = -direction;
             CheckCollisionComponent(collider);
             currentSpeedY = 0;
+            knockbackPower *= knockbackImpactReductionRate;
         }
         else if (characterCollision.IsGrounded == false)
         {
@@ -614,6 +719,7 @@ public class PlayerController : InputControllable
             KnockbackAnimation();
             CheckCollisionComponent(collider);
             currentSpeedY = 0;
+            knockbackPower *= knockbackImpactReductionRate;
         }
         else if (characterCollision.IsGrounded == false)
         {

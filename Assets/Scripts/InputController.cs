@@ -113,7 +113,7 @@ public class InputController : MonoBehaviour
 
     void InputDash()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (player.GetButtonDown("Dash"))
         {
             inputBuffer[0].dash = true;
 

@@ -211,8 +211,12 @@ MonoBehaviour:
   jumpImpulsion: 6
   numberOfJumps: 2
   crouchTime: 0.08
+  dashImpulsion: 8
+  numberOfDashes: 1
+  dashDuration: 0.2
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 10
+  knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: 48797722984526d4b8d127fe15bd3b4f, type: 3}
