@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5071424630736064518}
   - component: {fileID: 5071424630736064517}
   - component: {fileID: 5071424630736064516}
-  m_Layer: 8
+  - component: {fileID: 461353981545084979}
+  m_Layer: 1
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f1a121ee4c740564cb4c8be1a3206c51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7134c6d26ea19db4ba16172f65da51f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &461353981545084979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071424630736064519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d9fe2b98989f24ea45a3ce413f5435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5071424631730491909
@@ -211,8 +224,12 @@ MonoBehaviour:
   jumpImpulsion: 6
   numberOfJumps: 2
   crouchTime: 0.08
+  dashImpulsion: 8
+  numberOfDashes: 1
+  dashDuration: 0.2
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 10
+  knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: 48797722984526d4b8d127fe15bd3b4f, type: 3}
@@ -397,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14eef26ffb3074e499eef8a90828f025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   image: {fileID: 5071424630736064517}
   afterImageNumber: 8
   afterImageTime: 0.05

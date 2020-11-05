@@ -135,7 +135,10 @@ public class AttackController : MonoBehaviour
 
         //Feedback
         if (OnHitAnimation != null)
-            Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity);
+        {
+            Destroy(Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity), 5f);
+        }
+
         if (HitStop > 0)
         {
             user.SetCharacterMotionSpeed(0, HitStop);
@@ -144,8 +147,16 @@ public class AttackController : MonoBehaviour
         ActionEnd();
     }
 
+    public void DoSomething(PlayerController target)
+    {
+        user.SetCharacterMotionSpeed(0.35f, HitStop);
+        target.SetCharacterMotionSpeed(0.35f, HitStop);
+    }
 
-
+    public void StopUser(float motionSpeed, float time)
+    {
+        user.SetCharacterMotionSpeed(motionSpeed, time);
+    }
 
     public void ActionActive()
     {

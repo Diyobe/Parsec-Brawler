@@ -210,6 +210,7 @@ public class CharacterCollision : MonoBehaviour
         }
         else if (actualSpeedY > 0)
         {
+            isGrounded = false;
             // ======================================================================================================
             originRaycast = upperLeft;// + new Vector2(0, offsetRaycastY);
             for (int i = 0; i < numberRaycastVertical; i++)

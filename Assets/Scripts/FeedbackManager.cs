@@ -46,4 +46,16 @@ public class FeedbackManager : MonoBehaviour
         cameraZoom.SetTrigger("Feedback");
     }
 
+    public void FinalFeedback(GameObject hitAnimation, Vector3 position)
+    {
+        cameraZoom.SetTrigger("FinalFeedback");
+        StartCoroutine(FinalFeedbackCoroutine(hitAnimation, position));
+    }
+
+    private IEnumerator FinalFeedbackCoroutine(GameObject hitAnimation, Vector3 position)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(Instantiate(hitAnimation, position, Quaternion.identity), 5f);
+    }
+
 }

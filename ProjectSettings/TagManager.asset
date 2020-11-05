@@ -21,6 +21,7 @@ TagManager:
   - 
   - Wall
   - Attack
+  - Interactable
   - 
   - 
   - 
@@ -39,9 +40,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Editor
+  - PostProcess
   - 
   m_SortingLayers:
   - name: Default
