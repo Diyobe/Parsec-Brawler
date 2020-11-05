@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24b34bb32cbc6f42aea29a6d0b804fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bumperForce: 25
+  bumperForce: 20
