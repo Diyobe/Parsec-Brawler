@@ -9649,6 +9649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8328218428842087224, guid: fda1fe2595d7675459b8163dabdc2e0b, type: 3}
+      propertyPath: bumperForce
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8328218428842087225, guid: fda1fe2595d7675459b8163dabdc2e0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4

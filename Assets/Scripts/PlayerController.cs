@@ -748,6 +748,7 @@ public class PlayerController : InputControllable
         else if (characterCollision.IsGrounded == false)
         {
             currentSpeedX = 0;
+            knockbackPower.x = 0;
         }
     }
 
@@ -768,6 +769,7 @@ public class PlayerController : InputControllable
         else if (characterCollision.IsGrounded == false)
         {
             currentSpeedY = 0;
+            knockbackPower.y = 0;
         }
     }
 
