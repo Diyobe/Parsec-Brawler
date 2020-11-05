@@ -140,6 +140,108 @@ TextureImporter:
   - first:
       213: -3872478115564772466
     second: Character_Anime_V0_22
+  - first:
+      213: -8187009507078699822
+    second: Character_Anime_V0_23
+  - first:
+      213: 3518096092022150686
+    second: Character_Anime_V0_24
+  - first:
+      213: 4332816467268695256
+    second: Character_Anime_V0_25
+  - first:
+      213: -1797929858205032295
+    second: Character_Anime_V0_26
+  - first:
+      213: -1504172273774151007
+    second: Character_Anime_V0_27
+  - first:
+      213: 3619997729080873372
+    second: Character_Anime_V0_28
+  - first:
+      213: -3881412076280288926
+    second: Character_Anime_V0_29
+  - first:
+      213: -8639761320201058718
+    second: Character_Anime_V0_30
+  - first:
+      213: -5234580604762974085
+    second: Character_Anime_V0_31
+  - first:
+      213: -5838287278354404001
+    second: Character_Anime_V0_32
+  - first:
+      213: -2730475652221538268
+    second: Character_Anime_V0_33
+  - first:
+      213: -1628495675019275842
+    second: Character_Anime_V0_34
+  - first:
+      213: 1771519852711190742
+    second: Character_Anime_V0_35
+  - first:
+      213: -3423789437855822295
+    second: Character_Anime_V0_36
+  - first:
+      213: -8951502364193291497
+    second: Character_Anime_V0_37
+  - first:
+      213: 6032733102452510744
+    second: Character_Anime_V0_38
+  - first:
+      213: -3539665407524812652
+    second: Character_Anime_V0_39
+  - first:
+      213: -8903809749796950612
+    second: Character_Anime_V0_23
+  - first:
+      213: 8852853190967444932
+    second: Character_Anime_V0_24
+  - first:
+      213: 8026415076450071577
+    second: Character_Anime_V0_25
+  - first:
+      213: -69544499166476967
+    second: Character_Anime_V0_26
+  - first:
+      213: -3231360403948780761
+    second: Character_Anime_V0_27
+  - first:
+      213: -8790065923948818187
+    second: Character_Anime_V0_28
+  - first:
+      213: 5170524969560189566
+    second: Character_Anime_V0_29
+  - first:
+      213: 304171584502711114
+    second: Character_Anime_V0_30
+  - first:
+      213: -6969930933300431380
+    second: Character_Anime_V0_31
+  - first:
+      213: 5298627901290935914
+    second: Character_Anime_V0_32
+  - first:
+      213: -1720800598036867586
+    second: Character_Anime_V0_33
+  - first:
+      213: -7411900641650161897
+    second: Character_Anime_V0_34
+  - first:
+      213: -7013870128933564519
+    second: Character_Anime_V0_35
+  - first:
+      213: 7803318754767386191
+    second: Character_Anime_V0_36
+  - first:
+      213: 4978532053466013908
+    second: Character_Anime_V0_37
+  - first:
+      213: 5971746634167361502
+    second: Character_Anime_V0_38
+  - first:
+      213: -4990495534366793847
+    second: Character_Anime_V0_39
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -267,11 +369,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 600
+        y: 700
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,11 +390,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 150
-        y: 600
+        y: 700
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,11 +411,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 600
+        y: 700
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,11 +432,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 450
-        y: 600
+        y: 700
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -350,12 +452,12 @@ TextureImporter:
       name: Character_Anime_V0_4
       rect:
         serializedVersion: 2
-        x: 150
-        y: 500
+        x: 750
+        y: 700
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -371,12 +473,12 @@ TextureImporter:
       name: Character_Anime_V0_5
       rect:
         serializedVersion: 2
-        x: 300
-        y: 500
+        x: 0
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -392,12 +494,12 @@ TextureImporter:
       name: Character_Anime_V0_6
       rect:
         serializedVersion: 2
-        x: 450
-        y: 500
+        x: 150
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -413,12 +515,12 @@ TextureImporter:
       name: Character_Anime_V0_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 400
+        x: 300
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -434,12 +536,12 @@ TextureImporter:
       name: Character_Anime_V0_8
       rect:
         serializedVersion: 2
-        x: 150
-        y: 400
+        x: 450
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -455,12 +557,12 @@ TextureImporter:
       name: Character_Anime_V0_9
       rect:
         serializedVersion: 2
-        x: 300
-        y: 400
+        x: 600
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -476,12 +578,12 @@ TextureImporter:
       name: Character_Anime_V0_10
       rect:
         serializedVersion: 2
-        x: 450
-        y: 400
+        x: 750
+        y: 600
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -498,11 +600,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
+        y: 500
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -519,11 +621,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 300
-        y: 300
+        y: 500
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -540,11 +642,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 450
-        y: 300
+        y: 500
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -560,12 +662,12 @@ TextureImporter:
       name: Character_Anime_V0_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
+        x: 600
+        y: 500
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -581,12 +683,12 @@ TextureImporter:
       name: Character_Anime_V0_15
       rect:
         serializedVersion: 2
-        x: 300
-        y: 200
+        x: 0
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -602,12 +704,12 @@ TextureImporter:
       name: Character_Anime_V0_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
+        x: 150
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -623,12 +725,12 @@ TextureImporter:
       name: Character_Anime_V0_17
       rect:
         serializedVersion: 2
-        x: 150
-        y: 100
+        x: 300
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -644,12 +746,12 @@ TextureImporter:
       name: Character_Anime_V0_18
       rect:
         serializedVersion: 2
-        x: 300
-        y: 100
+        x: 450
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -665,12 +767,12 @@ TextureImporter:
       name: Character_Anime_V0_19
       rect:
         serializedVersion: 2
-        x: 450
-        y: 100
+        x: 600
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -686,12 +788,12 @@ TextureImporter:
       name: Character_Anime_V0_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 750
+        y: 400
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -707,12 +809,12 @@ TextureImporter:
       name: Character_Anime_V0_21
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0
+        x: 0
+        y: 300
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -728,12 +830,12 @@ TextureImporter:
       name: Character_Anime_V0_22
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
+        x: 150
+        y: 300
         width: 150
         height: 100
       alignment: 9
-      pivot: {x: 0.35, y: 0}
+      pivot: {x: 0.35, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -741,6 +843,363 @@ TextureImporter:
       bones: []
       spriteID: e83a941dba1324ac0800000000000000
       internalID: -3872478115564772466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad61bbf4305f6480800000000000000
+      internalID: -8903809749796950612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_24
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c54c40a217abda70800000000000000
+      internalID: 8852853190967444932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_25
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91475ab7cfd836f60800000000000000
+      internalID: 8026415076450071577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955891f75ade80ff0800000000000000
+      internalID: -69544499166476967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_27
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 723ce5545d6e723d0800000000000000
+      internalID: -3231360403948780761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_28
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0d3ca2d99630680800000000000000
+      internalID: -8790065923948818187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_29
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a2ce0b01561c740800000000000000
+      internalID: 5170524969560189566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_30
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a434d0dc172a83400800000000000000
+      internalID: 304171584502711114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_31
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce5fe939eb4d54f90800000000000000
+      internalID: -6969930933300431380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a667b6db002888940800000000000000
+      internalID: 5298627901290935914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef59bb829fc7e18e0800000000000000
+      internalID: -1720800598036867586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_34
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717c3f7e2a3a32990800000000000000
+      internalID: -7411900641650161897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_35
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99f0130674ab9ae90800000000000000
+      internalID: -7013870128933564519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_36
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46bd0f4015fa4c60800000000000000
+      internalID: 7803318754767386191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0ecb5768c471540800000000000000
+      internalID: 4978532053466013908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_38
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf1e229ce7efd250800000000000000
+      internalID: 5971746634167361502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_Anime_V0_39
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fd4e490c23ebab0800000000000000
+      internalID: -4990495534366793847
       vertices: []
       indices: 
       edges: []
