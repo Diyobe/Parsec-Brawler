@@ -14,6 +14,16 @@ public class MultipleTargetCamera : MonoBehaviour
     private Vector3 velocity;
     private Camera cam;
 
+    [Header("Parameter")]
+    [SerializeField]
+    float boxSizeMin;
+    [SerializeField]
+    float boxSizeMax;
+
+    [SerializeField]
+    Vector2 offsetZoomZ;
+
+    Vector3 offsetZ;
 
     private void Start()
     {
@@ -50,6 +60,16 @@ public class MultipleTargetCamera : MonoBehaviour
             bounds.Encapsulate(targets[i].position);
         }
 
-        return bounds.center;
+        //
+        float multiplierZ = 0;
+        if (bounds.size.magnitude > boxSizeMin)
+        {
+            multiplierZ = (bounds.size.magnitude - boxSizeMin) / (boxSizeMax - boxSizeMin);
+            multiplierZ = Mathf.Clamp(multiplierZ, 0, 1);
+        }
+        offsetZ = new Vector3(0, 0, multiplierZ * (offsetZoomZ.x - offsetZoomZ.y));
+
+
+        return bounds.center - offsetZ;
     }
 }

@@ -776,7 +776,7 @@ public class PlayerController : InputControllable
     {
         WallDestructible a = collider.GetComponent<WallDestructible>();
         if (a != null)
-            a.Damage();
+            a.Damage(particlePoint.position);
     }
 
 }

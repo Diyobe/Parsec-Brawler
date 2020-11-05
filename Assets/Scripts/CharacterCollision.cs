@@ -16,12 +16,6 @@ public class CharacterCollision : MonoBehaviour
     [SerializeField]
     protected BoxCollider characterCollider;
 
-    [SerializeField]
-    protected SpriteRenderer spriteRenderer;
-    public SpriteRenderer SpriteRenderer
-    {
-        get { return spriteRenderer; }
-    }
 
     [Header("Collision")]
     [SerializeField]
