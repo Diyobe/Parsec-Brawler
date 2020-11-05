@@ -372,6 +372,8 @@ public class PlayerController : InputControllable
                     }
                     else
                     {
+                        if(currentSpeedX != 0)
+                            direction = (int)Mathf.Sign(currentSpeedX);
                         Action(attackLeftAerial);
                     }
                 }

@@ -119,6 +119,7 @@
 				fixed4 frag(v2f IN) : SV_Target
 				{
 					fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
+				
 					c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
 					c.rgb *= c.a;
 					return c;
