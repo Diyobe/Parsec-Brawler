@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1c9eb425c927c4ca942d332ae28d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolumeMax: 0.3
+  musicVolumeMax: 0.5
   soundVolumeMax: 1
   audioMusic: {fileID: 102664883262692882}
   audioSound: {fileID: 102664882484156721}
