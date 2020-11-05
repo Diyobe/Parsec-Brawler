@@ -21,6 +21,8 @@ public class SelectScreenController: InputControllable
     [SerializeField]
     Animator animatorStart;
 
+    [SerializeField]
+    string stageToLoad;
 
     bool active = true;
 
@@ -89,6 +91,6 @@ public class SelectScreenController: InputControllable
     private IEnumerator StartBattleCoroutine()
     {
         yield return new WaitForSeconds(2f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(stageToLoad);
     }
 }
