@@ -141,8 +141,17 @@ public class PlayerController : InputControllable
         set { direction = value; }
     }
 
-    public float currentSpeedX;
+    float currentSpeedX;
+    public float CurrentSpeedX
+    {
+        get { return currentSpeedX; }
+    }
+
     float currentSpeedY;
+    public float CurrentSpeedY
+    {
+        get { return currentSpeedY; }
+    }
 
     int currentNumberOfJumps;
     float currentCrouchTime;
@@ -161,6 +170,7 @@ public class PlayerController : InputControllable
     public event Action OnWallBounce;
     public event Action OnKnockback;
     public event ActionPlayerController OnSuperKnockback;
+    public event ActionPlayerController OnFlashMove;
 
 
 
@@ -639,6 +649,7 @@ public class PlayerController : InputControllable
         else if (other.tag != this.transform.tag && state == CharacterState.Dash)
         {
             other.GetComponent<AttackController>().DoSomething(this);
+            OnFlashMove.Invoke(this);
         }
 
     }

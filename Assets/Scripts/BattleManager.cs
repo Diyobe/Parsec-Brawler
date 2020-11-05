@@ -219,6 +219,12 @@ public class BattleManager : MonoBehaviour
     ParticleSystem hitSpeedline;
     [SerializeField]
     GameObject finalHitParticle;
+
+    [SerializeField]
+    ParticleSystem flashMoveParticle;
+    [SerializeField]
+    Animator animatorFlashMove;
+
     [SerializeField]
     Animator backgroundFlash;
     [SerializeField]
@@ -237,6 +243,8 @@ public class BattleManager : MonoBehaviour
             playersAlive[i].OnKnockback += BackgroundFlash;
             playersAlive[i].OnKnockback += CameraZoomDeSesMorts;
 
+            playersAlive[i].OnFlashMove += FlashMove;
+
             playersAlive[i].OnSuperKnockback += FinalFeedback;
         }
     }
@@ -251,6 +259,8 @@ public class BattleManager : MonoBehaviour
             playersAlive[i].OnKnockback -= BackgroundFlash;
             playersAlive[i].OnKnockback -= CameraZoomDeSesMorts;
 
+            playersAlive[i].OnFlashMove -= FlashMove;
+
             playersAlive[i].OnSuperKnockback -= FinalFeedback;
         }
     }
@@ -264,6 +274,17 @@ public class BattleManager : MonoBehaviour
     public void HitSpeedline()
     {
         hitSpeedline.Play();
+    }
+
+    public void FlashMove(PlayerController player)
+    {
+        hitSpeedline.Play();
+        flashMoveParticle.Play();
+        flashMoveParticle.transform.position = player.ParticlePoint.position;
+        animatorFlashMove.SetTrigger("Feedback");
+
+        float angle = Vector2.Angle(new Vector2(player.CurrentSpeedX, player.CurrentSpeedY), Vector2.up);
+        flashMoveParticle.transform.eulerAngles = new Vector3(angle, -90, 90);
     }
 
     public void CameraZoomDeSesMorts()
