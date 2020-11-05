@@ -25222,6 +25222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlastParticle: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   state: 0
+  explosion: {fileID: 8300000, guid: 42a310bce15dd1544b81f074bd8e59eb, type: 3}
 --- !u!1 &718001653385925408
 GameObject:
   m_ObjectHideFlags: 0
@@ -25517,6 +25518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlastParticle: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   state: 2
+  explosion: {fileID: 8300000, guid: 42a310bce15dd1544b81f074bd8e59eb, type: 3}
 --- !u!1 &718001653916736750
 GameObject:
   m_ObjectHideFlags: 0
@@ -26403,6 +26405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlastParticle: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   state: 3
+  explosion: {fileID: 8300000, guid: 42a310bce15dd1544b81f074bd8e59eb, type: 3}
 --- !u!1 &718001654723273096
 GameObject:
   m_ObjectHideFlags: 0
@@ -31769,6 +31772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlastParticle: {fileID: 3410561138621458958, guid: 33c0219bd6ff21e4684b0cfca90cd805, type: 3}
   state: 1
+  explosion: {fileID: 8300000, guid: 42a310bce15dd1544b81f074bd8e59eb, type: 3}
 --- !u!1 &718001654956432324
 GameObject:
   m_ObjectHideFlags: 0
