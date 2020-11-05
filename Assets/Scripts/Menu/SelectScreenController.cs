@@ -21,6 +21,7 @@ public class SelectScreenController: InputControllable
     [SerializeField]
     Animator animatorStart;
 
+
     bool active = true;
 
     private void Start()

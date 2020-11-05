@@ -40,8 +40,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Editor
+  - PostProcess
   - 
   m_SortingLayers:
   - name: Default
