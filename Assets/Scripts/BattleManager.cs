@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoiceActing;
 
 public class BattleManager : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class BattleManager : MonoBehaviour
     List<int> playersLives = new List<int>();
     List<BattleHud> battleHuds = new List<BattleHud>();
 
+    public AudioClip battleTheme;
+
     private void Start()
     {
 #if UNITY_EDITOR
@@ -86,6 +89,7 @@ public class BattleManager : MonoBehaviour
         SubscribeFeedback(); // Pas opti on refait une boucle mais nique
 
         StartCoroutine(StartGameCoroutine());
+        TengenToppaAudioManager.Instance.PlayMusic(battleTheme, battleTheme);
     }
 
     private IEnumerator StartGameCoroutine()
@@ -199,6 +203,7 @@ public class BattleManager : MonoBehaviour
         {
             playersAlive[i].SetCharacterMotionSpeed(0.2f, 1);
         }
+        TengenToppaAudioManager.Instance.StopMusic(4f);
         yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 0.2f;
         yield return new WaitForSecondsRealtime(2.4f);

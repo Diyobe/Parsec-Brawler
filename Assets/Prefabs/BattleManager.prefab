@@ -25591,6 +25591,7 @@ MonoBehaviour:
   - {fileID: 718001654953501459}
   hudParent: {fileID: 718001654176915082}
   battleHud: {fileID: 718001653352031862}
+  battleTheme: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
   hitSpeedline: {fileID: 4464424395687185610}
   finalHitParticle: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   flashMoveParticle: {fileID: 689029431}
