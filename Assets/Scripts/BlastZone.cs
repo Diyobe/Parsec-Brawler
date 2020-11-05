@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ActionPlayerController(PlayerController playerController);
 public class BlastZone : MonoBehaviour
 {
-    public delegate void ActionPlayerController(PlayerController playerController);
+
     public event ActionPlayerController OnBlast;
 
     [SerializeField] private GameObject BlastParticle;

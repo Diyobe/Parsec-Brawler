@@ -31,9 +31,15 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private BlastZone[] blastZones;
 
+    [Header("HUD")]
+    [SerializeField]
+    private Transform hudParent;
+    [SerializeField]
+    private BattleHud battleHud;
+
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
-
+    List<BattleHud> battleHuds = new List<BattleHud>();
 
     private void Start()
     {
@@ -73,13 +79,24 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator StartGameCoroutine()
     {
-        yield return new WaitForSeconds(2);
+        for (int i = 0; i < 4; i++) // 4 = max number of players
+        {
+            if (i < playersAlive.Count)
+            {
+                battleHuds.Add(Instantiate(battleHud, hudParent));
+                playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
+                battleHuds[i].gameObject.SetActive(true);
+                battleHuds[i].DrawLives(debugPlayerLives);
+            }
+
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        yield return new WaitForSeconds(4f);
         for (int i = 0; i < playersAlive.Count; i++)
         {
             playersAlive[i].Active = true;
         }
-        // Activate player Input
-        // FIGHT !
     }
 
 
@@ -101,7 +118,8 @@ public class BattleManager : MonoBehaviour
     {
         blastedCharacter.ResetToIdle();
         cameraController.targets.Remove(blastedCharacter.transform);
-        blastedCharacter.gameObject.SetActive(false);
+        blastedCharacter.SpriteRenderer.gameObject.SetActive(false);
+        blastedCharacter.enabled = false;
 
         for (int i = 0; i < playersAlive.Count; i++)
         {
@@ -110,8 +128,11 @@ public class BattleManager : MonoBehaviour
                 playersLives[i] -= 1;
                 if(playersLives[i] <= 0) // Si le perso n'a plus de vie = DED
                 {
+                    playersAlive[i].OnKnockback -= battleHuds[i].ShakeFace; // histoire d'être sur
                     playersAlive.RemoveAt(i);
                     playersLives.RemoveAt(i);
+                    battleHuds[i].DrawLivesFeedback(0);
+                    battleHuds.RemoveAt(i);
                     if(playersAlive.Count <= 1) // Si il n'y a plus qu'un combattant
                     {
                         StartCoroutine(WinGameCoroutine());
@@ -119,18 +140,27 @@ public class BattleManager : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(RespawnCharacter(blastedCharacter.gameObject, 2f));
+                    StartCoroutine(RespawnCharacter(blastedCharacter, 2f));
                 }
+                break;
             }
+        }
+
+        // On update le hud mais c'est une boucle de trop, pas opti mais au moins c'est un peu clair
+        for (int i = 0; i < battleHuds.Count; i++)
+        {
+            battleHuds[i].DrawLivesFeedback(playersLives[i]);
         }
     }
 
 
-    IEnumerator RespawnCharacter(GameObject character, float time)
+    IEnumerator RespawnCharacter(PlayerController character, float time)
     {
         yield return new WaitForSeconds(time);
 
-        character.SetActive(true);
+        character.SpriteRenderer.gameObject.SetActive(true);
+        character.enabled = true;
+
         cameraController.targets.Add(character.transform);
         character.transform.position = respawnPosition.position;
     }
@@ -149,13 +179,17 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator WinGameCoroutine()
     {
+        for (int i = 0; i < blastZones.Length; i++)
+        {
+            blastZones[i].gameObject.SetActive(false);
+        }
         for (int i = 0; i < playersAlive.Count; i++)
         {
             playersAlive[i].SetCharacterMotionSpeed(0.2f, 1);
         }
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 0.2f;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(2.4f);
         winAnimator.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(1f);
         Time.timeScale = 0f;
@@ -175,6 +209,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     ParticleSystem hitSpeedline;
     [SerializeField]
+    GameObject finalHitParticle;
+    [SerializeField]
     Animator backgroundFlash;
     [SerializeField]
     Animator cameraZoom;
@@ -192,13 +228,22 @@ public class BattleManager : MonoBehaviour
             playersAlive[i].OnKnockback += BackgroundFlash;
             playersAlive[i].OnKnockback += CameraZoomDeSesMorts;
 
-            playersAlive[i].OnSuperKnockback += HitSpeedline;
+            playersAlive[i].OnSuperKnockback += FinalFeedback;
         }
     }
 
     private void UnsubscribeFeedback()
     {
+        for (int i = 0; i < playersAlive.Count; i++)
+        {
+            playersAlive[i].OnWallBounce -= HitSpeedline;
 
+            playersAlive[i].OnKnockback -= HitSpeedline;
+            playersAlive[i].OnKnockback -= BackgroundFlash;
+            playersAlive[i].OnKnockback -= CameraZoomDeSesMorts;
+
+            playersAlive[i].OnSuperKnockback -= FinalFeedback;
+        }
     }
 
 
@@ -214,14 +259,26 @@ public class BattleManager : MonoBehaviour
 
     public void CameraZoomDeSesMorts()
     {
-        cameraZoom.SetTrigger("Feedback");
+        if (playersAlive.Count <= 2)
+        {
+            cameraZoom.SetTrigger("Feedback");
+        }
     }
 
 
-    public void FinalFeedback(GameObject hitAnimation, Vector3 position)
+    public void FinalFeedback(PlayerController player)
     {
-        cameraZoom.SetTrigger("FinalFeedback");
-        StartCoroutine(FinalFeedbackCoroutine(hitAnimation, position));
+        if (playersAlive.Count <= 2)
+        {
+            cameraZoom.SetTrigger("FinalFeedback");
+            for (int i = 0; i < playersAlive.Count; i++)
+            {
+                playersAlive[i].SetCharacterMotionSpeed(0, 1.6f);
+            }
+            player.ShakeSprite.Shake(0.2f, 1.6f);
+            StartCoroutine(FinalFeedbackCoroutine(finalHitParticle, player.transform.position));
+        }
+
     }
 
     private IEnumerator FinalFeedbackCoroutine(GameObject hitAnimation, Vector3 position)
@@ -240,6 +297,10 @@ public class BattleManager : MonoBehaviour
     {
         UnsubscribeBlastZone();
         UnsubscribeFeedback();
+        for (int i = 0; i < playersAlive.Count; i++)
+        {
+            playersAlive[i].OnKnockback -= battleHuds[i].ShakeFace; // histoire d'être sur
+        }
     }
 
 }

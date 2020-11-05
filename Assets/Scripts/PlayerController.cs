@@ -42,7 +42,12 @@ public class PlayerController : InputControllable
 
     [Header("Feedback")]
     [SerializeField]
-    ShakeSprite shakeSprite;
+    private ShakeSprite shakeSprite;
+    public ShakeSprite ShakeSprite
+    {
+        get { return shakeSprite; }
+    }
+
     [SerializeField]
     ParticleSystem smoke;
     [SerializeField]
@@ -154,7 +159,7 @@ public class PlayerController : InputControllable
 
     public event Action OnWallBounce;
     public event Action OnKnockback;
-    public event Action OnSuperKnockback;
+    public event ActionPlayerController OnSuperKnockback;
 
 
 
@@ -375,7 +380,7 @@ public class PlayerController : InputControllable
             }
             else
             {
-                currentSpeedX -= (decceleration * direction);
+                currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX));
                 if (Mathf.Abs(currentSpeedX) <= decceleration)
                     currentSpeedX = 0;
             }
@@ -704,10 +709,7 @@ public class PlayerController : InputControllable
         Physics.Raycast(this.transform.position, knockbackPower, out hit, knockbackPower.magnitude, layerMask);
         if(hit.collider == null)
         {
-            FeedbackManager.Instance.FinalFeedback(attack.OnHitAnimation, this.transform.position);
-            SetCharacterMotionSpeed(0, 1.6f);
-            shakeSprite.Shake(0.2f, 1.6f);
-            attack.StopUser(0, 1.6f);
+            OnSuperKnockback.Invoke(this);          
         }
     }
 
