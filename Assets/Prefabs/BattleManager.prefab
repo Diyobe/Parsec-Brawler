@@ -25568,8 +25568,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
   debug: 1
-  debugPlayerNumber: 2
+  debugPlayerNumber: 4
   debugPlayerLives: 3
+  swapColors:
+  - {fileID: 2100000, guid: f1a121ee4c740564cb4c8be1a3206c51, type: 2}
+  - {fileID: 2100000, guid: 00c7bfba9818f7b48b77a4be1fe0b567, type: 2}
+  - {fileID: 2100000, guid: d935c8aa5a40e4f498863c4f6ada907d, type: 2}
+  - {fileID: 2100000, guid: 62d29b03da54ab240a2dbc134925a3d8, type: 2}
   characterPrefab: {fileID: 1714619801704049788, guid: 936a7ab0a339ed245a69b74962eef658, type: 3}
   inputControllerPrefab: {fileID: 718001654098867815}
   cameraController: {fileID: 718001654785236280}
@@ -31394,8 +31399,8 @@ MonoBehaviour:
   targets: []
   offset: {x: 0, y: 2, z: -8}
   smoothTime: 0.5
-  boxSizeMin: 7
-  boxSizeMax: 50
+  boxSizeMin: 5
+  boxSizeMax: 10
   offsetZoomZ: {x: 0, y: -10}
 --- !u!114 &718001654785236287
 MonoBehaviour:
