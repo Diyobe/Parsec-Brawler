@@ -574,6 +574,8 @@ public class PlayerController : InputControllable
 
         if (state == CharacterState.Idle)
             characterAnimator.SetBool("Moving", characterCollision.SpeedX != 0);
+        characterAnimator.SetBool("Dash", state == CharacterState.Dash);
+
     }
 
 

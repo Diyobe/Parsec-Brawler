@@ -268,7 +268,7 @@ public class BattleManager : MonoBehaviour
 
     public void FinalFeedback(PlayerController player)
     {
-        if (playersAlive.Count <= 2)
+        if (playersAlive.Count <= 2 && playersLives[playersAlive.IndexOf(player)] == 1)
         {
             cameraZoom.SetTrigger("FinalFeedback");
             for (int i = 0; i < playersAlive.Count; i++)

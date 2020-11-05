@@ -598,36 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ca5f50f375b954dafb46ee0dd4373f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &37261487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 37261488}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &37261488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37261487}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &47872135
 GameObject:
   m_ObjectHideFlags: 0
@@ -8202,7 +8172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
   debugPlayerNumber: 2
-  debugPlayerLives: 1
+  debugPlayerLives: 3
   characterPrefab: {fileID: 5071424631730491929, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
   inputControllerPrefab: {fileID: 1241121356}
   cameraController: {fileID: 1624467731}
