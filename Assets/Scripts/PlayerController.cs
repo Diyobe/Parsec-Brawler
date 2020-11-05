@@ -138,9 +138,10 @@ public class PlayerController : InputControllable
     public int Direction
     {
         get { return direction; }
+        set { direction = value; }
     }
 
-    float currentSpeedX;
+    public float currentSpeedX;
     float currentSpeedY;
 
     int currentNumberOfJumps;
@@ -380,9 +381,10 @@ public class PlayerController : InputControllable
             }
             else
             {
-                currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX));
-                if (Mathf.Abs(currentSpeedX) <= decceleration)
-                    currentSpeedX = 0;
+                currentSpeedX = 0;
+                /*currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX)) * Time.deltaTime;
+                if (Mathf.Abs(currentSpeedX) <= decceleration * Time.deltaTime)
+                    currentSpeedX = 0;*/
             }
         }
         else
@@ -448,9 +450,9 @@ public class PlayerController : InputControllable
         characterCollision.IsGrounded = false;
 
         afterImageEffect.StartAfterImage();
-        currentSpeedX = dashImpulsion * horizontal;
-        //currentSpeedX = 0;
-        currentSpeedY = dashImpulsion * vertical;
+        Vector2 normalizeDirection = new Vector2(horizontal, vertical).normalized;
+        currentSpeedX = dashImpulsion * normalizeDirection.x;
+        currentSpeedY = dashImpulsion * normalizeDirection.y;
     }
 
     private void ApplyGravity()
@@ -478,6 +480,7 @@ public class PlayerController : InputControllable
 
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
+        smoke.Stop();
 
         if (currentAttackController != null)
             currentAttackController.ActionEnd();
@@ -677,10 +680,10 @@ public class PlayerController : InputControllable
         if (knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
-            //characterAnimator.SetTrigger("Idle");
+            characterAnimator.SetTrigger("Idle");
             afterImageEffect.EndAfterImage();
-            currentSpeedX = knockbackPower.x;
             smoke.Stop();
+            currentSpeedX = knockbackPower.x;
             currentSpeedY = knockbackPower.y;
             knockbackPower = Vector2.zero;
         }
