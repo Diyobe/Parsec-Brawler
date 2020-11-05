@@ -3524,6 +3524,7 @@ MonoBehaviour:
   - {fileID: 840001674}
   textBattleStart: {fileID: 1025620139}
   animatorStart: {fileID: 1255438958}
+  stageToLoad: LD-Damien
 --- !u!4 &1791134221
 Transform:
   m_ObjectHideFlags: 0
