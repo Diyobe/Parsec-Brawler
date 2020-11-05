@@ -216,7 +216,7 @@ MonoBehaviour:
   afterImageEffect: {fileID: 7632525046717371282}
   speedMax: 5
   acceleration: 2
-  decceleration: 2
+  decceleration: 10
   airFriction: 1.4
   airStop: 0.97
   gravityForce: 15
@@ -239,6 +239,7 @@ MonoBehaviour:
   attackLeftAerial: {fileID: 8530654087378751973, guid: 5710b7e4365ea2644a5645632eea7d30, type: 3}
   attackUpAerial: {fileID: 6711955271010886810, guid: 85f13b96ccb921f4a84de6ee84d7f882, type: 3}
   attackDownAerial: {fileID: 1975021917538315906, guid: 19e3c2e1673379c4a8151b5e70b618d4, type: 3}
+  currentSpeedX: 0
 --- !u!95 &5071424631730491935
 Animator:
   serializedVersion: 3

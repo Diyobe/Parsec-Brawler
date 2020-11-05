@@ -7,6 +7,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private PlayerData playerData;
     [SerializeField]
+    private bool debug;
+    [SerializeField]
     private int debugPlayerNumber;
     [SerializeField]
     private int debugPlayerLives = 1;
@@ -44,14 +46,19 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
 #if UNITY_EDITOR
-        playerData.PlayerID.Clear();
-        for (int i = 0; i < debugPlayerNumber; i++)
+        if (debug == true)
         {
+            playerData.PlayerID.Clear();
+            for (int i = 0; i < debugPlayerNumber; i++)
+            {
 
-            playerData.PlayerID.Add(i);
+                playerData.PlayerID.Add(i);
+            }
         }
 #endif
         CreateGame();
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
     }
 
     private void CreateGame()
@@ -59,6 +66,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < playerData.PlayerID.Count; i++)
         {
             PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
+            player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
             playersAlive.Add(player);
             playersLives.Add(debugPlayerLives);
@@ -118,7 +126,7 @@ public class BattleManager : MonoBehaviour
     {
         blastedCharacter.ResetToIdle();
         cameraController.targets.Remove(blastedCharacter.transform);
-        blastedCharacter.SpriteRenderer.gameObject.SetActive(false);
+        blastedCharacter.SpriteRenderer.enabled = false;
         blastedCharacter.enabled = false;
 
         for (int i = 0; i < playersAlive.Count; i++)
@@ -159,6 +167,7 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         character.SpriteRenderer.gameObject.SetActive(true);
+        character.SpriteRenderer.enabled = true;
         character.enabled = true;
 
         cameraController.targets.Add(character.transform);
