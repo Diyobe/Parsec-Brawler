@@ -12,12 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneNam.unity
     guid: 9aafb88727a22cd4fbc4c4ab8987be57
   - enabled: 1
-    path: Assets/Scenes/SceneCla.unity
-    guid: 094f1aaeed8650e48b843e4888b2084b
-  - enabled: 1
-    path: Assets/Scenes/LD-Damien.unity
-    guid: 7b70422dfcf03df4cb52376664166f7b
-  - enabled: 1
     path: Assets/Scenes/LD-1.unity
     guid: 35ae1e885e935a34d82bcc7651b4f251
   - enabled: 1
