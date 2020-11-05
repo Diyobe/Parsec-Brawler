@@ -10,8 +10,6 @@ public class BlastZone : MonoBehaviour
     public event ActionPlayerController OnBlast;
 
     [SerializeField] private GameObject BlastParticle;
-
-    //[Serializable]
     public enum BlastzoneState
     {
         Up,
@@ -28,7 +26,6 @@ public class BlastZone : MonoBehaviour
         {
             InstantiateBlast(other.transform.position);
             OnBlast.Invoke(other.GetComponent<PlayerController>());
-            //GameManager.Instance.BlastCharacter(other.GetComponent<PlayerController>());
         }
     }
 
