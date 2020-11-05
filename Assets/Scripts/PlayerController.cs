@@ -42,7 +42,12 @@ public class PlayerController : InputControllable
 
     [Header("Feedback")]
     [SerializeField]
-    ShakeSprite shakeSprite;
+    private ShakeSprite shakeSprite;
+    public ShakeSprite ShakeSprite
+    {
+        get { return shakeSprite; }
+    }
+
     [SerializeField]
     ParticleSystem smoke;
     [SerializeField]
@@ -133,10 +138,20 @@ public class PlayerController : InputControllable
     public int Direction
     {
         get { return direction; }
+        set { direction = value; }
     }
 
     float currentSpeedX;
+    public float CurrentSpeedX
+    {
+        get { return currentSpeedX; }
+    }
+
     float currentSpeedY;
+    public float CurrentSpeedY
+    {
+        get { return currentSpeedY; }
+    }
 
     int currentNumberOfJumps;
     float currentCrouchTime;
@@ -151,7 +166,22 @@ public class PlayerController : InputControllable
     IEnumerator motionSpeedCoroutine;
 
 
+
+    public event Action OnWallBounce;
+    public event Action OnKnockback;
+    public event ActionPlayerController OnSuperKnockback;
+    public event ActionPlayerController OnFlashMove;
+
+
+
     List<input> buffer;
+    bool active = false;
+    public bool Active
+    {
+        get { return active; }
+        set { active = value; }
+    }
+
 
     private void Start()
     {
@@ -166,8 +196,8 @@ public class PlayerController : InputControllable
     }
 
     private void Update()
-
-    {   // OnTriggerEnter 
+    {
+        // OnTriggerEnter 
         // OnColliderEnter
         // Update
         // Cette ligne est pour empêcher qu'il y ait un bug d'animation au moment où le perso joue une action pile à la frame ou le perso termine son action précédente
@@ -243,6 +273,8 @@ public class PlayerController : InputControllable
 
     void UpdateControls()
     {
+        if (active == false)
+            return;
         CheckHorizontal(buffer);
         CheckJump(buffer);
         CheckAttack(buffer);
@@ -340,6 +372,7 @@ public class PlayerController : InputControllable
                     }
                     else
                     {
+                        direction = (int)Mathf.Sign(currentSpeedX);
                         Action(attackLeftAerial);
                     }
                 }
@@ -347,7 +380,7 @@ public class PlayerController : InputControllable
         }
     }
 
-    // Pas FPS indépendant à refaire
+
     void CheckHorizontal(List<input> buffer)
     {
         if (characterCollision.IsGrounded == true)
@@ -359,11 +392,10 @@ public class PlayerController : InputControllable
             }
             else
             {
-                currentSpeedX -= (decceleration * direction);
-                if (currentSpeedX <= decceleration && direction == 1)
-                    currentSpeedX = 0;
-                else if (currentSpeedX >= -decceleration && direction == -1)
-                    currentSpeedX = 0;
+                currentSpeedX = 0;
+                /*currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX)) * Time.deltaTime;
+                if (Mathf.Abs(currentSpeedX) <= decceleration * Time.deltaTime)
+                    currentSpeedX = 0;*/
             }
         }
         else
@@ -374,7 +406,7 @@ public class PlayerController : InputControllable
             }
             else
             {
-                currentSpeedX *= airStop;
+                currentSpeedX *= airStop;    // Pas FPS indépendant à refaire
                 if (currentSpeedX <= airFriction && currentSpeedX >= -airFriction)
                     currentSpeedX = 0;
             }
@@ -429,9 +461,9 @@ public class PlayerController : InputControllable
         characterCollision.IsGrounded = false;
 
         afterImageEffect.StartAfterImage();
-        currentSpeedX = dashImpulsion * horizontal;
-        //currentSpeedX = 0;
-        currentSpeedY = dashImpulsion * vertical;
+        Vector2 normalizeDirection = new Vector2(horizontal, vertical).normalized;
+        currentSpeedX = dashImpulsion * normalizeDirection.x;
+        currentSpeedY = dashImpulsion * normalizeDirection.y;
     }
 
     private void ApplyGravity()
@@ -459,6 +491,7 @@ public class PlayerController : InputControllable
 
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
+        smoke.Stop();
 
         if (currentAttackController != null)
             currentAttackController.ActionEnd();
@@ -555,6 +588,8 @@ public class PlayerController : InputControllable
 
         if (state == CharacterState.Idle)
             characterAnimator.SetBool("Moving", characterCollision.SpeedX != 0);
+        characterAnimator.SetBool("Dash", state == CharacterState.Dash);
+
     }
 
 
@@ -615,6 +650,7 @@ public class PlayerController : InputControllable
         else if (other.tag != this.transform.tag && state == CharacterState.Dash)
         {
             other.GetComponent<AttackController>().DoSomething(this);
+            OnFlashMove.Invoke(this);
         }
 
     }
@@ -632,9 +668,6 @@ public class PlayerController : InputControllable
         knockbackPower = direction;
         shakeSprite.Shake(attack.TargetShakePower, attack.HitStop);
         attack.HasHit(this);
-        FeedbackManager.Instance.BackgroundFlash();
-        FeedbackManager.Instance.HitSpeedline();
-        FeedbackManager.Instance.CameraZoomDeSesMorts();
         smoke.Play();
 
         knockbackTime = 0;
@@ -642,6 +675,9 @@ public class PlayerController : InputControllable
 
         afterImageEffect.StartAfterImage();
         KnockbackAnimation();
+
+        OnKnockback.Invoke();
+        CheckSuperKnockback(attack);
     }
 
     protected void UpdateKnockback()
@@ -656,13 +692,12 @@ public class PlayerController : InputControllable
         if (knockbackPower.magnitude < knockbackPowerForWallBounce && state == CharacterState.Hit)
         {
             state = CharacterState.Idle;
-            //characterAnimator.SetTrigger("Idle");
+            characterAnimator.SetTrigger("Idle");
             afterImageEffect.EndAfterImage();
-            currentSpeedX = knockbackPower.x;
             smoke.Stop();
+            currentSpeedX = knockbackPower.x;
             currentSpeedY = knockbackPower.y;
             knockbackPower = Vector2.zero;
-            //currentSpeedY = 0;
         }
 
         if (knockbackPower.magnitude < 1f)
@@ -684,6 +719,17 @@ public class PlayerController : InputControllable
     }
 
 
+    private void CheckSuperKnockback(AttackController attack)
+    {
+        int layerMask = 1 << 8;
+        RaycastHit hit;
+        Physics.Raycast(this.transform.position, knockbackPower, out hit, knockbackPower.magnitude, layerMask);
+        if(hit.collider == null)
+        {
+            OnSuperKnockback.Invoke(this);          
+        }
+    }
+
 
     public void WallBounce(Transform collider)
     {
@@ -692,18 +738,18 @@ public class PlayerController : InputControllable
             knockbackPower.x = -knockbackPower.x;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
-            //FeedbackManager.Instance.BackgroundFlash();
-            FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             direction = -direction;
             CheckCollisionComponent(collider);
             currentSpeedY = 0;
             knockbackPower *= knockbackImpactReductionRate;
+
+            OnWallBounce.Invoke();
         }
         else if (characterCollision.IsGrounded == false)
         {
             currentSpeedX = 0;
-            //characterCollision.IsGrounded = false;
+            knockbackPower.x = 0;
         }
     }
 
@@ -714,17 +760,17 @@ public class PlayerController : InputControllable
             knockbackPower.y = -knockbackPower.y;
             shakeSprite.Shake(shakePowerOnWall, hitStopOnWall);
             SetCharacterMotionSpeed(0, hitStopOnWall);
-            //FeedbackManager.Instance.BackgroundFlash();
-            FeedbackManager.Instance.HitSpeedline();
             KnockbackAnimation();
             CheckCollisionComponent(collider);
             currentSpeedY = 0;
             knockbackPower *= knockbackImpactReductionRate;
+
+            OnWallBounce.Invoke();
         }
         else if (characterCollision.IsGrounded == false)
         {
             currentSpeedY = 0;
-            //characterCollision.IsGrounded = false;
+            knockbackPower.y = 0;
         }
     }
 
@@ -733,7 +779,7 @@ public class PlayerController : InputControllable
     {
         WallDestructible a = collider.GetComponent<WallDestructible>();
         if (a != null)
-            a.Damage();
+            a.Damage(particlePoint.position);
     }
 
 }

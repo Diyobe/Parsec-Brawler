@@ -98,8 +98,8 @@ public class AttackController : MonoBehaviour
     public void CreateAttack(PlayerController cUser)
     {
         user = cUser;
-        this.transform.localScale = new Vector3(this.transform.localScale.x * user.transform.localScale.x * user.Direction, 
-                                                this.transform.localScale.y * user.transform.localScale.y, 
+        this.transform.localScale = new Vector3(this.transform.localScale.x * user.SpriteRenderer.transform.localScale.x * user.Direction, 
+                                                this.transform.localScale.y * user.SpriteRenderer.transform.localScale.y, 
                                                 user.transform.localScale.z);
 
         // hitbox
@@ -135,7 +135,10 @@ public class AttackController : MonoBehaviour
 
         //Feedback
         if (OnHitAnimation != null)
-            Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity);
+        {
+            Destroy(Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity), 5f);
+        }
+
         if (HitStop > 0)
         {
             user.SetCharacterMotionSpeed(0, HitStop);
@@ -146,10 +149,14 @@ public class AttackController : MonoBehaviour
 
     public void DoSomething(PlayerController target)
     {
-        user.SetCharacterMotionSpeed(0.2f, HitStop);
-        target.SetCharacterMotionSpeed(0.2f, HitStop);
+        user.SetCharacterMotionSpeed(0.35f, HitStop);
+        target.SetCharacterMotionSpeed(0.35f, HitStop);
     }
 
+    public void StopUser(float motionSpeed, float time)
+    {
+        user.SetCharacterMotionSpeed(motionSpeed, time);
+    }
 
     public void ActionActive()
     {

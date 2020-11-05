@@ -43,6 +43,10 @@ public class InputController : MonoBehaviour
     {
         playerID = newID;
     }
+    public void SetPlayerController(InputControllable controller)
+    {
+        playerController = controller;
+    }
 
     private void Start()
     {
