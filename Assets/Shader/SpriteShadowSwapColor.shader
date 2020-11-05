@@ -1,4 +1,4 @@
-﻿Shader "Sprites/Custom/SpriteShadow"
+﻿Shader "Sprites/Custom/SpriteShadowSwapColor"
 {
     Properties
     {
@@ -7,6 +7,9 @@
         _Cutoff("Shadow alpha cutoff", Range(0,1)) = 0.5
         _FlashColor("Flash Color", Color) = (1,1,1,1)
         _FlashAmount("Flash Amount", Range(0,1)) = 0
+
+
+		_SwapTex("Color Data", 2D) = "transparent" {}
     }
         SubShader
         {
@@ -31,6 +34,7 @@
 			CGPROGRAM
 			#pragma surface surf NoLighting addshadow alphatest:_Cutoff
 			sampler2D _MainTex;
+			sampler2D _SwapTex;
 			//fixed4 _Color;
 			struct Input
 			{
@@ -49,7 +53,7 @@
 			float _FlashAmount;
 			void surf(Input IN, inout SurfaceOutput o)
 			{
-				fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+				fixed4 c = tex2D(_SwapTex, IN.uv_MainTex);
 				c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
 				c.rgb *= c.a;
 				o.Albedo = c.rgb * IN.color.rgb;
@@ -118,10 +122,13 @@
 
 				fixed4 frag(v2f IN) : SV_Target
 				{
-					fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
-				
-					c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
-					c.rgb *= c.a;
+					//fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
+					//fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
+					fixed4 c = fixed4(0,0,0,1);// tex2D(_SwapTex, IN.texcoord)* IN.color;
+					//c.rgb = swapCol;
+
+					//c.rgb = lerp(c.rgb, _FlashColor.rgb, _FlashAmount);
+					//c.rgb *= c.a;
 					return c;
 				}
 
