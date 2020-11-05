@@ -25568,9 +25568,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
   debug: 1
-  debugPlayerNumber: 4
+  debugPlayerNumber: 2
   debugPlayerLives: 3
-  characterPrefab: {fileID: 5071424631730491929, guid: dab4e8c648baa1248ad8a74baeb70933, type: 3}
+  characterPrefab: {fileID: 1714619801704049788, guid: 936a7ab0a339ed245a69b74962eef658, type: 3}
   inputControllerPrefab: {fileID: 718001654098867815}
   cameraController: {fileID: 718001654785236280}
   respawnPosition: {fileID: 718001654194163038}
@@ -31282,6 +31282,7 @@ GameObject:
   - component: {fileID: 718001654785236281}
   - component: {fileID: 718001654785236280}
   - component: {fileID: 718001654785236287}
+  - component: {fileID: 440259778}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -31391,8 +31392,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  offset: {x: 0, y: 2, z: -10}
+  offset: {x: 0, y: 2, z: -8}
   smoothTime: 0.5
+  boxSizeMin: 7
+  boxSizeMax: 50
+  offsetZoomZ: {x: 0, y: -10}
 --- !u!114 &718001654785236287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31453,6 +31457,14 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!124 &440259778
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718001654785236261}
+  m_Enabled: 1
 --- !u!1 &718001654814832427
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,8 +98,8 @@ public class AttackController : MonoBehaviour
     public void CreateAttack(PlayerController cUser)
     {
         user = cUser;
-        this.transform.localScale = new Vector3(this.transform.localScale.x * user.transform.localScale.x * user.Direction, 
-                                                this.transform.localScale.y * user.transform.localScale.y, 
+        this.transform.localScale = new Vector3(this.transform.localScale.x * user.SpriteRenderer.transform.localScale.x * user.Direction, 
+                                                this.transform.localScale.y * user.SpriteRenderer.transform.localScale.y, 
                                                 user.transform.localScale.z);
 
         // hitbox
