@@ -41,14 +41,16 @@ public class BattleManager : MonoBehaviour
     [Header("HUD")]
     [SerializeField]
     private Transform hudParent;
-    /*[SerializeField]
-    private BattleHud battleHud;*/
     [SerializeField]
     List<BattleHud> battleHuds = new List<BattleHud>();
+
+    [SerializeField]
+    WinMenu winMenu;
 
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
 
+    List<int> listLosers = new List<int>();
 
     public AudioClip battleTheme;
     public AudioClip bumpSound;
@@ -78,7 +80,7 @@ public class BattleManager : MonoBehaviour
             PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
-            player.SetMaterial(swapColors[i], swapColorsTex[i]);
+            player.SetMaterial(swapColors[i], swapColorsTex[i], i);
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);
@@ -146,6 +148,8 @@ public class BattleManager : MonoBehaviour
 
                 if (playersLives[i] <= 0) // Si le perso n'a plus de vie = DED
                 {
+                    listLosers.Add(blastedCharacter.CharacterIndex);
+
                     playersAlive[i].OnKnockback -= battleHuds[i].ShakeFace; // histoire d'être sur
                     playersAlive.RemoveAt(i);
                     playersLives.RemoveAt(i);
@@ -215,12 +219,26 @@ public class BattleManager : MonoBehaviour
         Time.timeScale = 0.2f;
         yield return new WaitForSecondsRealtime(2.4f);
         winAnimator.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(3f);
+        hudParent.gameObject.SetActive(false);
+        listLosers.Add(playersAlive[0].CharacterIndex);
+        winMenu.CreateMenu(listLosers);
+        
+        /*yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);*/
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

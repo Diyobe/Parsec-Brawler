@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerID: 0000000001000000
-  numberOfLives: 4
+  numberOfLives: 1
