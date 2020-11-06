@@ -26272,6 +26272,7 @@ MonoBehaviour:
   winMenu: {fileID: 1907023494682831272}
   battleTheme: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
   bumpSound: {fileID: 8300000, guid: 1534266fc6cbfa0428e24cb24b331aa9, type: 3}
+  flashMoveClip: {fileID: 8300000, guid: ee9362d990f15c843b3b63e72fb574eb, type: 3}
   hitSpeedline: {fileID: 4464424395687185610}
   finalHitParticle: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   flashMoveParticle: {fileID: 689029431}
@@ -40354,11 +40355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

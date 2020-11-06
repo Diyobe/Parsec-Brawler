@@ -54,7 +54,7 @@ public class BattleManager : MonoBehaviour
 
     public AudioClip battleTheme;
     public AudioClip bumpSound;
-
+    public AudioClip flashMoveClip;
     private void Start()
     {
 #if UNITY_EDITOR
@@ -319,6 +319,7 @@ public class BattleManager : MonoBehaviour
 
         float angle = Vector2.Angle(new Vector2(player.CurrentSpeedX, player.CurrentSpeedY), Vector2.up);
         flashMoveParticle.transform.eulerAngles = new Vector3(angle, -90, 90);
+        TengenToppaAudioManager.Instance.PlaySound(flashMoveClip, 1);
     }
 
     public void CameraZoomDeSesMorts()
