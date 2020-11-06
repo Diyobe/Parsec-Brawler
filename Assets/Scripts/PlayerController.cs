@@ -733,7 +733,7 @@ public class PlayerController : InputControllable
     {
         int layerMask = 1 << 8;
         RaycastHit hit;
-        Physics.Raycast(this.transform.position, knockbackPower, out hit, knockbackPower.magnitude, layerMask);
+        Physics.Raycast(this.transform.position, knockbackPower, out hit, 50, layerMask);
         if(hit.collider == null)
         {
             OnSuperKnockback.Invoke(this);          
