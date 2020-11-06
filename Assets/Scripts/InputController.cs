@@ -71,8 +71,14 @@ public class InputController : MonoBehaviour
         InputHit();
         InputHorizontal();
         InputVertical();
+        InputStart();
 
         playerController.UpdateBuffer(inputBuffer, playerID);
+    }
+
+    public bool InputStart()
+    {
+        return player.GetButtonDown("Start");
     }
 
     private void InputHorizontal()
