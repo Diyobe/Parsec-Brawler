@@ -72,7 +72,7 @@ namespace VoiceActing
 
         public void PlayMusic(AudioClip music, AudioClip musicLoop, int timeFade = 1)
         {
-            if (music == audioMusic.clip)
+            if (music == audioMusic.clip || musicLoop == audioMusic.clip)
             {
                 audioMusic.volume = musicVolumeMax;
                 return;
