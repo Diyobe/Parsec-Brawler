@@ -182,6 +182,12 @@ public class PlayerController : InputControllable
         set { active = value; }
     }
 
+    public void SetMaterial(Material mat)
+    {
+        spriteRenderer.material = mat;
+        afterImageEffect.AfterImagePrefab.material = mat;
+    }
+
 
     private void Start()
     {
