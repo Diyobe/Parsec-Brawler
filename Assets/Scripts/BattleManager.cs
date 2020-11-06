@@ -219,7 +219,7 @@ public class BattleManager : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
 

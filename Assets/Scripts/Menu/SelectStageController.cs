@@ -71,9 +71,9 @@ public class SelectStageController : InputControllable
             selectScreenController.SetStageToLoad(sceneNames[index]);
             this.gameObject.SetActive(false);
         }
-        else if (inputBuffer[0].dash)
+        else if (inputBuffer[0].hit)
         {
-            
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
 }
