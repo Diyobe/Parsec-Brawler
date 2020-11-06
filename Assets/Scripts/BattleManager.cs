@@ -41,12 +41,14 @@ public class BattleManager : MonoBehaviour
     [Header("HUD")]
     [SerializeField]
     private Transform hudParent;
+    /*[SerializeField]
+    private BattleHud battleHud;*/
     [SerializeField]
-    private BattleHud battleHud;
+    List<BattleHud> battleHuds = new List<BattleHud>();
 
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
-    List<BattleHud> battleHuds = new List<BattleHud>();
+
 
     public AudioClip battleTheme;
     public AudioClip bumpSound;
@@ -102,7 +104,6 @@ public class BattleManager : MonoBehaviour
         {
             if (i < playersAlive.Count)
             {
-                battleHuds.Add(Instantiate(battleHud, hudParent));
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
                 battleHuds[i].DrawLives(debugPlayerLives);
