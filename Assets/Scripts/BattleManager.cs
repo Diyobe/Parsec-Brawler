@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoiceActing;
 
 public class BattleManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class BattleManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField]
     private Material[] swapColors;
+    [SerializeField]
+    private Texture2D[] swapColorsTex;
     [SerializeField]
     private PlayerController characterPrefab;
     [SerializeField]
@@ -45,6 +48,9 @@ public class BattleManager : MonoBehaviour
     List<int> playersLives = new List<int>();
     List<BattleHud> battleHuds = new List<BattleHud>();
 
+    public AudioClip battleTheme;
+    public AudioClip bumpSound;
+
     private void Start()
     {
 #if UNITY_EDITOR
@@ -70,7 +76,8 @@ public class BattleManager : MonoBehaviour
             PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
-            player.SpriteRenderer.material = swapColors[i];
+            player.SetMaterial(swapColors[i], swapColorsTex[i]);
+
             playersAlive.Add(player);
             playersLives.Add(debugPlayerLives);
 
@@ -86,6 +93,7 @@ public class BattleManager : MonoBehaviour
         SubscribeFeedback(); // Pas opti on refait une boucle mais nique
 
         StartCoroutine(StartGameCoroutine());
+        TengenToppaAudioManager.Instance.PlayMusic(battleTheme, battleTheme);
     }
 
     private IEnumerator StartGameCoroutine()
@@ -99,11 +107,9 @@ public class BattleManager : MonoBehaviour
                 battleHuds[i].gameObject.SetActive(true);
                 battleHuds[i].DrawLives(debugPlayerLives);
             }
-
-            yield return new WaitForSeconds(0.25f);
         }
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
         for (int i = 0; i < playersAlive.Count; i++)
         {
             playersAlive[i].Active = true;
@@ -127,17 +133,18 @@ public class BattleManager : MonoBehaviour
 
     public void BlastCharacter(PlayerController blastedCharacter)
     {
-        blastedCharacter.ResetToIdle();
-        cameraController.targets.Remove(blastedCharacter.transform);
-        blastedCharacter.SpriteRenderer.enabled = false;
-        blastedCharacter.enabled = false;
 
         for (int i = 0; i < playersAlive.Count; i++)
         {
-            if(playersAlive[i] == blastedCharacter)
+            if(playersAlive[i] == blastedCharacter && blastedCharacter.enabled == true)
             {
                 playersLives[i] -= 1;
-                if(playersLives[i] <= 0) // Si le perso n'a plus de vie = DED
+                blastedCharacter.ResetToIdle();
+                cameraController.targets.Remove(blastedCharacter.transform);
+                blastedCharacter.SpriteRenderer.enabled = false;
+                blastedCharacter.enabled = false;
+
+                if (playersLives[i] <= 0) // Si le perso n'a plus de vie = DED
                 {
                     playersAlive[i].OnKnockback -= battleHuds[i].ShakeFace; // histoire d'être sur
                     playersAlive.RemoveAt(i);
@@ -186,7 +193,10 @@ public class BattleManager : MonoBehaviour
     }
 
 
-
+    private void SoundWallBounce()
+    {
+        TengenToppaAudioManager.Instance.PlaySound(bumpSound, 0.8f, 0.5f, 2f);
+    }
 
 
     private IEnumerator WinGameCoroutine()
@@ -199,6 +209,7 @@ public class BattleManager : MonoBehaviour
         {
             playersAlive[i].SetCharacterMotionSpeed(0.2f, 1);
         }
+        TengenToppaAudioManager.Instance.StopMusic(4f);
         yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 0.2f;
         yield return new WaitForSecondsRealtime(2.4f);
@@ -241,6 +252,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < playersAlive.Count; i++)
         {
             playersAlive[i].OnWallBounce += HitSpeedline;
+            playersAlive[i].OnWallBounce += SoundWallBounce;
 
             playersAlive[i].OnKnockback += HitSpeedline;
             playersAlive[i].OnKnockback += BackgroundFlash;

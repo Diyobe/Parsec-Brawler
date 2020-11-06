@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoiceActing;
 
 public delegate void ActionPlayerController(PlayerController playerController);
 public class BlastZone : MonoBehaviour
@@ -10,8 +11,6 @@ public class BlastZone : MonoBehaviour
     public event ActionPlayerController OnBlast;
 
     [SerializeField] private GameObject BlastParticle;
-
-    //[Serializable]
     public enum BlastzoneState
     {
         Up,
@@ -22,19 +21,22 @@ public class BlastZone : MonoBehaviour
 
     public BlastzoneState state;
 
+    public AudioClip explosion;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2" || other.gameObject.tag == "Player3" || other.gameObject.tag == "Player4")
         {
             InstantiateBlast(other.transform.position);
             OnBlast.Invoke(other.GetComponent<PlayerController>());
-            //GameManager.Instance.BlastCharacter(other.GetComponent<PlayerController>());
         }
     }
 
     void InstantiateBlast(Vector3 position)
     {
         float particleRotation;
+
+        TengenToppaAudioManager.Instance.PlaySound(explosion, 0.5f);
 
         if (state == BlastzoneState.Up)
         {

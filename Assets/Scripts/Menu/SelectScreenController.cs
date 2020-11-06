@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Rewired;
+using VoiceActing;
 
 public class SelectScreenController: InputControllable
 {
+    public AudioClip menuMoveSound;
+    public AudioClip menuValidateSound;
+    public AudioClip startFightSound;
+
+
     [SerializeField]
     PlayerData playerData;
 
@@ -22,14 +28,23 @@ public class SelectScreenController: InputControllable
     Animator animatorStart;
 
     [SerializeField]
+    GameObject previousScreen;
+
+    [SerializeField]
     string stageToLoad;
 
     bool active = true;
+
+    public void SetStageToLoad(string sceneName)
+    {
+        stageToLoad = sceneName;
+    }
 
     private void Start()
     {
         playerData.PlayerID.Clear();
         DrawPlayers();
+
     }
 
 
@@ -38,22 +53,40 @@ public class SelectScreenController: InputControllable
         if (active == false)
             return;
 
-        if(inputBuffer[0].jump == true && playerData.PlayerID.Contains(inputID) == false)
+        if(inputBuffer[0].jump == true)
         {
-            playerData.PlayerID.Add(inputID);
-            DrawPlayers();
+            if (playerData.PlayerID.Contains(inputID) == false)
+            {
+                TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
+                playerData.PlayerID.Add(inputID);
+                DrawPlayers();
+            }
+            else
+            {
+                StartBattle();
+            }
         }
 
         if (inputBuffer[0].hit == true)
         {
-            playerData.PlayerID.Remove(inputID);
-            DrawPlayers();
+            if (playerData.PlayerID.Contains(inputID) == true)
+            {
+                TengenToppaAudioManager.Instance.PlaySound(menuMoveSound, 0.5f);
+                playerData.PlayerID.Remove(inputID);
+                DrawPlayers();
+            }
+            else if (inputID == 0)
+            {
+                this.gameObject.SetActive(false);
+                previousScreen.SetActive(true);
+                //StartBattle();
+            }
         }
 
-        if (inputBuffer[0].dash == true)
+        /*if (inputBuffer[0].dash == true)
         {
             StartBattle();
-        }
+        }*/
     }
 
 
@@ -83,6 +116,8 @@ public class SelectScreenController: InputControllable
     {
         if(playerData.PlayerID.Count >= 2)
         {
+            TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
+            TengenToppaAudioManager.Instance.StopMusic(2f);
             active = false;
             animatorStart.gameObject.SetActive(true);
             StartCoroutine(StartBattleCoroutine());

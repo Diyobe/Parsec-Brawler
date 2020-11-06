@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
+using VoiceActing;
 
 public enum CharacterState
 {
@@ -180,6 +180,13 @@ public class PlayerController : InputControllable
     {
         get { return active; }
         set { active = value; }
+    }
+
+    public void SetMaterial(Material mat, Texture2D tex)
+    {
+        spriteRenderer.material = mat;
+        afterImageEffect.SetSwapTexture(tex);
+        //afterImageEffect.AfterImagePrefab.material = mat;
     }
 
 
@@ -650,8 +657,9 @@ public class PlayerController : InputControllable
         }
         else if (other.tag != this.transform.tag && state == CharacterState.Dash)
         {
-            other.GetComponent<AttackController>().DoSomething(this);
-            OnFlashMove.Invoke(this);
+            AttackController a = other.GetComponent<AttackController>();
+            if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
+            
         }
 
     }
@@ -660,6 +668,7 @@ public class PlayerController : InputControllable
     {
         if (attack == null)
             return;
+
         state = CharacterState.Hit;
         currentSpeedX = 0;
         currentSpeedY = 0;
