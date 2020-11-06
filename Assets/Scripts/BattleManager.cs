@@ -134,7 +134,6 @@ public class BattleManager : MonoBehaviour
 
     public void BlastCharacter(PlayerController blastedCharacter)
     {
-
         for (int i = 0; i < playersAlive.Count; i++)
         {
             if(playersAlive[i] == blastedCharacter && blastedCharacter.enabled == true)
@@ -168,7 +167,8 @@ public class BattleManager : MonoBehaviour
         // On update le hud mais c'est une boucle de trop, pas opti mais au moins c'est un peu clair
         for (int i = 0; i < battleHuds.Count; i++)
         {
-            battleHuds[i].DrawLivesFeedback(playersLives[i]);
+            if(battleHuds[i].isActiveAndEnabled)
+                battleHuds[i].DrawLivesFeedback(playersLives[i]);
         }
     }
 
