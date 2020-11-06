@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vies
+  m_text: Stocks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
   m_sharedMaterial: {fileID: -6252706640659653543, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
