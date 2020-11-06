@@ -22,17 +22,19 @@ public class AfterImageEffect : MonoBehaviour
     float afterImageTime = 0.5f;
     [SerializeField]
     private SpriteRenderer afterImagePrefab;
-    public SpriteRenderer AfterImagePrefab
+
+    public void SetSwapTexture(Texture2D tex)
     {
-        get { return afterImagePrefab; }
+        //new Material(healthBar.material);
+        afterImagePrefab.gameObject.GetComponent<Renderer>().material.SetTexture("_SwapTex", tex);
     }
-
-
 
     Color colorDisappear;
     float t = 0f;
     int index = 0;
     List<SpriteRenderer> afterImage = new List<SpriteRenderer>();
+
+
 
     private void Start()
     {

@@ -18,6 +18,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private Material[] swapColors;
     [SerializeField]
+    private Texture2D[] swapColorsTex;
+    [SerializeField]
     private PlayerController characterPrefab;
     [SerializeField]
     private InputController inputControllerPrefab;
@@ -73,7 +75,7 @@ public class BattleManager : MonoBehaviour
             PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
-            player.SetMaterial(swapColors[i]);
+            player.SetMaterial(swapColors[i], swapColorsTex[i]);
 
             playersAlive.Add(player);
             playersLives.Add(debugPlayerLives);
