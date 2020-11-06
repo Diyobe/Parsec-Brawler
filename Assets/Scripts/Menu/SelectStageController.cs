@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VoiceActing;
+using TMPro;
 
 public class SelectStageController : InputControllable
 {
+    [SerializeField]
+    PlayerData playerData;
+    [SerializeField]
+    TextMeshProUGUI textLife;
+
     [SerializeField]
     string[] sceneNames;
 
@@ -30,6 +36,7 @@ public class SelectStageController : InputControllable
     {
         animatorSelection = selection.GetComponent<Animator>();
         TengenToppaAudioManager.Instance.PlayMusic(menuIntro, menuTheme);
+        textLife.text = playerData.NumberOfLives.ToString();
     }
 
 
@@ -74,6 +81,15 @@ public class SelectStageController : InputControllable
         else if (inputBuffer[0].hit)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        else if (inputBuffer[0].dash)
+        {
+            playerData.NumberOfLives += 1;
+            if( playerData.NumberOfLives > 5)
+            {
+                playerData.NumberOfLives = 1;
+            }
+            textLife.text = playerData.NumberOfLives.ToString();
         }
     }
 }
