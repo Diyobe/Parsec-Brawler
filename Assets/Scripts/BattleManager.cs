@@ -49,6 +49,7 @@ public class BattleManager : MonoBehaviour
     List<BattleHud> battleHuds = new List<BattleHud>();
 
     public AudioClip battleTheme;
+    public AudioClip bumpSound;
 
     private void Start()
     {
@@ -192,7 +193,10 @@ public class BattleManager : MonoBehaviour
     }
 
 
-
+    private void SoundWallBounce()
+    {
+        TengenToppaAudioManager.Instance.PlaySound(bumpSound, 0.8f, 0.5f, 2f);
+    }
 
 
     private IEnumerator WinGameCoroutine()
@@ -248,6 +252,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < playersAlive.Count; i++)
         {
             playersAlive[i].OnWallBounce += HitSpeedline;
+            playersAlive[i].OnWallBounce += SoundWallBounce;
 
             playersAlive[i].OnKnockback += HitSpeedline;
             playersAlive[i].OnKnockback += BackgroundFlash;

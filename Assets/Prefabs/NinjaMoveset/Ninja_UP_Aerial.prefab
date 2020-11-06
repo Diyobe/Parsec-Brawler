@@ -140,6 +140,8 @@ MonoBehaviour:
   shakeScreen: 0
   shakeScreenTime: 0
   hitbox: {fileID: 6711955271010886813}
+  hitSound: {fileID: 8300000, guid: 19b9c1faac5f5b74ab2803b6c35f4d18, type: 3}
+  swingSound: {fileID: 8300000, guid: 87c88c5209489374d891a9e627224efa, type: 3}
 --- !u!65 &6711955271010886813
 BoxCollider:
   m_ObjectHideFlags: 0

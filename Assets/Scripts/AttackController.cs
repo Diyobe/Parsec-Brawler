@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoiceActing;
 
 public class AttackController : MonoBehaviour
 {
@@ -91,12 +92,16 @@ public class AttackController : MonoBehaviour
     [SerializeField]
     private BoxCollider hitbox;
 
+    public AudioClip hitSound;
+    public AudioClip swingSound;
+
     PlayerController user;
     IEnumerator attackCoroutine;
 
 
     public void CreateAttack(PlayerController cUser)
     {
+        TengenToppaAudioManager.Instance.PlaySound(swingSound, 0.1f, 0.5f, 2f);
         user = cUser;
         this.transform.localScale = new Vector3(this.transform.localScale.x * user.SpriteRenderer.transform.localScale.x * user.Direction, 
                                                 this.transform.localScale.y * user.SpriteRenderer.transform.localScale.y, 
@@ -134,6 +139,8 @@ public class AttackController : MonoBehaviour
         //target.PlaySound(attackBehavior.OnHitSound);
 
         //Feedback
+        TengenToppaAudioManager.Instance.PlaySound(hitSound, 0.5f, 0.5f, 2f);
+
         if (OnHitAnimation != null)
         {
             Destroy(Instantiate(OnHitAnimation, target.ParticlePoint.position, Quaternion.identity), 5f);

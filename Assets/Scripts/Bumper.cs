@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoiceActing;
 
 
 public class Bumper : MonoBehaviour
 {
     [SerializeField]
     float bumperForce;
+
 
     private void OnTriggerEnter(Collider other)
     {
