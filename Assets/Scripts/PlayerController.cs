@@ -184,10 +184,11 @@ public class PlayerController : InputControllable
         set { active = value; }
     }
 
-    public void SetMaterial(Material mat)
+    public void SetMaterial(Material mat, Texture2D tex)
     {
         spriteRenderer.material = mat;
-        afterImageEffect.AfterImagePrefab.material = mat;
+        afterImageEffect.SetSwapTexture(tex);
+        //afterImageEffect.AfterImagePrefab.material = mat;
     }
 
 

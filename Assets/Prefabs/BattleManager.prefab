@@ -26136,6 +26136,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 00c7bfba9818f7b48b77a4be1fe0b567, type: 2}
   - {fileID: 2100000, guid: d935c8aa5a40e4f498863c4f6ada907d, type: 2}
   - {fileID: 2100000, guid: 62d29b03da54ab240a2dbc134925a3d8, type: 2}
+  swapColorsTex:
+  - {fileID: 2800000, guid: 8a1beffb199b86b468007301d40d1b8c, type: 3}
+  - {fileID: 2800000, guid: 6250077496fdb934c8485f166b1cc937, type: 3}
+  - {fileID: 2800000, guid: 73b0521cc31f2b74b91be31acff51c19, type: 3}
+  - {fileID: 2800000, guid: e60ad2b4586df0344a8c23ccc6329f73, type: 3}
   characterPrefab: {fileID: 1714619801704049788, guid: 936a7ab0a339ed245a69b74962eef658, type: 3}
   inputControllerPrefab: {fileID: 718001654098867815}
   cameraController: {fileID: 718001654785236280}
