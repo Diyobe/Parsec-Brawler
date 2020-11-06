@@ -177,6 +177,13 @@ namespace VoiceActing
             audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
         }
 
+        public void PlaySound(AudioClip sound, float volumeMultiplier = 1, float pitchMin = 1, float pitchMax = 1)
+        {
+            audioSound.pitch = Random.Range(pitchMin, pitchMax);
+            audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
+            audioSound.pitch = 1;
+        }
+
         /*public void PlayVoice(AudioClip sound, float volumeMultiplier = 1)
         {
             audioVoice.PlayOneShot(sound, voiceVolumeMax * volumeMultiplier);

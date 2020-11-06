@@ -1,7 +1,142 @@
 fileFormatVersion: 2
 guid: 6250077496fdb934c8485f166b1cc937
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7213901795473466969
+    second: Main_character_Animation_Sheet_V0.2_Blue_0
+  - first:
+      213: 8006221298428379406
+    second: Main_character_Animation_Sheet_V0.2_Blue_1
+  - first:
+      213: -2776094003853079654
+    second: Main_character_Animation_Sheet_V0.2_Blue_2
+  - first:
+      213: 6147056728528581435
+    second: Main_character_Animation_Sheet_V0.2_Blue_3
+  - first:
+      213: -484413725202495785
+    second: Main_character_Animation_Sheet_V0.2_Blue_4
+  - first:
+      213: 2059459239549030398
+    second: Main_character_Animation_Sheet_V0.2_Blue_5
+  - first:
+      213: -4341014116492408182
+    second: Main_character_Animation_Sheet_V0.2_Blue_6
+  - first:
+      213: -3452132535962247265
+    second: Main_character_Animation_Sheet_V0.2_Blue_7
+  - first:
+      213: -2652691660891608549
+    second: Main_character_Animation_Sheet_V0.2_Blue_8
+  - first:
+      213: -381891662551252654
+    second: Main_character_Animation_Sheet_V0.2_Blue_9
+  - first:
+      213: -6394424481804191359
+    second: Main_character_Animation_Sheet_V0.2_Blue_10
+  - first:
+      213: 6027372351394537565
+    second: Main_character_Animation_Sheet_V0.2_Blue_11
+  - first:
+      213: -7295121604527663380
+    second: Main_character_Animation_Sheet_V0.2_Blue_12
+  - first:
+      213: 7890967297635800444
+    second: Main_character_Animation_Sheet_V0.2_Blue_13
+  - first:
+      213: -3458766386853601175
+    second: Main_character_Animation_Sheet_V0.2_Blue_14
+  - first:
+      213: -8201518803621651601
+    second: Main_character_Animation_Sheet_V0.2_Blue_15
+  - first:
+      213: -1896083833290165307
+    second: Main_character_Animation_Sheet_V0.2_Blue_16
+  - first:
+      213: 621386204891572352
+    second: Main_character_Animation_Sheet_V0.2_Blue_17
+  - first:
+      213: 4764338241723706328
+    second: Main_character_Animation_Sheet_V0.2_Blue_18
+  - first:
+      213: 1154279460084789515
+    second: Main_character_Animation_Sheet_V0.2_Blue_19
+  - first:
+      213: -3173023586111130857
+    second: Main_character_Animation_Sheet_V0.2_Blue_20
+  - first:
+      213: 6023092661452410015
+    second: Main_character_Animation_Sheet_V0.2_Blue_21
+  - first:
+      213: -6343453453378291503
+    second: Main_character_Animation_Sheet_V0.2_Blue_22
+  - first:
+      213: 9067273705064823811
+    second: Main_character_Animation_Sheet_V0.2_Blue_23
+  - first:
+      213: 5789270920259346257
+    second: Main_character_Animation_Sheet_V0.2_Blue_24
+  - first:
+      213: -6889703080037360345
+    second: Main_character_Animation_Sheet_V0.2_Blue_25
+  - first:
+      213: 6833829865881015783
+    second: Main_character_Animation_Sheet_V0.2_Blue_26
+  - first:
+      213: -2530424053189920505
+    second: Main_character_Animation_Sheet_V0.2_Blue_27
+  - first:
+      213: 6740991659993560073
+    second: Main_character_Animation_Sheet_V0.2_Blue_28
+  - first:
+      213: 3011915557460721046
+    second: Main_character_Animation_Sheet_V0.2_Blue_29
+  - first:
+      213: -5625975395359859
+    second: Main_character_Animation_Sheet_V0.2_Blue_30
+  - first:
+      213: -404605718634985350
+    second: Main_character_Animation_Sheet_V0.2_Blue_31
+  - first:
+      213: -1779483393620871910
+    second: Main_character_Animation_Sheet_V0.2_Blue_32
+  - first:
+      213: -2245422170151274293
+    second: Main_character_Animation_Sheet_V0.2_Blue_33
+  - first:
+      213: 6580057410055673837
+    second: Main_character_Animation_Sheet_V0.2_Blue_34
+  - first:
+      213: 4317689108337254189
+    second: Main_character_Animation_Sheet_V0.2_Blue_35
+  - first:
+      213: 816156714737694224
+    second: Main_character_Animation_Sheet_V0.2_Blue_36
+  - first:
+      213: 7497493095729927487
+    second: Main_character_Animation_Sheet_V0.2_Blue_37
+  - first:
+      213: -4421649814447500043
+    second: Main_character_Animation_Sheet_V0.2_Blue_38
+  - first:
+      213: -2881924675511509879
+    second: Main_character_Animation_Sheet_V0.2_Blue_39
+  - first:
+      213: 389071783550475510
+    second: Main_character_Animation_Sheet_V0.2_Blue_40
+  - first:
+      213: -5140933957947422655
+    second: Main_character_Animation_Sheet_V0.2_Blue_41
+  - first:
+      213: 3764866558133997682
+    second: Main_character_Animation_Sheet_V0.2_Blue_42
+  - first:
+      213: -5565923684027361442
+    second: Main_character_Animation_Sheet_V0.2_Blue_43
+  - first:
+      213: -125121181924975741
+    second: Main_character_Animation_Sheet_V0.2_Blue_44
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +176,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -123,7 +258,847 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a95044b98213eb90800000000000000
+      internalID: -7213901795473466969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 700
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e018df52adfcb1f60800000000000000
+      internalID: 8006221298428379406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 700
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bce3d36355979d0800000000000000
+      internalID: -2776094003853079654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 700
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b33fe1ea68bbe4550800000000000000
+      internalID: 6147056728528581435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_4
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 700
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d64bf098440749f0800000000000000
+      internalID: -484413725202495785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff47b2544ba49c10800000000000000
+      internalID: 2059459239549030398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a838529ae91c3c0800000000000000
+      internalID: -4341014116492408182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9fd66cafbf8710d0800000000000000
+      internalID: -3452132535962247265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_8
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a2aed2dfebf2bd0800000000000000
+      internalID: -2652691660891608549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_9
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25103f66e8f33baf0800000000000000
+      internalID: -381891662551252654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_10
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 600
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189fffa10d07247a0800000000000000
+      internalID: -6394424481804191359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50e1ed183785a350800000000000000
+      internalID: 6027372351394537565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_12
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 500
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6d9d84d8582ca90800000000000000
+      internalID: -7295121604527663380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_13
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 500
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c755ec5f2f8528d60800000000000000
+      internalID: 7890967297635800444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_14
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 500
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 960a786eb4effffc0800000000000000
+      internalID: -3458766386853601175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6bd1730a1a5e2e80800000000000000
+      internalID: -8201518803621651601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_16
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3f06cacc1cfa5e0800000000000000
+      internalID: -1896083833290165307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 088e3ea067b9f9800800000000000000
+      internalID: 621386204891572352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_18
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db20c763645e1240800000000000000
+      internalID: 4764338241723706328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_19
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0132e5ad03d40010800000000000000
+      internalID: 1154279460084789515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_20
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 400
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713f8ed1cd727f3d0800000000000000
+      internalID: -3173023586111130857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c02272dd2569350800000000000000
+      internalID: 6023092661452410015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_22
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8792671b687f7a0800000000000000
+      internalID: -6343453453378291503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cf0afe46d65dd70800000000000000
+      internalID: 9067273705064823811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_24
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f9e86aa3f975050800000000000000
+      internalID: 5789270920259346257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_25
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 300
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d557a4d8bd260a0800000000000000
+      internalID: -6889703080037360345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e51b4b4e04a6de50800000000000000
+      internalID: 6833829865881015783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_27
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709b28afab022ecd0800000000000000
+      internalID: -2530424053189920505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_28
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90479cf0330dc8d50800000000000000
+      internalID: 6740991659993560073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_29
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d3befdd397cc920800000000000000
+      internalID: 3011915557460721046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_30
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d836b0784330ceff0800000000000000
+      internalID: -5625975395359859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_31
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 200
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a788baa1e3d826af0800000000000000
+      internalID: -404605718634985350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15758718410e47e0800000000000000
+      internalID: -1779483393620871910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8b859de68a6d0e0800000000000000
+      internalID: -2245422170151274293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_34
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de79b001a5f015b50800000000000000
+      internalID: 6580057410055673837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_35
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2fd3013e538beb30800000000000000
+      internalID: 4317689108337254189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_36
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 100
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0167df63532935b00800000000000000
+      internalID: 816156714737694224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f351de44f327c0860800000000000000
+      internalID: 7497493095729927487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_38
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f45fa0bbe423a2c0800000000000000
+      internalID: -4421649814447500043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main_character_Animation_Sheet_V0.2_Blue_39
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 150
+        height: 100
+      alignment: 9
+      pivot: {x: 0.35, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c14b6d6c85108d0800000000000000
+      internalID: -2881924675511509879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -22,9 +22,17 @@ public class SelectScreenController: InputControllable
     Animator animatorStart;
 
     [SerializeField]
+    GameObject previousScreen;
+
+    [SerializeField]
     string stageToLoad;
 
     bool active = true;
+
+    public void SetStageToLoad(string sceneName)
+    {
+        stageToLoad = sceneName;
+    }
 
     private void Start()
     {
@@ -38,22 +46,38 @@ public class SelectScreenController: InputControllable
         if (active == false)
             return;
 
-        if(inputBuffer[0].jump == true && playerData.PlayerID.Contains(inputID) == false)
+        if(inputBuffer[0].jump == true)
         {
-            playerData.PlayerID.Add(inputID);
-            DrawPlayers();
+            if (playerData.PlayerID.Contains(inputID) == false)
+            {
+                playerData.PlayerID.Add(inputID);
+                DrawPlayers();
+            }
+            else
+            {
+                StartBattle();
+            }
         }
 
         if (inputBuffer[0].hit == true)
         {
-            playerData.PlayerID.Remove(inputID);
-            DrawPlayers();
+            if (playerData.PlayerID.Contains(inputID) == true)
+            {
+                playerData.PlayerID.Remove(inputID);
+                DrawPlayers();
+            }
+            else if (inputID == 0)
+            {
+                this.gameObject.SetActive(false);
+                previousScreen.SetActive(true);
+                //StartBattle();
+            }
         }
 
-        if (inputBuffer[0].dash == true)
+        /*if (inputBuffer[0].dash == true)
         {
             StartBattle();
-        }
+        }*/
     }
 
 

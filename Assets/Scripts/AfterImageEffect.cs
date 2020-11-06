@@ -21,7 +21,12 @@ public class AfterImageEffect : MonoBehaviour
     [SerializeField]
     float afterImageTime = 0.5f;
     [SerializeField]
-    SpriteRenderer afterImagePrefab;
+    private SpriteRenderer afterImagePrefab;
+    public SpriteRenderer AfterImagePrefab
+    {
+        get { return afterImagePrefab; }
+    }
+
 
 
     Color colorDisappear;
