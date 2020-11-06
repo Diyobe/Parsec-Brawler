@@ -657,8 +657,9 @@ public class PlayerController : InputControllable
         }
         else if (other.tag != this.transform.tag && state == CharacterState.Dash)
         {
-            other.GetComponent<AttackController>().DoSomething(this);
-            OnFlashMove.Invoke(this);
+            AttackController a = other.GetComponent<AttackController>();
+            if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
+            
         }
 
     }
