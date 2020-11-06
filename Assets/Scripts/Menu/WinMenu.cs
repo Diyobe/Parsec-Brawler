@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using VoiceActing;
 
 public class WinMenu : InputControllable
 {
@@ -31,6 +32,9 @@ public class WinMenu : InputControllable
     bool active = false;
     List<int> playerID;
 
+    public AudioClip resultSong;
+    public AudioClip drumValidate;
+
     public void CreateMenu(List<int> id)
     {
         playerID = id;
@@ -50,6 +54,7 @@ public class WinMenu : InputControllable
 
     private IEnumerator WaitCoroutine()
     {
+        TengenToppaAudioManager.Instance.PlaySound(resultSong, 1f);
         yield return new WaitForSecondsRealtime(1f);
         active = true;
     }
@@ -60,6 +65,8 @@ public class WinMenu : InputControllable
             return;
         if(inputID == playerID[0] && inputBuffer[0].jump)
         {
+            TengenToppaAudioManager.Instance.PlaySound(drumValidate, 0.5f);
+            //TengenToppaAudioManager.Instance.StopMusic(1.5f);
             fade.gameObject.SetActive(true);
             StartCoroutine(WaitCoroutine2());
         }
