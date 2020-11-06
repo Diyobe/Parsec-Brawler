@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: DESTINY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f25ede14faf3cc04f9a9eda6cc8b7047, type: 2}
-  m_sharedMaterial: {fileID: 808794975447722136, guid: f25ede14faf3cc04f9a9eda6cc8b7047, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
+  m_sharedMaterial: {fileID: -6252706640659653543, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 160
+  m_fontSize: 250
   m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -15055,8 +15055,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FIGHT FOR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f25ede14faf3cc04f9a9eda6cc8b7047, type: 2}
-  m_sharedMaterial: {fileID: 808794975447722136, guid: f25ede14faf3cc04f9a9eda6cc8b7047, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
+  m_sharedMaterial: {fileID: -6252706640659653543, guid: 84ee44ba60d7e1b47bcfbdc8a9e112a6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15080,7 +15080,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
+  m_fontSize: 150
   m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0

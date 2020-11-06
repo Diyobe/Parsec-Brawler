@@ -30972,6 +30972,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163929325, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 919679162, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 419758852559786372, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -47.16992

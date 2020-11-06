@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour
             player.SetMaterial(swapColors[i], swapColorsTex[i]);
 
             playersAlive.Add(player);
-            playersLives.Add(debugPlayerLives);
+            playersLives.Add(playerData.NumberOfLives);
 
             InputController controller = Instantiate(inputControllerPrefab);
             controller.SetPlayerID(playerData.PlayerID[i]);
@@ -106,7 +106,7 @@ public class BattleManager : MonoBehaviour
             {
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
-                battleHuds[i].DrawLives(debugPlayerLives);
+                battleHuds[i].DrawLives(playerData.NumberOfLives);
             }
         }
 

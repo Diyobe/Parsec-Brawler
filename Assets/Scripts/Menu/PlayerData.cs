@@ -13,4 +13,12 @@ public class PlayerData : ScriptableObject
 		set { playerID = value; }
 	}
 
+	[SerializeField]
+	private int numberOfLives = 3;
+	public int NumberOfLives
+	{
+		get { return numberOfLives; }
+		set { numberOfLives = value; }
+	}
+
 }
