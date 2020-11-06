@@ -166,6 +166,7 @@ public class PlayerController : InputControllable
     IEnumerator motionSpeedCoroutine;
 
 
+    public AudioClip dashSound;
 
     public event Action OnWallBounce;
     public event Action OnKnockback;
@@ -480,6 +481,8 @@ public class PlayerController : InputControllable
         Vector2 normalizeDirection = new Vector2(horizontal, vertical).normalized;
         currentSpeedX = dashImpulsion * normalizeDirection.x;
         currentSpeedY = dashImpulsion * normalizeDirection.y;
+
+        TengenToppaAudioManager.Instance.PlaySound(dashSound, 0.4f);
     }
 
     private void ApplyGravity()

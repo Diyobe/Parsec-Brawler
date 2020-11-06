@@ -202,8 +202,6 @@ MonoBehaviour:
   dashDuration: 0.2
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 10
-  hitSound: {fileID: 8300000, guid: 19b9c1faac5f5b74ab2803b6c35f4d18, type: 3}
-  bumpSound: {fileID: 8300000, guid: 1534266fc6cbfa0428e24cb24b331aa9, type: 3}
   knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
@@ -214,6 +212,7 @@ MonoBehaviour:
   attackLeftAerial: {fileID: 6711955271010886810, guid: 5740c8ff908845745be1b67b825aabc0, type: 3}
   attackUpAerial: {fileID: 6711955271010886810, guid: ce14a14ab32856b428dc7c101d9e789a, type: 3}
   attackDownAerial: {fileID: 6328704887807121763, guid: 4383efa13af6e3048976d0ced6240aac, type: 3}
+  dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &1714619801704049786
 Animator:
   serializedVersion: 3

@@ -17,6 +17,6 @@ public class Tempest : MonoBehaviour
 
     public void PlayThunderFX()
     {
-        VoiceActing.TengenToppaAudioManager.Instance.PlaySound(thunderFX, 1);
+        VoiceActing.TengenToppaAudioManager.Instance.PlaySound(thunderFX, 0.7f);
     }
 }
