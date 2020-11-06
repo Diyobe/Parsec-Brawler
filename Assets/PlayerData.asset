@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e360525963f70241a2b7f674431c177, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerID: 
+  playerID: 0000000001000000
+  numberOfLives: 4
