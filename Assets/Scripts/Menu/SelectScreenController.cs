@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Rewired;
+using VoiceActing;
 
 public class SelectScreenController: InputControllable
 {
+    public AudioClip menuMoveSound;
+    public AudioClip menuValidateSound;
+    public AudioClip startFightSound;
+
+
     [SerializeField]
     PlayerData playerData;
 
@@ -38,6 +44,7 @@ public class SelectScreenController: InputControllable
     {
         playerData.PlayerID.Clear();
         DrawPlayers();
+
     }
 
 
@@ -50,6 +57,7 @@ public class SelectScreenController: InputControllable
         {
             if (playerData.PlayerID.Contains(inputID) == false)
             {
+                TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
                 playerData.PlayerID.Add(inputID);
                 DrawPlayers();
             }
@@ -63,6 +71,7 @@ public class SelectScreenController: InputControllable
         {
             if (playerData.PlayerID.Contains(inputID) == true)
             {
+                TengenToppaAudioManager.Instance.PlaySound(menuMoveSound, 0.5f);
                 playerData.PlayerID.Remove(inputID);
                 DrawPlayers();
             }
@@ -107,6 +116,8 @@ public class SelectScreenController: InputControllable
     {
         if(playerData.PlayerID.Count >= 2)
         {
+            TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
+            TengenToppaAudioManager.Instance.StopMusic(2f);
             active = false;
             animatorStart.gameObject.SetActive(true);
             StartCoroutine(StartBattleCoroutine());

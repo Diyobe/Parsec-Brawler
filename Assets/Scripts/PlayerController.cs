@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
+using VoiceActing;
 
 public enum CharacterState
 {
@@ -100,6 +100,8 @@ public class PlayerController : InputControllable
     float baseKnockbackTime;
     [SerializeField]
     float knockbackPowerForWallBounce;
+    public AudioClip hitSound;
+    public AudioClip bumpSound;
 
     [SerializeField] float knockbackImpactReductionRate = 0.8f;
 
@@ -667,6 +669,7 @@ public class PlayerController : InputControllable
     {
         if (attack == null)
             return;
+        TengenToppaAudioManager.Instance.PlaySound(hitSound, 0.3f);
         state = CharacterState.Hit;
         currentSpeedX = 0;
         currentSpeedY = 0;

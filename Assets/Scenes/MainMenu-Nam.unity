@@ -1779,6 +1779,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673138835}
   m_CullTransparentMesh: 0
+--- !u!1001 &685839014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 102664882994343062, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_Name
+      value: TengenToppaAudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 102664882994343065, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1b9cd8d59ebeaf42898cec26e2ac94a, type: 3}
 --- !u!1 &706657036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,6 +5013,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510e187651897fd46bcd458a10ff1b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMoveSound: {fileID: 0}
+  menuValidateSound: {fileID: 0}
+  startFightSound: {fileID: 0}
   playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
   imageCharacterFace:
   - {fileID: 0}
@@ -5454,6 +5514,10 @@ MonoBehaviour:
   - {fileID: 307211865}
   selection: {fileID: 151782481}
   selectScreenController: {fileID: 1967410798}
+  menuMoveSound: {fileID: 8300000, guid: 76262ad5bd7cbb74e98a9fe16a7cad95, type: 3}
+  menuValidateSound: {fileID: 8300000, guid: eb399cfde5eba3345bb09cb4ad515a78, type: 3}
+  menuTheme: {fileID: 8300000, guid: bc23328fd5913a9408e5cc7c06917ff4, type: 3}
+  menuIntro: {fileID: 8300000, guid: a550b7a2c3d43444b881a61fc17724ba, type: 3}
 --- !u!1 &1916729084
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,6 +5750,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510e187651897fd46bcd458a10ff1b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMoveSound: {fileID: 8300000, guid: 76262ad5bd7cbb74e98a9fe16a7cad95, type: 3}
+  menuValidateSound: {fileID: 8300000, guid: eb399cfde5eba3345bb09cb4ad515a78, type: 3}
+  startFightSound: {fileID: 8300000, guid: f9ccdc2ea2b994c43a3888b32c43f845, type: 3}
   playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
   imageCharacterFace:
   - {fileID: 1203468331}
