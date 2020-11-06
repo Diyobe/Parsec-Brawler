@@ -101,7 +101,7 @@ public class AttackController : MonoBehaviour
 
     public void CreateAttack(PlayerController cUser)
     {
-        TengenToppaAudioManager.Instance.PlaySound(swingSound, 0.1f, 0.5f, 2f);
+        TengenToppaAudioManager.Instance.PlaySound(swingSound, 0.1f, 0.9f, 1.3f);
         user = cUser;
         this.transform.localScale = new Vector3(this.transform.localScale.x * user.SpriteRenderer.transform.localScale.x * user.Direction, 
                                                 this.transform.localScale.y * user.SpriteRenderer.transform.localScale.y, 
@@ -139,7 +139,7 @@ public class AttackController : MonoBehaviour
         //target.PlaySound(attackBehavior.OnHitSound);
 
         //Feedback
-        TengenToppaAudioManager.Instance.PlaySound(hitSound, 0.5f, 0.5f, 2f);
+        TengenToppaAudioManager.Instance.PlaySound(hitSound, 0.5f, 0.5f, 1.3f);
 
         if (OnHitAnimation != null)
         {
