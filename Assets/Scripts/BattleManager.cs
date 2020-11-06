@@ -41,12 +41,14 @@ public class BattleManager : MonoBehaviour
     [Header("HUD")]
     [SerializeField]
     private Transform hudParent;
+    /*[SerializeField]
+    private BattleHud battleHud;*/
     [SerializeField]
-    private BattleHud battleHud;
+    List<BattleHud> battleHuds = new List<BattleHud>();
 
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
-    List<BattleHud> battleHuds = new List<BattleHud>();
+
 
     public AudioClip battleTheme;
     public AudioClip bumpSound;
@@ -79,7 +81,7 @@ public class BattleManager : MonoBehaviour
             player.SetMaterial(swapColors[i], swapColorsTex[i]);
 
             playersAlive.Add(player);
-            playersLives.Add(debugPlayerLives);
+            playersLives.Add(playerData.NumberOfLives);
 
             InputController controller = Instantiate(inputControllerPrefab);
             controller.SetPlayerID(playerData.PlayerID[i]);
@@ -102,10 +104,9 @@ public class BattleManager : MonoBehaviour
         {
             if (i < playersAlive.Count)
             {
-                battleHuds.Add(Instantiate(battleHud, hudParent));
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
-                battleHuds[i].DrawLives(debugPlayerLives);
+                battleHuds[i].DrawLives(playerData.NumberOfLives);
             }
         }
 
@@ -133,7 +134,6 @@ public class BattleManager : MonoBehaviour
 
     public void BlastCharacter(PlayerController blastedCharacter)
     {
-
         for (int i = 0; i < playersAlive.Count; i++)
         {
             if(playersAlive[i] == blastedCharacter && blastedCharacter.enabled == true)
@@ -167,7 +167,8 @@ public class BattleManager : MonoBehaviour
         // On update le hud mais c'est une boucle de trop, pas opti mais au moins c'est un peu clair
         for (int i = 0; i < battleHuds.Count; i++)
         {
-            battleHuds[i].DrawLivesFeedback(playersLives[i]);
+            if(battleHuds[i].isActiveAndEnabled)
+                battleHuds[i].DrawLivesFeedback(playersLives[i]);
         }
     }
 
@@ -218,7 +219,7 @@ public class BattleManager : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
 

@@ -6,7 +6,7 @@ using TMPro;
 using Rewired;
 using VoiceActing;
 
-public class SelectScreenController: InputControllable
+public class SelectScreenController : InputControllable
 {
     public AudioClip menuMoveSound;
     public AudioClip menuValidateSound;
@@ -34,6 +34,7 @@ public class SelectScreenController: InputControllable
     string stageToLoad;
 
     bool active = true;
+    private Player player;
 
     public void SetStageToLoad(string sceneName)
     {
@@ -44,7 +45,7 @@ public class SelectScreenController: InputControllable
     {
         playerData.PlayerID.Clear();
         DrawPlayers();
-
+        player = ReInput.players.GetPlayer(0);
     }
 
 
@@ -53,17 +54,13 @@ public class SelectScreenController: InputControllable
         if (active == false)
             return;
 
-        if(inputBuffer[0].jump == true)
+        if (inputBuffer[0].jump == true)
         {
             if (playerData.PlayerID.Contains(inputID) == false)
             {
                 TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
                 playerData.PlayerID.Add(inputID);
                 DrawPlayers();
-            }
-            else
-            {
-                StartBattle();
             }
         }
 
@@ -83,6 +80,11 @@ public class SelectScreenController: InputControllable
             }
         }
 
+        if (player.GetButtonDown("Start"))
+        {
+            StartBattle();
+        }
+
         /*if (inputBuffer[0].dash == true)
         {
             StartBattle();
@@ -96,7 +98,7 @@ public class SelectScreenController: InputControllable
         for (int i = 0; i < playerData.PlayerID.Count; i++)
         {
             imageCharacterFace[i].gameObject.SetActive(true);
-            textPlayerID[i].text = (playerData.PlayerID[i]+1)+"P";
+            textPlayerID[i].text = (playerData.PlayerID[i] + 1) + "P";
         }
         for (int i = playerData.PlayerID.Count; i < imageCharacterFace.Length; i++)
         {
@@ -114,7 +116,7 @@ public class SelectScreenController: InputControllable
 
     public void StartBattle()
     {
-        if(playerData.PlayerID.Count >= 2)
+        if (playerData.PlayerID.Count >= 2)
         {
             TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
             TengenToppaAudioManager.Instance.StopMusic(2f);

@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VoiceActing
 {
@@ -39,6 +40,10 @@ namespace VoiceActing
         AudioLoopManager loopManager;
 
 
+        [SerializeField] private AudioSource[] audioArray;
+        private int audioIndex = 0;
+
+
         public static TengenToppaAudioManager Instance;
 
         void Awake()
@@ -67,7 +72,7 @@ namespace VoiceActing
 
         public void PlayMusic(AudioClip music, AudioClip musicLoop, int timeFade = 1)
         {
-            if (music == audioMusic.clip)
+            if (music == audioMusic.clip || musicLoop == audioMusic.clip)
             {
                 audioMusic.volume = musicVolumeMax;
                 return;
@@ -179,9 +184,18 @@ namespace VoiceActing
 
         public void PlaySound(AudioClip sound, float volumeMultiplier = 1, float pitchMin = 1, float pitchMax = 1)
         {
-            audioSound.pitch = Random.Range(pitchMin, pitchMax);
-            audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
-            audioSound.pitch = 1;
+            ++audioIndex;
+            if (audioIndex >= audioArray.Length)
+            {
+                audioIndex = 0;
+            }
+            audioArray[audioIndex].clip = sound;
+            audioArray[audioIndex].volume = volumeMultiplier;
+            audioArray[audioIndex].pitch = Random.Range(pitchMin, pitchMax);
+            audioArray[audioIndex].Play();
+            //audioSound.pitch = Random.Range(pitchMin, pitchMax);
+            //audioSound.PlayOneShot(sound, soundVolumeMax * volumeMultiplier);
+            //audioSound.pitch = 1;
         }
 
         /*public void PlayVoice(AudioClip sound, float volumeMultiplier = 1)
