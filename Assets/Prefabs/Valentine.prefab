@@ -208,7 +208,7 @@ MonoBehaviour:
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: ceccf720f25e1e943a101ff79bf41b53, type: 3}
-  attackLeft: {fileID: 6711955271010886810, guid: 40a46e620fc1226459297a6905f75bfc, type: 3}
+  attackLeft: {fileID: 6711955271010886810, guid: daa6975205b62aa4e92b4f6a784398d8, type: 3}
   attackUp: {fileID: 6711955271010886810, guid: db3f3ff2f2d5994409c89ebd699513a8, type: 3}
   attackDown: {fileID: 6711955271010886810, guid: d1538fc285eca5548987c6b6c4d9e313, type: 3}
   attackLeftAerial: {fileID: 6711955271010886810, guid: 3ec438ecaee260346bea31ba1400ba71, type: 3}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 2.857143, y: 2.857143}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

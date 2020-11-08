@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f07e4f09ee7ab5942b9ea5855457103c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6dd47f6202e2574ea00707478c01019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6711955271010886810}
   - component: {fileID: 6711955271010886813}
   m_Layer: 9
-  m_Name: Valentine_Utilt
+  m_Name: Alt_Valentine_Ftilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,12 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8def115a5b82853498e0ad9b0a590f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 7400000, guid: dbd870d9a01e93e4fab20ab584c52c48, type: 2}
+  attackAnimation: {fileID: 7400000, guid: 0d7098207e0b9474d927d2e6d6984565, type: 2}
   lifetime: 1
   keepMomentum: 0
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   knockbackPower: 25
-  knockbackAngle: {x: 0, y: -0.5, z: 0}
+  knockbackAngle: {x: 0, y: -0.2, z: 0}
   hitStopUser: 1
   hitStop: 0.5
   targetShakePower: 0.2
@@ -153,5 +153,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.5710822, y: 0.9525676, z: 0.8}
-  m_Center: {x: 0.4586167, y: 1.0262839, z: 0}
+  m_Size: {x: 1.2399609, y: 1.7789701, z: 0.8}
+  m_Center: {x: 0.86998034, y: 0.66545874, z: 0}

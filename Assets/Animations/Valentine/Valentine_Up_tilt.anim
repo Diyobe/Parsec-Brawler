@@ -21,27 +21,27 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: bde8718f125b6c2438980ba7d9ccb30b, type: 3}
-    - time: 0.083333336
+    - time: 0.05
       value: {fileID: 21300000, guid: b4af57ae8093aa945a11c0fda3ff85c0, type: 3}
-    - time: 0.16666667
+    - time: 0.1
       value: {fileID: 21300000, guid: bd0cb0695734b7943906e9c8e487ed34, type: 3}
-    - time: 0.25
+    - time: 0.15
       value: {fileID: 21300000, guid: a28098a791bbafe4689f5536dae75d4c, type: 3}
-    - time: 0.33333334
+    - time: 0.2
       value: {fileID: 21300000, guid: f07e4f09ee7ab5942b9ea5855457103c, type: 3}
-    - time: 0.41666666
+    - time: 0.26666668
       value: {fileID: 21300000, guid: a5627a7307695b947af5b59452f7ab26, type: 3}
-    - time: 0.5
+    - time: 0.33333334
       value: {fileID: 21300000, guid: c11580cefd11e9244b1c319dc9d44ab1, type: 3}
-    - time: 0.5833333
+    - time: 0.38333333
       value: {fileID: 21300000, guid: d66de8c4421c3c543b3958f03f9a9538, type: 3}
-    - time: 0.6666667
+    - time: 0.43333334
       value: {fileID: 21300000, guid: a10f74c38485f9e42949028c006fb095, type: 3}
-    - time: 0.75
+    - time: 0.46666667
       value: {fileID: 21300000, guid: e1386bb864fd99a498633e936ac90961, type: 3}
-    - time: 0.8333333
+    - time: 0.5
       value: {fileID: 21300000, guid: 119432404a2281f47b02a147298633cc, type: 3}
-    - time: 0.9166667
+    - time: 0.53333336
       value: {fileID: 21300000, guid: e2135545e29b2b841908c5200a309060, type: 3}
     attribute: m_Sprite
     path: PlayerSprite
@@ -79,7 +79,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.93333334
+    m_StopTime: 0.55
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -99,21 +99,21 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.33333334
+  - time: 0.2
     functionName: ActionActive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.26666668
     functionName: ActionUnactive
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.9166667
+  - time: 0.53333336
     functionName: EndAction
     data: 
     objectReferenceParameter: {fileID: 0}

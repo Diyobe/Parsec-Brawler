@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8fd4a9f8f5ced3b4982b247a2eec2666, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6828e5f25ea06e04681c54d48973792c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
   keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   knockbackPower: 25
-  knockbackAngle: {x: 0, y: -0.2, z: 0}
-  hitStopUser: 1
+  knockbackAngle: {x: 0, y: -0.3, z: 0}
+  hitStopUser: 0
   hitStop: 0.5
   targetShakePower: 0.2
   zoom: 0
@@ -153,5 +153,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.48355758, y: 0.86771244, z: 0.8}
-  m_Center: {x: 0.33064336, y: 0.28325894, z: 0}
+  m_Size: {x: 1.0955565, y: 0.71078974, z: 0.8}
+  m_Center: {x: 0.47972, y: 0.04395172, z: 0}
