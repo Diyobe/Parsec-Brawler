@@ -91,7 +91,7 @@ public class PlayerController : InputControllable
     [SerializeField] int numberOfDashes = 1;
     int currentNumberOfDashes;
 
-    [SerializeField]float dashDuration = .2f;
+    [SerializeField] float dashDuration = .2f;
     float dashTimer;
 
     [Space]
@@ -118,6 +118,8 @@ public class PlayerController : InputControllable
     AttackController attackUp;
     [SerializeField]
     AttackController attackDown;
+    [SerializeField]
+    AttackController neutralSpecialGround;
 
     [Header("ActionAerial")]
     [SerializeField]
@@ -126,6 +128,16 @@ public class PlayerController : InputControllable
     AttackController attackUpAerial;
     [SerializeField]
     AttackController attackDownAerial;
+    [SerializeField]
+    AttackController neutralSpecialAir;
+
+    [Header("Projectile")]
+    [SerializeField]
+    GameObject projectile = null;
+    [SerializeField]
+    Transform projectileOrigin = null;
+
+
 
     protected Vector2 knockbackPower;
     int knockbackAnimation;
@@ -235,7 +247,7 @@ public class PlayerController : InputControllable
             CheckCrouch();
             ApplyGravity();
         }
-        else if(state == CharacterState.Dash)
+        else if (state == CharacterState.Dash)
         {
             UpdateDash();
         }
@@ -250,7 +262,7 @@ public class PlayerController : InputControllable
 
     private void UpdateDash()
     {
-        if(dashTimer >= dashDuration)
+        if (dashTimer >= dashDuration)
         {
             state = CharacterState.Idle;
             afterImageEffect.EndAfterImage();
@@ -273,7 +285,7 @@ public class PlayerController : InputControllable
         {
             knockbackPower = Vector2.zero;
         }
-        else if(state == CharacterState.Acting)
+        else if (state == CharacterState.Acting)
         {
             currentSpeedX = 0;
         }
@@ -306,12 +318,12 @@ public class PlayerController : InputControllable
 
         for (int i = 0; i < buffer.Count; i++)
         {
-            if(buffer[i].dash && currentNumberOfDashes > 0)
+            if (buffer[i].dash && currentNumberOfDashes > 0)
             {
                 buffer[i].dash = false;
                 --currentNumberOfDashes;
-                
-                if(Mathf.Abs(buffer[i].vertical) > 0.35f)
+
+                if (Mathf.Abs(buffer[i].vertical) > 0.35f)
                 {
                     vertical = Mathf.Sign(buffer[i].vertical);
                 }
@@ -388,10 +400,22 @@ public class PlayerController : InputControllable
                     }
                     else
                     {
-                        if(currentSpeedX != 0)
+                        if (currentSpeedX != 0)
                             direction = (int)Mathf.Sign(currentSpeedX);
                         Action(attackLeftAerial);
                     }
+                }
+            }
+
+            if (buffer[i].special)
+            {
+                if (characterCollision.IsGrounded == true)
+                {
+                    Action(neutralSpecialGround);
+                }
+                else
+                {
+                    Action(neutralSpecialAir);
                 }
             }
         }
@@ -544,6 +568,20 @@ public class PlayerController : InputControllable
         state = CharacterState.Acting;
     }
 
+    public void CreateProjectile()
+    {
+        if (projectile == null || projectileOrigin == null)
+            return;
+
+        if (characterCollision.IsGrounded)
+        {
+            Instantiate(projectile, projectileOrigin.position, Quaternion.Euler(0f, 0f, 0f));
+        }
+        else
+        {
+            Instantiate(projectile, projectileOrigin.position, Quaternion.Euler(0f, 45f, 0f));
+        }
+    }
 
     // Appelé par les anims
     // Uniquement utilisable pour l'action principale
@@ -670,7 +708,7 @@ public class PlayerController : InputControllable
         {
             AttackController a = other.GetComponent<AttackController>();
             if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
-            
+
         }
 
     }
@@ -745,9 +783,9 @@ public class PlayerController : InputControllable
         int layerMask = 1 << 8;
         RaycastHit hit;
         Physics.Raycast(this.transform.position, knockbackPower, out hit, 50, layerMask);
-        if(hit.collider == null)
+        if (hit.collider == null)
         {
-            OnSuperKnockback.Invoke(this);          
+            OnSuperKnockback.Invoke(this);
         }
     }
 

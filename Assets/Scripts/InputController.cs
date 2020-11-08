@@ -9,6 +9,7 @@ public class input
 {
     public bool jump;
     public bool hit;
+    public bool special;
     public bool dash;
 
     public float horizontal;
@@ -17,6 +18,7 @@ public class input
     public input()
     {
         jump = false;
+        special = false;
         hit = false;
         dash = false;
 
@@ -69,11 +71,20 @@ public class InputController : MonoBehaviour
         InputJump();
         InputDash();
         InputHit();
+        InputSpecial();
         InputHorizontal();
         InputVertical();
         InputStart();
 
         playerController.UpdateBuffer(inputBuffer, playerID);
+    }
+
+    private void InputSpecial()
+    {
+        if (player.GetButtonDown("Special"))
+        {
+            inputBuffer[0].special = true;
+        }
     }
 
     public bool InputStart()
