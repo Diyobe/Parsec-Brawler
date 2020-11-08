@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2fc14c76f87423c44888f425f87f383d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,13 +207,13 @@ MonoBehaviour:
   knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
-  crouchJump: {fileID: 5009905772876635485, guid: 42ab5c3f38ff930468e3b25ac26f53fd, type: 3}
-  attackLeft: {fileID: 6711955271010886810, guid: 491bb7400a14bdd4a9734e127c771edc, type: 3}
-  attackUp: {fileID: 6711955271010886810, guid: a07de622fe0fd0c4690f06596989e2d8, type: 3}
-  attackDown: {fileID: 6711955271010886810, guid: cf8243fbc1bd46741a78f7f29e2418b0, type: 3}
-  attackLeftAerial: {fileID: 6711955271010886810, guid: 5740c8ff908845745be1b67b825aabc0, type: 3}
-  attackUpAerial: {fileID: 6711955271010886810, guid: ce14a14ab32856b428dc7c101d9e789a, type: 3}
-  attackDownAerial: {fileID: 6328704887807121763, guid: 4383efa13af6e3048976d0ced6240aac, type: 3}
+  crouchJump: {fileID: 5009905772876635485, guid: ceccf720f25e1e943a101ff79bf41b53, type: 3}
+  attackLeft: {fileID: 6711955271010886810, guid: 40a46e620fc1226459297a6905f75bfc, type: 3}
+  attackUp: {fileID: 6711955271010886810, guid: db3f3ff2f2d5994409c89ebd699513a8, type: 3}
+  attackDown: {fileID: 6711955271010886810, guid: d1538fc285eca5548987c6b6c4d9e313, type: 3}
+  attackLeftAerial: {fileID: 6711955271010886810, guid: 3ec438ecaee260346bea31ba1400ba71, type: 3}
+  attackUpAerial: {fileID: 6711955271010886810, guid: 528b1fe814377ad43968f4fb8b4e4af5, type: 3}
+  attackDownAerial: {fileID: 6328704887807121763, guid: 624d7aa3da2a6a34da0cf45cf64eb1ed, type: 3}
   dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &1714619801704049786
 Animator:
@@ -519,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3133351174556130696
 Transform:
   m_ObjectHideFlags: 0
