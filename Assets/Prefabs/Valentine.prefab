@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 1714619801704049791}
   - component: {fileID: 1714619801704049789}
   - component: {fileID: 1714619801704049790}
+  - component: {fileID: 8706512499288346703}
   - component: {fileID: 1714619801704049761}
-  - component: {fileID: 1714619801704049788}
   - component: {fileID: 1714619801704049786}
   m_Layer: 0
   m_Name: Valentine
@@ -153,7 +153,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.95, z: 1}
   m_Center: {x: -0.05, y: 0.475, z: 0}
---- !u!114 &1714619801704049761
+--- !u!114 &8706512499288346703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,25 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1714619801704049760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5182f823385783442a0dae828e4b16f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterCollider: {fileID: 1714619801704049790}
-  collision: 1
-  offsetRaycastX: 0.01
-  offsetRaycastY: 0.01
-  numberRaycastVertical: 3
-  numberRaycastHorizontal: 3
---- !u!114 &1714619801704049788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714619801704049760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47ecbe2096680e4e9746721d1434f02, type: 3}
+  m_Script: {fileID: 11500000, guid: 87724a6e13bf08142a71a03e59447173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particlePoint: {fileID: 1714619803333939944}
@@ -190,7 +172,7 @@ MonoBehaviour:
   shakeSprite: {fileID: 1714619802387836513}
   smoke: {fileID: 6555611295522087577}
   afterImageEffect: {fileID: 4055193919426768375}
-  speedMax: 5
+  speedMax: 6
   acceleration: 2
   decceleration: 10
   airFriction: 1.4
@@ -212,14 +194,34 @@ MonoBehaviour:
   attackLeft: {fileID: 6711955271010886810, guid: daa6975205b62aa4e92b4f6a784398d8, type: 3}
   attackUp: {fileID: 6711955271010886810, guid: db3f3ff2f2d5994409c89ebd699513a8, type: 3}
   attackDown: {fileID: 6711955271010886810, guid: d1538fc285eca5548987c6b6c4d9e313, type: 3}
-  neutralSpecialGround: {fileID: 5009905772876635485, guid: d3a4619deba61bb4f913ed259ece114e, type: 3}
   attackLeftAerial: {fileID: 6711955271010886810, guid: 3ec438ecaee260346bea31ba1400ba71, type: 3}
   attackUpAerial: {fileID: 6711955271010886810, guid: 528b1fe814377ad43968f4fb8b4e4af5, type: 3}
   attackDownAerial: {fileID: 6328704887807121763, guid: 624d7aa3da2a6a34da0cf45cf64eb1ed, type: 3}
-  neutralSpecialAir: {fileID: 5009905772876635485, guid: e3cccb8418fa8e94fac03f4842f3bee5, type: 3}
-  projectile: {fileID: 0}
-  projectileOrigin: {fileID: 203112595127380738}
   dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
+  neutralGround: {fileID: 5009905772876635485, guid: d3a4619deba61bb4f913ed259ece114e, type: 3}
+  neutralAir: {fileID: 5009905772876635485, guid: e3cccb8418fa8e94fac03f4842f3bee5, type: 3}
+  upSpecial: {fileID: 6328704887807121763, guid: 2e2391f87859cac41beea853d35b0d6a, type: 3}
+  taunt: {fileID: 5009905772876635485, guid: 2c52314c6827761489fb80a546b1c3f6, type: 3}
+  upSpecialImpulsion: 10
+  upSpecialNumber: 1
+--- !u!114 &1714619801704049761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714619801704049760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5182f823385783442a0dae828e4b16f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCollider: {fileID: 1714619801704049790}
+  collision: 1
+  offsetRaycastX: 0.01
+  offsetRaycastY: 0.01
+  numberRaycastVertical: 3
+  numberRaycastHorizontal: 3
 --- !u!95 &1714619801704049786
 Animator:
   serializedVersion: 3
@@ -291,7 +293,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef497f92fbbd4d744a8c595aea68496a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

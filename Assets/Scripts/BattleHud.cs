@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BattleHud : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class BattleHud : MonoBehaviour
     [SerializeField]
     Shake faceShake;
 
+    Image faceImage;
     int currentLive;
+
+    public void DrawFace(Sprite face)
+    {
+        faceImage = faceShake.GetComponent<Image>();
+        faceImage.sprite = face;
+    }
 
     public void ShakeFace()
     {

@@ -29,7 +29,7 @@ public class PlayerController : InputControllable
     }
 
     [SerializeField]
-    CharacterCollision characterCollision;
+    protected CharacterCollision characterCollision;
     [SerializeField]
     Animator characterAnimator;
     [SerializeField]
@@ -51,7 +51,7 @@ public class PlayerController : InputControllable
     [SerializeField]
     ParticleSystem smoke;
     [SerializeField]
-    AfterImageEffect afterImageEffect;
+    protected AfterImageEffect afterImageEffect;
 
 
     [Space]
@@ -118,8 +118,6 @@ public class PlayerController : InputControllable
     AttackController attackUp;
     [SerializeField]
     AttackController attackDown;
-    [SerializeField]
-    AttackController neutralSpecialGround;
 
     [Header("ActionAerial")]
     [SerializeField]
@@ -128,15 +126,6 @@ public class PlayerController : InputControllable
     AttackController attackUpAerial;
     [SerializeField]
     AttackController attackDownAerial;
-    [SerializeField]
-    AttackController neutralSpecialAir;
-
-    [Header("Projectile")]
-    [SerializeField]
-    GameObject projectile = null;
-    [SerializeField]
-    Transform projectileOrigin = null;
-
 
 
     protected Vector2 knockbackPower;
@@ -159,7 +148,7 @@ public class PlayerController : InputControllable
         get { return currentSpeedX; }
     }
 
-    float currentSpeedY;
+    protected float currentSpeedY;
     public float CurrentSpeedY
     {
         get { return currentSpeedY; }
@@ -368,7 +357,7 @@ public class PlayerController : InputControllable
         }
 
     }
-    void CheckAttack(List<input> buffer)
+    protected virtual void CheckAttack(List<input> buffer)
     {
         for (int i = 0; i < buffer.Count; i++)
         {
@@ -404,18 +393,6 @@ public class PlayerController : InputControllable
                             direction = (int)Mathf.Sign(currentSpeedX);
                         Action(attackLeftAerial);
                     }
-                }
-            }
-
-            if (buffer[i].special)
-            {
-                if (characterCollision.IsGrounded == true)
-                {
-                    Action(neutralSpecialGround);
-                }
-                else
-                {
-                    Action(neutralSpecialAir);
                 }
             }
         }
@@ -515,7 +492,7 @@ public class PlayerController : InputControllable
         {
             currentSpeedY = 0;
         }
-        currentSpeedY -= gravityForce * Time.deltaTime;
+        currentSpeedY -= gravityForce * Time.deltaTime * GetMotionSpeed();
         if (currentSpeedY < gravityForceMax)
             currentSpeedY = gravityForceMax;
     }
@@ -566,21 +543,6 @@ public class PlayerController : InputControllable
         }
 
         state = CharacterState.Acting;
-    }
-
-    public void CreateProjectile()
-    {
-        if (projectile == null || projectileOrigin == null)
-            return;
-
-        if (characterCollision.IsGrounded)
-        {
-            Instantiate(projectile, projectileOrigin.position, Quaternion.Euler(0f, 0f, 0f));
-        }
-        else
-        {
-            Instantiate(projectile, projectileOrigin.position, Quaternion.Euler(0f, 45f, 0f));
-        }
     }
 
     // Appelé par les anims

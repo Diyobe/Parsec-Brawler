@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAnimation: {fileID: 7400000, guid: 22ec9f79ed52f3b4a99a2eb897fc15ba, type: 2}
   lifetime: 1
-  keepMomentum: 0
+  keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
   knockbackPower: 5.5
   knockbackAngle: {x: 0, y: 0, z: 0}

@@ -16,12 +16,6 @@ public class BattleManager : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField]
-    private Material[] swapColors;
-    [SerializeField]
-    private Texture2D[] swapColorsTex;
-    [SerializeField]
-    private PlayerController characterPrefab;
-    [SerializeField]
     private InputController inputControllerPrefab;
 
     [Header("Components")]
@@ -60,12 +54,12 @@ public class BattleManager : MonoBehaviour
 #if UNITY_EDITOR
         if (debug == true)
         {
-            playerData.PlayerID.Clear();
-            for (int i = 0; i < debugPlayerNumber; i++)
-            {
+            //playerData.PlayerID.Clear();
+            //for (int i = 0; i < debugPlayerNumber; i++)
+            //{
 
-                playerData.PlayerID.Add(i);
-            }
+            //    playerData.PlayerID.Add(i);
+            //}
         }
 #endif
         CreateGame();
@@ -75,18 +69,22 @@ public class BattleManager : MonoBehaviour
 
     private void CreateGame()
     {
-        for (int i = 0; i < playerData.PlayerID.Count; i++)
+        for (int i = 0; i < playerData.CharacterInfos.Count; i++)
         {
-            PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
+            CharacterData data = playerData.CharacterInfos[i].CharacterData;
+            int colorID = playerData.CharacterInfos[i].CharacterColorID;
+            int playerID = playerData.CharacterInfos[i].PlayerID;
+
+            PlayerController player = Instantiate(data.PlayerController, spawnPosition[i].position, Quaternion.identity);
+            player.SpriteRenderer.material = data.SwapColors[colorID];
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
-            player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
-            player.SetMaterial(swapColors[i], swapColorsTex[i], i);
+            player.gameObject.tag = "Player" + (playerID + 1);
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);
 
             InputController controller = Instantiate(inputControllerPrefab);
-            controller.SetPlayerID(playerData.PlayerID[i]);
+            controller.SetPlayerID(playerID);
             controller.SetPlayerController(player);
             controller.gameObject.SetActive(true);
 
@@ -108,6 +106,7 @@ public class BattleManager : MonoBehaviour
             {
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
+                battleHuds[i].DrawFace(playerData.CharacterInfos[i].CharacterData.Face);
                 battleHuds[i].DrawLives(playerData.NumberOfLives);
             }
         }

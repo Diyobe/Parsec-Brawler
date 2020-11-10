@@ -43,7 +43,7 @@ public class SelectScreenController : InputControllable
 
     private void Start()
     {
-        playerData.PlayerID.Clear();
+        playerData.CharacterInfos.Clear();
         DrawPlayers();
         player = ReInput.players.GetPlayer(0);
     }
@@ -51,56 +51,19 @@ public class SelectScreenController : InputControllable
 
     public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
-        if (active == false)
-            return;
 
-        if (inputBuffer[0].jump == true)
-        {
-            if (playerData.PlayerID.Contains(inputID) == false)
-            {
-                TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
-                playerData.PlayerID.Add(inputID);
-                DrawPlayers();
-            }
-        }
-
-        if (inputBuffer[0].hit == true)
-        {
-            if (playerData.PlayerID.Contains(inputID) == true)
-            {
-                TengenToppaAudioManager.Instance.PlaySound(menuMoveSound, 0.5f);
-                playerData.PlayerID.Remove(inputID);
-                DrawPlayers();
-            }
-            else if (inputID == 0)
-            {
-                this.gameObject.SetActive(false);
-                previousScreen.SetActive(true);
-                //StartBattle();
-            }
-        }
-
-        if (player.GetButtonDown("Start"))
-        {
-            StartBattle();
-        }
-
-        /*if (inputBuffer[0].dash == true)
-        {
-            StartBattle();
-        }*/
     }
 
 
 
     public void DrawPlayers()
     {
-        for (int i = 0; i < playerData.PlayerID.Count; i++)
+        for (int i = 0; i < playerData.CharacterInfos.Count; i++)
         {
             imageCharacterFace[i].gameObject.SetActive(true);
-            textPlayerID[i].text = (playerData.PlayerID[i] + 1) + "P";
+            textPlayerID[i].text = (playerData.CharacterInfos[i].PlayerID + 1) + "P";
         }
-        for (int i = playerData.PlayerID.Count; i < imageCharacterFace.Length; i++)
+        for (int i = playerData.CharacterInfos.Count; i < imageCharacterFace.Length; i++)
         {
             imageCharacterFace[i].gameObject.SetActive(false);
             textPlayerID[i].text = "";
@@ -111,12 +74,12 @@ public class SelectScreenController : InputControllable
 
     public void CheckBattle()
     {
-        textBattleStart.gameObject.SetActive((playerData.PlayerID.Count >= 2));
+        textBattleStart.gameObject.SetActive((playerData.CharacterInfos.Count >= 2));
     }
 
     public void StartBattle()
     {
-        if (playerData.PlayerID.Count >= 2)
+        if (playerData.CharacterInfos.Count >= 2)
         {
             TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
             TengenToppaAudioManager.Instance.StopMusic(2f);

@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e360525963f70241a2b7f674431c177, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerID: 0000000001000000
+  characterInfos:
+  - playerID: 0
+    characterColorID: 0
+    characterData: {fileID: 11400000, guid: 44bb6ce6783150b48945a584bcf58818, type: 2}
+  - playerID: 1
+    characterColorID: 1
+    characterData: {fileID: 11400000, guid: ca918cb910bda08419dae662fc4b2644, type: 2}
   numberOfLives: 1
