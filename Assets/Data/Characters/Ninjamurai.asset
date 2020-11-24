@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceff123fa96da5b4296765f90d22853e, type: 3}
   m_Name: Ninjamurai
   m_EditorClassIdentifier: 
-  charName: Slash
+  charName: Ninjamurai
   face: {fileID: 21300000, guid: 6a4feba9312106c49baf4d32ef5ab347, type: 3}
   characterSelectionSprite: {fileID: 6032733102452510744, guid: 8a1beffb199b86b468007301d40d1b8c, type: 3}
   playerController: {fileID: 1714619801704049788, guid: 936a7ab0a339ed245a69b74962eef658, type: 3}

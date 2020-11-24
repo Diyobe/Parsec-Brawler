@@ -48,6 +48,13 @@ public class SelectScreenController : InputControllable
     [SerializeField]
     RectTransform[] cursors;
 
+
+    [SerializeField]
+    Image[] charNameBackgrounds;
+
+    [SerializeField]
+    TextMeshProUGUI[] charNameTexts;
+
     bool[] joystickPushed = new bool[4];
 
     bool[] jumpPressed = new bool[4];
@@ -64,6 +71,8 @@ public class SelectScreenController : InputControllable
 
     bool active = true;
     private Player player;
+
+
 
     public void SetStageToLoad(string sceneName)
     {
@@ -85,6 +94,7 @@ public class SelectScreenController : InputControllable
         for (int i = 0; i < characterPortraits.Length; i++)
         {
             characterPortraits[i].gameObject.SetActive(false);
+            charNameBackgrounds[i].gameObject.SetActive(false);
             cursors[i].gameObject.SetActive(false);
         }
 
@@ -122,9 +132,15 @@ public class SelectScreenController : InputControllable
                 cursors[i].gameObject.SetActive(true);
                 cursors[i].position = characterPositions[0].position;
                 textPlayerID[i].gameObject.SetActive(true);
+
                 characterPortraits[i].gameObject.SetActive(true);
                 characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
                 characterPortraits[i].color = new Color(1f, 1f, 1f, 0.4f);
+
+                charNameBackgrounds[i].gameObject.SetActive(true);
+                charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 0.4f);
+                charNameTexts[i].text = characterDatas[0].CharName;
+                TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Jump") && jumpPressed[i] == true)
             {
@@ -142,6 +158,7 @@ public class SelectScreenController : InputControllable
                 cursors[i].gameObject.SetActive(false);
                 textPlayerID[i].gameObject.SetActive(false);
                 characterPortraits[i].gameObject.SetActive(false);
+                charNameBackgrounds[i].gameObject.SetActive(false);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Action") && actionPressed[i] == true)
             {
@@ -152,40 +169,48 @@ public class SelectScreenController : InputControllable
 
             if (ReInput.players.GetPlayer(i).GetAxis("Horizontal") > 0.5f && cursors[i].gameObject.activeSelf && joystickPushed[i] == false && !isPlayersReady[i])
             {
+                TengenToppaAudioManager.Instance.PlaySound(menuMoveSound, 0.5f);
                 joystickPushed[i] = true;
                 if (characterPortraits[i].sprite == characterDatas[0].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[1].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[1].position;
+                    charNameTexts[i].text = characterDatas[1].CharName;
                 }
                 else if (characterPortraits[i].sprite == characterDatas[1].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[2].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[2].position;
+                    charNameTexts[i].text = characterDatas[2].CharName;
                 }
                 else
                 {
                     characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[0].position;
+                    charNameTexts[i].text = characterDatas[0].CharName;
                 }
             }
             else if (ReInput.players.GetPlayer(i).GetAxis("Horizontal") < -0.5f && cursors[i].gameObject.activeSelf && joystickPushed[i] == false && !isPlayersReady[i])
             {
+                TengenToppaAudioManager.Instance.PlaySound(menuMoveSound, 0.5f);
                 joystickPushed[i] = true;
                 if (characterPortraits[i].sprite == characterDatas[0].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[2].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[2].position;
+                    charNameTexts[i].text = characterDatas[2].CharName;
                 }
                 else if (characterPortraits[i].sprite == characterDatas[1].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[0].position;
+                    charNameTexts[i].text = characterDatas[0].CharName;
                 }
                 else
                 {
                     characterPortraits[i].sprite = characterDatas[1].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[1].position;
+                    charNameTexts[i].text = characterDatas[1].CharName;
                 }
 
             }
@@ -215,6 +240,10 @@ public class SelectScreenController : InputControllable
                     inputSelections[i] = 2;
                 }
                 characterPortraits[i].color = new Color(1f, 1f, 1f, 1f);
+                charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 1f);
+
+
+                TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Jump") && jumpPressed[i] == true)
             {
@@ -228,6 +257,7 @@ public class SelectScreenController : InputControllable
                 actionPressed[i] = true;
 
                 characterPortraits[i].color = new Color(1f, 1f, 1f, 0.4f);
+                charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 0.4f);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Action") && actionPressed[i] == true)
             {
@@ -277,6 +307,7 @@ public class SelectScreenController : InputControllable
                     charInfos.CharacterData = characterDatas[inputSelections[3]];
                     playerData.CharacterInfos.Add(charInfos);
                 }
+
                 StartBattle();
             }
         }

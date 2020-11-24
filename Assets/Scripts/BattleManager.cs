@@ -44,7 +44,7 @@ public class BattleManager : MonoBehaviour
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
 
-    List<int> listLosers = new List<int>();
+    public List<int> listLosers = new List<int>();
 
     public AudioClip battleTheme;
     public AudioClip bumpSound;
@@ -79,6 +79,7 @@ public class BattleManager : MonoBehaviour
             player.SpriteRenderer.material = data.SwapColors[colorID];
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerID + 1);
+            player.SetCharacterIndex(i);
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);

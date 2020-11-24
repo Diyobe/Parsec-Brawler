@@ -2570,7 +2570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &581366410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2588,7 +2588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.125, y: 0.768, z: 18.426}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -172}
+  m_AnchoredPosition: {x: 0, y: 147.36}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581366411
@@ -4676,7 +4676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &996497045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4694,7 +4694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.125, y: 0.768, z: 18.426}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -172}
+  m_AnchoredPosition: {x: 0, y: 147.36}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996497046
@@ -6780,7 +6780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1596174228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6798,7 +6798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.125, y: 0.768, z: 18.426}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -172}
+  m_AnchoredPosition: {x: 0, y: 147.36}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596174229
@@ -7848,6 +7848,8 @@ MonoBehaviour:
   characterPortraits: []
   characterPositions: []
   cursors: []
+  charNameBackgrounds: []
+  charNameTexts: []
   numberOfReadyPlayers: 0
 --- !u!4 &1791134221
 Transform:
@@ -9005,6 +9007,16 @@ MonoBehaviour:
   - {fileID: 526218731}
   - {fileID: 1882703121}
   - {fileID: 81409741}
+  charNameBackgrounds:
+  - {fileID: 2033805338}
+  - {fileID: 996497046}
+  - {fileID: 1596174229}
+  - {fileID: 581366411}
+  charNameTexts:
+  - {fileID: 1039568273}
+  - {fileID: 316731023}
+  - {fileID: 1761447327}
+  - {fileID: 735419777}
   numberOfReadyPlayers: 0
 --- !u!1 &1978401009
 GameObject:
@@ -9115,7 +9127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2033805337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9133,7 +9145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.125, y: 0.768, z: 18.426}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -172}
+  m_AnchoredPosition: {x: 0, y: 147.36}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033805338

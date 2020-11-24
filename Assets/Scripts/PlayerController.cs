@@ -212,6 +212,11 @@ public class PlayerController : InputControllable
         buffer = inputBuffer;
     }
 
+    public void SetCharacterIndex(int ID)
+    {
+        characterIndex = ID;
+    }
+
     private void Update()
     {
         // OnTriggerEnter 

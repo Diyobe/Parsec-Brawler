@@ -26294,6 +26294,7 @@ MonoBehaviour:
   - {fileID: 7183969350766954305}
   - {fileID: 3874060219213394920}
   winMenu: {fileID: 1907023494682831272}
+  listLosers: 
   battleTheme: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
   bumpSound: {fileID: 8300000, guid: 1534266fc6cbfa0428e24cb24b331aa9, type: 3}
   flashMoveClip: {fileID: 8300000, guid: ee9362d990f15c843b3b63e72fb574eb, type: 3}
@@ -39494,21 +39495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47479fe5a94e04f4b83d489bcd89f1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNames:
-  - RED
-  - BLUE
-  - GREEN
-  - PURPLE
   winnerColor:
   - {fileID: 1685562279431361017}
   - {fileID: 4319914549452294319}
   - {fileID: 214610657228085605}
   - {fileID: 3665075644013345763}
-  playerHead:
-  - {fileID: 21300000, guid: 6a4feba9312106c49baf4d32ef5ab347, type: 3}
-  - {fileID: 21300000, guid: 311807bf1102ffb4f82885a42ad854b2, type: 3}
-  - {fileID: 21300000, guid: 426680e6089532f498fc36fb7fdd5bc9, type: 3}
-  - {fileID: 21300000, guid: bd76c2c1e585a4847a397f9c69219a66, type: 3}
   textWinner: {fileID: 4496696889445051658}
   playerPositions:
   - {fileID: 1561989506639284798}
@@ -39523,8 +39514,11 @@ MonoBehaviour:
   - {fileID: 869374423292779858}
   - {fileID: 5252002290091174114}
   fade: {fileID: 1591348086177825951}
+  playerID: 
   resultSong: {fileID: 8300000, guid: ae0533bef52e82f4bb46da8c5db8b492, type: 3}
-  drumValidate: {fileID: 8300000, guid: f9ccdc2ea2b994c43a3888b32c43f845, type: 3}
+  drumValidate: {fileID: 8300000, guid: eb399cfde5eba3345bb09cb4ad515a78, type: 3}
+  playerData: {fileID: 11400000, guid: ac65ae7245fe34e4f8d20c3e10052098, type: 2}
+  winnerCharacter: {fileID: 7768702873265708415}
 --- !u!95 &6091800160474191812
 Animator:
   serializedVersion: 3
@@ -41064,16 +41058,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4008109477740169574, guid: 8a1beffb199b86b468007301d40d1b8c, type: 3}
+  m_Sprite: {fileID: 6032733102452510744, guid: 8a1beffb199b86b468007301d40d1b8c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

@@ -9,11 +9,7 @@ public class WinMenu : InputControllable
 {
     [Header("Data")]
     [SerializeField]
-    string[] playerNames;
-    [SerializeField]
     GameObject[] winnerColor;
-    [SerializeField]
-    Sprite[] playerHead;
 
     [Header("Parameters")]
     [SerializeField]
@@ -30,24 +26,34 @@ public class WinMenu : InputControllable
     GameObject fade;
 
     bool active = false;
-    List<int> playerID;
+    public List<int> playerID;
 
     public AudioClip resultSong;
     public AudioClip drumValidate;
+
+    [SerializeField]
+    PlayerData playerData;
+
+    [SerializeField]
+    Image winnerCharacter;
 
     public void CreateMenu(List<int> id)
     {
         playerID = id;
         this.gameObject.SetActive(true);
         playerID.Reverse();
-        textWinner.text = playerNames[playerID[0]] + " WIN";
-        winnerColor[playerID[0]].gameObject.SetActive(true);
+        //textWinner.text = playerNames[playerID[0]] + " WIN";
+        textWinner.text = playerData.CharacterInfos[playerID[0]].CharacterData.CharName + " WIN";
+        //winnerColor[playerID[0]].gameObject.SetActive(true);
+
+        winnerCharacter.gameObject.SetActive(true);
+        winnerCharacter.sprite = playerData.CharacterInfos[playerID[0]].CharacterData.CharacterSelectionSprite;
 
         for (int i = 1; i < playerID.Count; i++)
         {
             playerPositions[i - 1].gameObject.SetActive(true);
             textPositions[i - 1].text = (i+1).ToString();
-            facePositions[i - 1].sprite = playerHead[playerID[i]];
+            facePositions[i - 1].sprite = playerData.CharacterInfos[playerID[i]].CharacterData.Face;
         }
         StartCoroutine(WaitCoroutine());
     }
@@ -66,6 +72,7 @@ public class WinMenu : InputControllable
         if(inputID == playerID[0] && inputBuffer[0].jump)
         {
             TengenToppaAudioManager.Instance.PlaySound(drumValidate, 0.5f);
+            active = false;
             //TengenToppaAudioManager.Instance.StopMusic(1.5f);
             fade.gameObject.SetActive(true);
             StartCoroutine(WaitCoroutine2());
