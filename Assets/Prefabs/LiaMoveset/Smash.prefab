@@ -58,6 +58,8 @@ MonoBehaviour:
   shakeScreen: 0
   shakeScreenTime: 0
   hitbox: {fileID: 1975021917538315909}
+  hitSound: {fileID: 8300000, guid: 19b9c1faac5f5b74ab2803b6c35f4d18, type: 3}
+  swingSound: {fileID: 8300000, guid: 87c88c5209489374d891a9e627224efa, type: 3}
 --- !u!65 &1975021917538315909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1975021918013321259
 Transform:
   m_ObjectHideFlags: 0

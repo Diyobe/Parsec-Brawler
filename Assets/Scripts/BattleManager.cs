@@ -106,7 +106,7 @@ public class BattleManager : MonoBehaviour
             {
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
-                battleHuds[i].DrawFace(playerData.CharacterInfos[i].CharacterData.Face);
+                battleHuds[i].DrawFace(playerData.CharacterInfos[i].CharacterData.Face, playerData.CharacterInfos[i].CharacterData.SwapColorsUI[i]);
                 battleHuds[i].DrawLives(playerData.NumberOfLives);
             }
         }

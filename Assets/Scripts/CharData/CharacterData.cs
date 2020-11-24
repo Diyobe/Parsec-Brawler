@@ -24,6 +24,14 @@ public class CharacterData : ScriptableObject
     }
 
     [SerializeField]
+    private Sprite characterSelectionSprite;
+
+    public Sprite CharacterSelectionSprite
+    {
+        get { return characterSelectionSprite; }
+    }
+
+    [SerializeField]
     private PlayerController playerController;
 
     public PlayerController PlayerController
@@ -39,5 +47,14 @@ public class CharacterData : ScriptableObject
     {
         get { return swapColors; }
         set { swapColors = value; }
+    }
+
+    [SerializeField]
+    private Material[] swapColorUI;
+
+    public Material[] SwapColorsUI
+    {
+        get { return swapColorUI; }
+        set { swapColorUI = value; }
     }
 }

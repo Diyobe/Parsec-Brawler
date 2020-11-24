@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Valentine
   face: {fileID: 21300000, guid: 459e460e0a2f8e84199e52f982782a2e, type: 3}
+  characterSelectionSprite: {fileID: 21300000, guid: 02dd2da939d90864fbd0687d94c3a9eb, type: 3}
   playerController: {fileID: 8706512499288346703, guid: a053e6fbf03b6d5428a716e9a617953c, type: 3}
   swapColors:
   - {fileID: 2100000, guid: f1a121ee4c740564cb4c8be1a3206c51, type: 2}
   - {fileID: 2100000, guid: ef497f92fbbd4d744a8c595aea68496a, type: 2}
   - {fileID: 2100000, guid: f0229b31bf32cf947b1264bf08d3f502, type: 2}
   - {fileID: 2100000, guid: c6fc93dd03608714789d0a9276e7f861, type: 2}
+  swapColorUI:
+  - {fileID: 2100000, guid: 75bc55af1dde7fa4787314bdbf39b496, type: 2}
+  - {fileID: 2100000, guid: b68d04025491727419fc939502254409, type: 2}
+  - {fileID: 2100000, guid: 9fa2f241d4b5da54e8ea49d0e9748e97, type: 2}
+  - {fileID: 2100000, guid: 5eaf53607c77ebd4082583e40547ee5e, type: 2}

@@ -14,10 +14,11 @@ public class BattleHud : MonoBehaviour
     Image faceImage;
     int currentLive;
 
-    public void DrawFace(Sprite face)
+    public void DrawFace(Sprite face, Material material)
     {
         faceImage = faceShake.GetComponent<Image>();
         faceImage.sprite = face;
+        faceImage.material = material;
     }
 
     public void ShakeFace()

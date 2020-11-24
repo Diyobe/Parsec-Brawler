@@ -19,4 +19,4 @@ MonoBehaviour:
   - playerID: 1
     characterColorID: 1
     characterData: {fileID: 11400000, guid: ca918cb910bda08419dae662fc4b2644, type: 2}
-  numberOfLives: 1
+  numberOfLives: 3
