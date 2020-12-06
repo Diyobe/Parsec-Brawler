@@ -46,7 +46,10 @@ public class BattleManager : MonoBehaviour
 
     public List<int> listLosers = new List<int>();
 
-    public AudioClip battleTheme;
+    [Header("Sound")]
+    public AudioClip ShadowSakura;
+    public AudioClip AngelBreakerIntro;
+    public AudioClip AngelBreakerLoop;
     public AudioClip bumpSound;
     public AudioClip flashMoveClip;
     private void Start()
@@ -96,7 +99,7 @@ public class BattleManager : MonoBehaviour
         SubscribeFeedback(); // Pas opti on refait une boucle mais nique
 
         StartCoroutine(StartGameCoroutine());
-        TengenToppaAudioManager.Instance.PlayMusic(battleTheme, battleTheme);
+        TengenToppaAudioManager.Instance.PlayMusic(AngelBreakerIntro, AngelBreakerLoop);
     }
 
     private IEnumerator StartGameCoroutine()

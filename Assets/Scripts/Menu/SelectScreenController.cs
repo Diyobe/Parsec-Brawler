@@ -160,6 +160,11 @@ public class SelectScreenController : InputControllable
                 characterPortraits[i].gameObject.SetActive(false);
                 charNameBackgrounds[i].gameObject.SetActive(false);
             }
+            else if (ReInput.players.GetPlayer(i).GetButtonDown("Action") && !cursors[i].gameObject.activeSelf && actionPressed[i] == false)
+            {
+                previousScreen.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Action") && actionPressed[i] == true)
             {
                 actionPressed[i] = false;

@@ -26295,7 +26295,9 @@ MonoBehaviour:
   - {fileID: 3874060219213394920}
   winMenu: {fileID: 1907023494682831272}
   listLosers: 
-  battleTheme: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
+  ShadowSakura: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
+  AngelBreakerIntro: {fileID: 8300000, guid: 073d64e7d2ebca34992ee6f9bf618c7d, type: 3}
+  AngelBreakerLoop: {fileID: 8300000, guid: 58a28ddc3fc41ff4fa7f4ec977a0519f, type: 3}
   bumpSound: {fileID: 8300000, guid: 1534266fc6cbfa0428e24cb24b331aa9, type: 3}
   flashMoveClip: {fileID: 8300000, guid: ee9362d990f15c843b3b63e72fb574eb, type: 3}
   hitSpeedline: {fileID: 4464424395687185610}
@@ -39962,12 +39964,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 250
+  m_fontSize: 200
   m_fontSizeBase: 250
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 140
+  m_fontSizeMax: 250
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
