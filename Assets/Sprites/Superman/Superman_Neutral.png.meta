@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 983606abe6f01454eb781afdf2d74f8f
+guid: 81fcca07b5d243443b9e6477ce9793db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1822649640755024998
-    second: Superman_Hit_0
+      213: -8553503314568937174
+    second: Superman_Neutral_0
   - first:
-      213: 3466777140388314924
-    second: Superman_Hit_1
+      213: -2613845211527919210
+    second: Superman_Neutral_1
   - first:
-      213: 7670493140836045788
-    second: Superman_Hit_0
-  - first:
-      213: -4920498424522683650
-    second: Superman_Hit_1
+      213: 1937058042473887036
+    second: Superman_Neutral_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,43 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Superman_Hit_0
+      name: Superman_Neutral_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 169
-        height: 118
+        x: 46
+        y: 4
+        width: 96
+        height: 138
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.118320584, y: 0.0036876167}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd35a9f1fd0137a60800000000000000
-      internalID: 7670493140836045788
+      spriteID: a210ef5cd0adb4980800000000000000
+      internalID: -8553503314568937174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Superman_Hit_1
+      name: Superman_Neutral_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 0
-        width: 169
-        height: 118
+        x: 226
+        y: 4
+        width: 134
+        height: 138
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.08983703, y: 0.0073753404}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efac478b0c0e6bbb0800000000000000
-      internalID: -4920498424522683650
+      spriteID: 699c50df0a1c9bbd0800000000000000
+      internalID: -2613845211527919210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Neutral_2
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 4
+        width: 122
+        height: 138
+      alignment: 9
+      pivot: {x: 0.102264404, y: 0.0055813165}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3538f2d600d1ea10800000000000000
+      internalID: 1937058042473887036
       vertices: []
       indices: 
       edges: []
@@ -157,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: df983472897eaae459df195da9628531
+    spriteID: c52de202b5da3864ea571a529a8deaed
     internalID: 0
     vertices: []
     indices: 

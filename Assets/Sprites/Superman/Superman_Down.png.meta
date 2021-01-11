@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 983606abe6f01454eb781afdf2d74f8f
+guid: 26222f6ff66dd4442bb224f45b7baa6a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1822649640755024998
-    second: Superman_Hit_0
+      213: 4671300349501800215
+    second: Superman_Down_0
   - first:
-      213: 3466777140388314924
-    second: Superman_Hit_1
+      213: 3500139067309069521
+    second: Superman_Down_1
   - first:
-      213: 7670493140836045788
-    second: Superman_Hit_0
+      213: -7787844033919992655
+    second: Superman_Down_2
   - first:
-      213: -4920498424522683650
-    second: Superman_Hit_1
+      213: -3959579636614449940
+    second: Superman_Down_3
+  - first:
+      213: 6737119861941173603
+    second: Superman_Down_4
+  - first:
+      213: 2131496068462376987
+    second: Superman_Down_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,43 +119,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Superman_Hit_0
+      name: Superman_Down_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 169
-        height: 118
-      alignment: 9
+        x: 59
+        y: 8
+        width: 104
+        height: 134
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd35a9f1fd0137a60800000000000000
-      internalID: 7670493140836045788
+      spriteID: 71f76331beac3d040800000000000000
+      internalID: 4671300349501800215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Superman_Hit_1
+      name: Superman_Down_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 0
-        width: 169
-        height: 118
-      alignment: 9
+        x: 276
+        y: 8
+        width: 110
+        height: 121
+      alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efac478b0c0e6bbb0800000000000000
-      internalID: -4920498424522683650
+      spriteID: 1d49c6befedf29030800000000000000
+      internalID: 3500139067309069521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Down_2
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 10
+        width: 160
+        height: 149
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcbd08ec150ce390800000000000000
+      internalID: -7787844033919992655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Down_3
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 8
+        width: 178
+        height: 167
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce4b9bb9c4fbc09c0800000000000000
+      internalID: -3959579636614449940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Down_4
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 2
+        width: 151
+        height: 164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d7b34d1de0f7d50800000000000000
+      internalID: 6737119861941173603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Down_5
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 0
+        width: 134
+        height: 123
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1877d09168949d10800000000000000
+      internalID: 2131496068462376987
       vertices: []
       indices: 
       edges: []
@@ -157,7 +247,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: df983472897eaae459df195da9628531
+    spriteID: f936a557f41aabb43ba533cda5947004
     internalID: 0
     vertices: []
     indices: 
