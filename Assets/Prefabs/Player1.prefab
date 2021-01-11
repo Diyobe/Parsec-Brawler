@@ -223,7 +223,7 @@ MonoBehaviour:
   jumpImpulsion: 6
   numberOfJumps: 2
   crouchTime: 0.12
-  dashImpulsion: 13
+  dashImpulsion: 12
   numberOfDashes: 2
   dashDuration: 0.25
   baseKnockbackTime: 0.5
