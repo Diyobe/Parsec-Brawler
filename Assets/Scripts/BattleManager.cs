@@ -16,12 +16,6 @@ public class BattleManager : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField]
-    private Material[] swapColors;
-    [SerializeField]
-    private Texture2D[] swapColorsTex;
-    [SerializeField]
-    private PlayerController characterPrefab;
-    [SerializeField]
     private InputController inputControllerPrefab;
 
     [Header("Components")]
@@ -50,9 +44,12 @@ public class BattleManager : MonoBehaviour
     List<PlayerController> playersAlive = new List<PlayerController>();
     List<int> playersLives = new List<int>();
 
-    List<int> listLosers = new List<int>();
+    public List<int> listLosers = new List<int>();
 
-    public AudioClip battleTheme;
+    [Header("Sound")]
+    public AudioClip ShadowSakura;
+    public AudioClip AngelBreakerIntro;
+    public AudioClip AngelBreakerLoop;
     public AudioClip bumpSound;
     public AudioClip flashMoveClip;
     private void Start()
@@ -60,12 +57,12 @@ public class BattleManager : MonoBehaviour
 #if UNITY_EDITOR
         if (debug == true)
         {
-            playerData.PlayerID.Clear();
-            for (int i = 0; i < debugPlayerNumber; i++)
-            {
+            //playerData.PlayerID.Clear();
+            //for (int i = 0; i < debugPlayerNumber; i++)
+            //{
 
-                playerData.PlayerID.Add(i);
-            }
+            //    playerData.PlayerID.Add(i);
+            //}
         }
 #endif
         CreateGame();
@@ -75,18 +72,23 @@ public class BattleManager : MonoBehaviour
 
     private void CreateGame()
     {
-        for (int i = 0; i < playerData.PlayerID.Count; i++)
+        for (int i = 0; i < playerData.CharacterInfos.Count; i++)
         {
-            PlayerController player = Instantiate(characterPrefab, spawnPosition[i].position, Quaternion.identity);
+            CharacterData data = playerData.CharacterInfos[i].CharacterData;
+            int colorID = playerData.CharacterInfos[i].CharacterColorID;
+            int playerID = playerData.CharacterInfos[i].PlayerID;
+
+            PlayerController player = Instantiate(data.PlayerController, spawnPosition[i].position, Quaternion.identity);
+            player.SpriteRenderer.material = data.SwapColors[colorID];
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
-            player.gameObject.tag = "Player" + (playerData.PlayerID[i]+1);
-            player.SetMaterial(swapColors[i], swapColorsTex[i], i);
+            player.gameObject.tag = "Player" + (playerID + 1);
+            player.SetCharacterIndex(i);
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);
 
             InputController controller = Instantiate(inputControllerPrefab);
-            controller.SetPlayerID(playerData.PlayerID[i]);
+            controller.SetPlayerID(playerID);
             controller.SetPlayerController(player);
             controller.gameObject.SetActive(true);
 
@@ -97,7 +99,7 @@ public class BattleManager : MonoBehaviour
         SubscribeFeedback(); // Pas opti on refait une boucle mais nique
 
         StartCoroutine(StartGameCoroutine());
-        TengenToppaAudioManager.Instance.PlayMusic(battleTheme, battleTheme);
+        TengenToppaAudioManager.Instance.PlayMusic(AngelBreakerIntro, AngelBreakerLoop);
     }
 
     private IEnumerator StartGameCoroutine()
@@ -108,6 +110,7 @@ public class BattleManager : MonoBehaviour
             {
                 playersAlive[i].OnKnockback += battleHuds[i].ShakeFace;
                 battleHuds[i].gameObject.SetActive(true);
+                battleHuds[i].DrawFace(playerData.CharacterInfos[i].CharacterData.Face, playerData.CharacterInfos[i].CharacterData.SwapColorsUI[i]);
                 battleHuds[i].DrawLives(playerData.NumberOfLives);
             }
         }

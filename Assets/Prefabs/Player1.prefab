@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterCollider: {fileID: 5071424631730491931}
-  spriteRenderer: {fileID: 0}
   collision: 1
   offsetRaycastX: 0.01
   offsetRaycastY: 0.01
@@ -239,6 +238,7 @@ MonoBehaviour:
   attackLeftAerial: {fileID: 8530654087378751973, guid: 5710b7e4365ea2644a5645632eea7d30, type: 3}
   attackUpAerial: {fileID: 6711955271010886810, guid: 85f13b96ccb921f4a84de6ee84d7f882, type: 3}
   attackDownAerial: {fileID: 1975021917538315906, guid: 19e3c2e1673379c4a8151b5e70b618d4, type: 3}
+  dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &5071424631730491935
 Animator:
   serializedVersion: 3
