@@ -148,8 +148,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.95, z: 1}
-  m_Center: {x: -0.05, y: 0.475, z: 0}
+  m_Size: {x: 0.45, y: 1.5189295, z: 1}
+  m_Center: {x: -0.050000012, y: 0.6714859, z: 0}
 --- !u!114 &1714619801704049761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 1714619802387836514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1714619801704049791}
   m_RootOrder: 2
@@ -284,7 +284,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00c7bfba9818f7b48b77a4be1fe0b567, type: 2}
+  - {fileID: 2100000, guid: f1a121ee4c740564cb4c8be1a3206c51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4008109477740169574, guid: 8a1beffb199b86b468007301d40d1b8c, type: 3}
+  m_Sprite: {fileID: 4650288176302888674, guid: 312b6a5d135c6254a8b92f6438f5293a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
