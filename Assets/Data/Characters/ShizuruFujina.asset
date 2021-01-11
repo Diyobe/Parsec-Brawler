@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Shizuru Fujina
   face: {fileID: 21300000, guid: eb374595c25eb374591edf6a21e9ae0e, type: 3}
-  characterSelectionSprite: {fileID: 21300000, guid: 6337377b7567cde4c9a476e9ca6f7299, type: 3}
+  characterSelectionSprite: {fileID: 21300000, guid: 927a67254fddb344a954abae5ac8725d, type: 3}
   playerController: {fileID: 1714619801704049788, guid: 14b6e5827289342438761fbb66788804, type: 3}
   swapColors:
   - {fileID: 2100000, guid: f1a121ee4c740564cb4c8be1a3206c51, type: 2}
