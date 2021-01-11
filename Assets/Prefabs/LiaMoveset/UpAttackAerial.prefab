@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8def115a5b82853498e0ad9b0a590f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 7400000, guid: 8a60b8e16f407704c864b9ef951d4b24, type: 2}
+  attackAnimation: {fileID: 7400000, guid: 72808fa0e484b354784aed5ca5a61377, type: 2}
   lifetime: 1
   keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
@@ -153,5 +153,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.3, z: 0.8}
-  m_Center: {x: 0.02, y: 0.525, z: 0}
+  m_Size: {x: 0.65, y: 0.7, z: 0.8}
+  m_Center: {x: 0, y: 0.35, z: 0}
