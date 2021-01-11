@@ -1,0 +1,496 @@
+fileFormatVersion: 2
+guid: 312b6a5d135c6254a8b92f6438f5293a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4650288176302888674
+    second: Superman_Idle_0
+  - first:
+      213: 1219707351829346786
+    second: Superman_Idle_1
+  - first:
+      213: 3082457628207535609
+    second: Superman_Idle_2
+  - first:
+      213: 6800805427365970592
+    second: Superman_Idle_3
+  - first:
+      213: 1774437525759118511
+    second: Superman_Idle_4
+  - first:
+      213: 8213671033827642783
+    second: Superman_Idle_5
+  - first:
+      213: -7074452078063782713
+    second: Superman_Idle_6
+  - first:
+      213: 8044325564167351793
+    second: Superman_Idle_7
+  - first:
+      213: 3220455551597061775
+    second: Superman_Idle_8
+  - first:
+      213: 891362607419649043
+    second: Superman_Idle_9
+  - first:
+      213: -8899058071910651294
+    second: Superman_Idle_10
+  - first:
+      213: -2706182088268035156
+    second: Superman_Idle_11
+  - first:
+      213: -6771511620025032604
+    second: Superman_Idle_12
+  - first:
+      213: 7316946951762960854
+    second: Superman_Idle_13
+  - first:
+      213: -6640394957276078450
+    second: Superman_Idle_0
+  - first:
+      213: -6791284703811804255
+    second: Superman_Idle_1
+  - first:
+      213: -705556555918512046
+    second: Superman_Idle_2
+  - first:
+      213: 2048576523512048297
+    second: Superman_Idle_3
+  - first:
+      213: 4580368387216645717
+    second: Superman_Idle_4
+  - first:
+      213: -4525361862253492230
+    second: Superman_Idle_5
+  - first:
+      213: -6480446664173727123
+    second: Superman_Idle_6
+  - first:
+      213: -6432586025136472938
+    second: Superman_Idle_7
+  - first:
+      213: 3954588829316006480
+    second: Superman_Idle_8
+  - first:
+      213: 19740879276813750
+    second: Superman_Idle_9
+  - first:
+      213: -8999987007252159868
+    second: Superman_Idle_10
+  - first:
+      213: -4099342622673242601
+    second: Superman_Idle_11
+  - first:
+      213: 8415969514299526787
+    second: Superman_Idle_12
+  - first:
+      213: 5553488424935843856
+    second: Superman_Idle_13
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Superman_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 85
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e934bf7f398d3a0800000000000000
+      internalID: -6640394957276078450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 2
+        width: 83
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3e0cc2b8280c1a0800000000000000
+      internalID: -6791284703811804255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 3
+        width: 83
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2507783fc0c5536f0800000000000000
+      internalID: -705556555918512046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 4
+        width: 82
+        height: 142
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aae32b8e710e6c10800000000000000
+      internalID: 2048576523512048297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 3
+        width: 82
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e1a74c7ccb09f30800000000000000
+      internalID: 4580368387216645717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 3
+        width: 84
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af7c748dc5fa231c0800000000000000
+      internalID: -4525361862253492230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 3
+        width: 85
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d625f040814d016a0800000000000000
+      internalID: -6480446664173727123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 4
+        width: 85
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c3998671ddab6a0800000000000000
+      internalID: -6432586025136472938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 4
+        width: 90
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052cb14869581e630800000000000000
+      internalID: 3954588829316006480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4
+        width: 89
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd29d0a932264000800000000000000
+      internalID: 19740879276813750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 3
+        width: 87
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482aa99308f991380800000000000000
+      internalID: -8999987007252159868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 3
+        width: 84
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71671fa9a953c17c0800000000000000
+      internalID: -4099342622673242601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 2
+        width: 84
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e075cfea78bc470800000000000000
+      internalID: 8415969514299526787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Superman_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 2
+        width: 83
+        height: 143
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0186b808c44f11d40800000000000000
+      internalID: 5553488424935843856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 2a3345c284b71cf43b2ff14be7577aa4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

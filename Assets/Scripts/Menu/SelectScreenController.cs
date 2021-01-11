@@ -194,6 +194,12 @@ public class SelectScreenController : InputControllable
                     cursors[i].position = characterPositions[3].position;
                     charNameTexts[i].text = characterDatas[3].CharName;
                 }
+                else if (characterPortraits[i].sprite == characterDatas[3].CharacterSelectionSprite)
+                {
+                    characterPortraits[i].sprite = characterDatas[4].CharacterSelectionSprite;
+                    cursors[i].position = characterPositions[4].position;
+                    charNameTexts[i].text = characterDatas[4].CharName;
+                }
                 else
                 {
                     characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
@@ -207,9 +213,9 @@ public class SelectScreenController : InputControllable
                 joystickPushed[i] = true;
                 if (characterPortraits[i].sprite == characterDatas[0].CharacterSelectionSprite)
                 {
-                    characterPortraits[i].sprite = characterDatas[3].CharacterSelectionSprite;
-                    cursors[i].position = characterPositions[3].position;
-                    charNameTexts[i].text = characterDatas[3].CharName;
+                    characterPortraits[i].sprite = characterDatas[4].CharacterSelectionSprite;
+                    cursors[i].position = characterPositions[4].position;
+                    charNameTexts[i].text = characterDatas[4].CharName;
                 }
                 else if (characterPortraits[i].sprite == characterDatas[1].CharacterSelectionSprite)
                 {
@@ -222,6 +228,12 @@ public class SelectScreenController : InputControllable
                     characterPortraits[i].sprite = characterDatas[1].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[1].position;
                     charNameTexts[i].text = characterDatas[1].CharName;
+                }
+                else if (characterPortraits[i].sprite == characterDatas[4].CharacterSelectionSprite)
+                {
+                    characterPortraits[i].sprite = characterDatas[3].CharacterSelectionSprite;
+                    cursors[i].position = characterPositions[3].position;
+                    charNameTexts[i].text = characterDatas[3].CharName;
                 }
                 else
                 {
@@ -256,9 +268,13 @@ public class SelectScreenController : InputControllable
                 {
                     inputSelections[i] = 2;
                 }
-                else
+                else if (characterPortraits[i].sprite == characterDatas[3].CharacterSelectionSprite)
                 {
                     inputSelections[i] = 3;
+                }
+                else
+                {
+                    inputSelections[i] = 4;
                 }
                 characterPortraits[i].color = new Color(1f, 1f, 1f, 1f);
                 charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 1f);
