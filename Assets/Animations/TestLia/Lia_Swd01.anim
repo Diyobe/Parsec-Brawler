@@ -97,7 +97,14 @@ AnimationClip:
     functionName: MoveForward
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 5
+    floatParameter: 10
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.21666667
+    functionName: MoveForward
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 2
     intParameter: 0
     messageOptions: 0
   - time: 0.21666667
@@ -105,13 +112,6 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.21666667
-    functionName: MoveForward
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: -2
     intParameter: 0
     messageOptions: 0
   - time: 0.25
@@ -122,6 +122,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.3
+    functionName: MoveForward
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: -2
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.35
     functionName: MoveForward
     data: 
     objectReferenceParameter: {fileID: 0}

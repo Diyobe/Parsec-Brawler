@@ -20,20 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -8117307726591773245, guid: ff37124635b349644a96bc5544436cb2,
-        type: 3}
+      value: {fileID: -8117307726591773245, guid: ff37124635b349644a96bc5544436cb2, type: 3}
     - time: 0.06666667
-      value: {fileID: 5481410451849690044, guid: ff37124635b349644a96bc5544436cb2,
-        type: 3}
+      value: {fileID: 5481410451849690044, guid: ff37124635b349644a96bc5544436cb2, type: 3}
     - time: 0.13333334
-      value: {fileID: -8177997288653509046, guid: ff37124635b349644a96bc5544436cb2,
-        type: 3}
+      value: {fileID: -8177997288653509046, guid: ff37124635b349644a96bc5544436cb2, type: 3}
     - time: 0.2
-      value: {fileID: 966348317261274520, guid: ff37124635b349644a96bc5544436cb2,
-        type: 3}
+      value: {fileID: 966348317261274520, guid: ff37124635b349644a96bc5544436cb2, type: 3}
     - time: 0.26666668
-      value: {fileID: -1677552070133346314, guid: ff37124635b349644a96bc5544436cb2,
-        type: 3}
+      value: {fileID: -1677552070133346314, guid: ff37124635b349644a96bc5544436cb2, type: 3}
     - time: 0.35
       value: {fileID: 21300000, guid: a97dd66f8ab395740b74f858b3fd129f, type: 3}
     attribute: m_Sprite
@@ -87,45 +82,38 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: MoveForward
+    functionName: Jump
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 2
     intParameter: 0
     messageOptions: 0
   - time: 0
+    functionName: MoveForward
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 15
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.06666667
+    functionName: MoveForward
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 15
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.11666667
     functionName: Jump
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 3.5
+    floatParameter: -1
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.13333334
     functionName: MoveForward
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.8
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.26666668
-    functionName: MoveForward
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.28333333
-    functionName: MoveCancelable
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.35
-    functionName: TurnBack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 15
     intParameter: 0
     messageOptions: 0
   - time: 0.35

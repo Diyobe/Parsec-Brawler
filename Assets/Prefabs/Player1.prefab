@@ -174,8 +174,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.9, z: 1}
-  m_Center: {x: -0.02, y: 0.45, z: 0}
+  m_Size: {x: 0.35, y: 0.8, z: 1}
+  m_Center: {x: -0.02, y: 0.4, z: 0}
 --- !u!114 &5071424631730491908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   shakeSprite: {fileID: 5071424630736064516}
   smoke: {fileID: 5961488526387696577}
   afterImageEffect: {fileID: 7632525046717371282}
-  speedMax: 5
+  speedMax: 4
   acceleration: 2
   decceleration: 10
   airFriction: 1.4
@@ -222,10 +222,10 @@ MonoBehaviour:
   gravityForceMax: -10
   jumpImpulsion: 6
   numberOfJumps: 2
-  crouchTime: 0.08
-  dashImpulsion: 8
-  numberOfDashes: 1
-  dashDuration: 0.2
+  crouchTime: 0.12
+  dashImpulsion: 13
+  numberOfDashes: 2
+  dashDuration: 0.25
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 10
   knockbackImpactReductionRate: 0.8
