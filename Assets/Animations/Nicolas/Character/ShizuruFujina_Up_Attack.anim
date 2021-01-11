@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShizuruFujina_Up_Attack
+  serializedVersion: 6
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 1ab7f4e45eddbb64b8670a7f65f5018b, type: 3}
+    - time: 0.05
+      value: {fileID: 21300000, guid: bdcc2f80f6c8b024e95774b524de0b45, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: d8d81f4576d60df42aba3f81b0f8f57a, type: 3}
+    - time: 0.15
+      value: {fileID: 21300000, guid: 305f1e844742a8741b2bbb463c1f28ca, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: c3f612e0ba399ab408a26dba12a68be2, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 49fc77003ef695847bf86b01c56bb99e, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: 0c4f19b236ad8294fa5a175fcef2506b, type: 3}
+    - time: 0.35
+      value: {fileID: 21300000, guid: ed36dbca35a9f9945a801612d16b34de, type: 3}
+    - time: 0.4
+      value: {fileID: 21300000, guid: 84d78d4e2f944c54f896bd124bcaba15, type: 3}
+    - time: 0.45
+      value: {fileID: 21300000, guid: cde5c7698a845124fad0b648fee10c9e, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 8c4dd1ba59435cd4d9fbbb78bf44fdb9, type: 3}
+    - time: 0.55
+      value: {fileID: 21300000, guid: 23ffa91d1c85d954fa170077d4ae9dd9, type: 3}
+    attribute: m_Sprite
+    path: PlayerSprite
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 533382794
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 1ab7f4e45eddbb64b8670a7f65f5018b, type: 3}
+    - {fileID: 21300000, guid: bdcc2f80f6c8b024e95774b524de0b45, type: 3}
+    - {fileID: 21300000, guid: d8d81f4576d60df42aba3f81b0f8f57a, type: 3}
+    - {fileID: 21300000, guid: 305f1e844742a8741b2bbb463c1f28ca, type: 3}
+    - {fileID: 21300000, guid: c3f612e0ba399ab408a26dba12a68be2, type: 3}
+    - {fileID: 21300000, guid: 49fc77003ef695847bf86b01c56bb99e, type: 3}
+    - {fileID: 21300000, guid: 0c4f19b236ad8294fa5a175fcef2506b, type: 3}
+    - {fileID: 21300000, guid: ed36dbca35a9f9945a801612d16b34de, type: 3}
+    - {fileID: 21300000, guid: 84d78d4e2f944c54f896bd124bcaba15, type: 3}
+    - {fileID: 21300000, guid: cde5c7698a845124fad0b648fee10c9e, type: 3}
+    - {fileID: 21300000, guid: 8c4dd1ba59435cd4d9fbbb78bf44fdb9, type: 3}
+    - {fileID: 21300000, guid: 23ffa91d1c85d954fa170077d4ae9dd9, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.56666666
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events:
+  - time: 0.15
+    functionName: ActionActive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
+    functionName: ActionUnactive
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.55
+    functionName: EndAction
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
