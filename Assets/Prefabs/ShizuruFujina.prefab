@@ -205,13 +205,13 @@ MonoBehaviour:
   knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
-  crouchJump: {fileID: 5009905772876635485, guid: 42ab5c3f38ff930468e3b25ac26f53fd, type: 3}
-  attackLeft: {fileID: 6711955271010886810, guid: 491bb7400a14bdd4a9734e127c771edc, type: 3}
-  attackUp: {fileID: 6711955271010886810, guid: a07de622fe0fd0c4690f06596989e2d8, type: 3}
-  attackDown: {fileID: 6711955271010886810, guid: cf8243fbc1bd46741a78f7f29e2418b0, type: 3}
-  attackLeftAerial: {fileID: 6711955271010886810, guid: 5740c8ff908845745be1b67b825aabc0, type: 3}
-  attackUpAerial: {fileID: 6711955271010886810, guid: ce14a14ab32856b428dc7c101d9e789a, type: 3}
-  attackDownAerial: {fileID: 6328704887807121763, guid: 4383efa13af6e3048976d0ced6240aac, type: 3}
+  crouchJump: {fileID: 5009905772876635485, guid: b5cac137fc5a56e4bb8d0e036aa8ce66, type: 3}
+  attackLeft: {fileID: 6711955271010886810, guid: aba130479392ecc4194565c038856d9a, type: 3}
+  attackUp: {fileID: 6711955271010886810, guid: a02e16b2a7cfc0b4c96f642f21a4a6e1, type: 3}
+  attackDown: {fileID: 6328704887807121763, guid: daf15859d99eec1429910217a060b759, type: 3}
+  attackLeftAerial: {fileID: 6711955271010886810, guid: 1557b21e5cca830488b8a3b50f389c4a, type: 3}
+  attackUpAerial: {fileID: 6711955271010886810, guid: f38db52b088d8a64795ef4a42b53b65f, type: 3}
+  attackDownAerial: {fileID: 6328704887807121763, guid: ab793a6e795998046b3dabf1e9e2d79a, type: 3}
   dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &1714619801704049786
 Animator:
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 1714619802387836514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1714619801704049791}
   m_RootOrder: 2
