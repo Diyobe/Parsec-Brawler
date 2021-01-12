@@ -187,8 +187,8 @@ MonoBehaviour:
   shakeSprite: {fileID: 1714619802387836513}
   smoke: {fileID: 6555611295522087577}
   afterImageEffect: {fileID: 4055193919426768375}
-  speedMax: 5
-  acceleration: 2
+  speedMax: 6
+  acceleration: 3
   decceleration: 10
   airFriction: 1.4
   airStop: 0.97
@@ -206,12 +206,12 @@ MonoBehaviour:
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
   crouchJump: {fileID: 5009905772876635485, guid: 42ab5c3f38ff930468e3b25ac26f53fd, type: 3}
-  attackLeft: {fileID: 6711955271010886810, guid: 491bb7400a14bdd4a9734e127c771edc, type: 3}
-  attackUp: {fileID: 6711955271010886810, guid: a07de622fe0fd0c4690f06596989e2d8, type: 3}
-  attackDown: {fileID: 6711955271010886810, guid: cf8243fbc1bd46741a78f7f29e2418b0, type: 3}
-  attackLeftAerial: {fileID: 6711955271010886810, guid: 5740c8ff908845745be1b67b825aabc0, type: 3}
-  attackUpAerial: {fileID: 6711955271010886810, guid: ce14a14ab32856b428dc7c101d9e789a, type: 3}
-  attackDownAerial: {fileID: 6328704887807121763, guid: 4383efa13af6e3048976d0ced6240aac, type: 3}
+  attackLeft: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
+  attackUp: {fileID: 6711955271010886810, guid: db77e3e751e2f2c44b106e2bb3e46a7d, type: 3}
+  attackDown: {fileID: 1975021917538315906, guid: bc84e45946b751245be68e993160de63, type: 3}
+  attackLeftAerial: {fileID: 8530654087378751973, guid: 94d95a07421a3524c85113318b73735b, type: 3}
+  attackUpAerial: {fileID: 6711955271010886810, guid: 3e99795c768728549a9d4125ffd2a373, type: 3}
+  attackDownAerial: {fileID: 1975021917538315906, guid: 89f9a23bf0f0f9e46a8f10275b04bcfd, type: 3}
   dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &1714619801704049786
 Animator:
