@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 305f1e844742a8741b2bbb463c1f28ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bba5c7175aeb13a429dc239c87085a24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8def115a5b82853498e0ad9b0a590f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 7400000, guid: ff00b9544b50a3240bfb4172ed4fae5c, type: 2}
+  attackAnimation: {fileID: 7400000, guid: 39fe083557022a44a955a5873acc4283, type: 2}
   lifetime: 1
   keepMomentum: 0
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
@@ -153,5 +153,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.31, y: 1.25, z: 0.8}
-  m_Center: {x: -0.76, y: 1.14, z: 0}
+  m_Size: {x: 2.19, y: 0.89, z: 0.8}
+  m_Center: {x: -0.06, y: 1, z: 0}
