@@ -293,6 +293,12 @@ public class PlayerController : InputControllable
 
     }
 
+    public void ResetWhenRespawn()
+    {
+        ResetJump();
+        ResetDash();
+    }
+
     void UpdateControls()
     {
         if (active == false)

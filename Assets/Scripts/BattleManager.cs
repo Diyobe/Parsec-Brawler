@@ -190,6 +190,7 @@ public class BattleManager : MonoBehaviour
 
         cameraController.targets.Add(character.transform);
         character.transform.position = respawnPosition.position;
+        character.ResetWhenRespawn();
     }
 
     private void UnsubscribeBlastZone()
