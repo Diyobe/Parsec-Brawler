@@ -83,6 +83,7 @@ public class BattleManager : MonoBehaviour
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerID + 1);
             player.SetCharacterIndex(i);
+            player.teamID = playerData.CharacterInfos[i].TeamID;
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);
@@ -158,6 +159,15 @@ public class BattleManager : MonoBehaviour
                     playersLives.RemoveAt(i);
                     battleHuds[i].DrawLivesFeedback(0);
                     battleHuds.RemoveAt(i);
+                    if(playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                    {
+                        if (playersAlive.Count <= 2)
+                        {
+                            if (playersAlive[0].teamID == playersAlive[1].teamID)
+                                StartCoroutine(WinGameCoroutine());
+                        }
+                    }
+
                     if(playersAlive.Count <= 1) // Si il n'y a plus qu'un combattant
                     {
                         StartCoroutine(WinGameCoroutine());

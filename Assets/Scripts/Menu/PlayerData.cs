@@ -14,6 +14,14 @@ public struct CharacterInfos
 	}
 
 	[SerializeField]
+	private int teamID;
+	public int TeamID
+	{
+		get { return teamID; }
+		set { teamID = value; }
+	}
+
+	[SerializeField]
 	private int characterColorID;
 	public int CharacterColorID
 	{
@@ -49,4 +57,16 @@ public class PlayerData : ScriptableObject
 		set { numberOfLives = value; }
 	}
 
+	[SerializeField]
+	private TypeOfGameMode gameMode = TypeOfGameMode.FreeForAll;
+	public TypeOfGameMode GameMode
+	{
+		get { return gameMode; }
+		set { gameMode = value; }
+	}
+}
+
+public enum TypeOfGameMode{
+	FreeForAll,
+	TwoVsTwo,
 }
