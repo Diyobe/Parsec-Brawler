@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1714619801704049789}
   - component: {fileID: 1714619801704049790}
   - component: {fileID: 1714619801704049761}
-  - component: {fileID: 1714619801704049788}
+  - component: {fileID: 6508126816507146839}
   - component: {fileID: 1714619801704049786}
   m_Layer: 0
   m_Name: ShizuruFujina
@@ -168,7 +168,7 @@ MonoBehaviour:
   offsetRaycastY: 0.01
   numberRaycastVertical: 3
   numberRaycastHorizontal: 3
---- !u!114 &1714619801704049788
+--- !u!114 &6508126816507146839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1714619801704049760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47ecbe2096680e4e9746721d1434f02, type: 3}
+  m_Script: {fileID: 11500000, guid: 87724a6e13bf08142a71a03e59447173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particlePoint: {fileID: 1714619803333939944}
@@ -213,6 +213,12 @@ MonoBehaviour:
   attackUpAerial: {fileID: 6711955271010886810, guid: f38db52b088d8a64795ef4a42b53b65f, type: 3}
   attackDownAerial: {fileID: 6328704887807121763, guid: ab793a6e795998046b3dabf1e9e2d79a, type: 3}
   dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
+  neutralGround: {fileID: 6711955271010886810, guid: aba130479392ecc4194565c038856d9a, type: 3}
+  neutralAir: {fileID: 6711955271010886810, guid: 1557b21e5cca830488b8a3b50f389c4a, type: 3}
+  upSpecial: {fileID: 6711955271010886810, guid: a02e16b2a7cfc0b4c96f642f21a4a6e1, type: 3}
+  taunt: {fileID: 5009905772876635485, guid: e98a2842e0fe96f4fa7e30a9f224e28b, type: 3}
+  upSpecialImpulsion: 10
+  upSpecialNumber: 1
 --- !u!95 &1714619801704049786
 Animator:
   serializedVersion: 3
