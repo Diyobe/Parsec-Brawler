@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6711955271010886810}
   - component: {fileID: 6711955271010886813}
   m_Layer: 9
-  m_Name: ShizuruFujina_FORWARD_Aerial
+  m_Name: ShizuruFujina_FORWARD_Aerial 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   lifetime: 1
   keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
-  knockbackPower: 25
+  knockbackPower: 40
   knockbackAngle: {x: 0, y: -0.2, z: 0}
   hitStopUser: 1
   hitStop: 0.5
