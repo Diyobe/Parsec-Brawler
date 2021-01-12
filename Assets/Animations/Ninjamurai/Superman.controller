@@ -87,7 +87,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Up
+  m_Name: Superman_Up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -357,7 +357,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Down
+  m_Name: Superman_down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -518,7 +518,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Forward
+  m_Name: Superman_forward
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -620,10 +620,10 @@ AnimatorStateMachine:
     m_Position: {x: -290, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 864817343058197400}
-    m_Position: {x: -377.5644, y: 174.85263, z: 0}
+    m_Position: {x: -380, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2622745707748401091}
-    m_Position: {x: -380, y: 250, z: 0}
+    m_Position: {x: -380, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6706425254131046841}
     m_Position: {x: -380, y: 110, z: 0}
@@ -727,7 +727,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lia_Guard
+  m_Name: Superman_dash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -741,7 +741,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 63c6f83278d12d745bdf6536fcdd5a2e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 78b44fae18b835d449fcc18575f080fc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
