@@ -134,7 +134,7 @@ MonoBehaviour:
   knockbackPower: 100
   knockbackAngle: {x: 0, y: -0.3, z: 0}
   hitStopUser: 1
-  hitStop: 0.5
+  hitStop: 1
   targetShakePower: 0.2
   zoom: 0
   shakeScreen: 0

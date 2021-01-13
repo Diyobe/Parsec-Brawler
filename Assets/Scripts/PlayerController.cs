@@ -728,7 +728,8 @@ public class PlayerController : InputControllable
             AttackController a = other.GetComponent<AttackController>();
             if (a != null) // Le just dash
             { 
-                a.JustDash(this, enemyLagWhenJustDash); 
+                a.JustDash(this, enemyLagWhenJustDash);
+                a.ActionUnactive();
                 OnFlashMove.Invoke(this); 
             }
 

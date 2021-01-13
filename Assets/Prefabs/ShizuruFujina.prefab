@@ -187,7 +187,7 @@ MonoBehaviour:
   shakeSprite: {fileID: 1714619802387836513}
   smoke: {fileID: 6555611295522087577}
   afterImageEffect: {fileID: 4055193919426768375}
-  teamID: 0
+  team: 0
   speedMax: 5
   acceleration: 2
   decceleration: 10
@@ -201,6 +201,9 @@ MonoBehaviour:
   dashImpulsion: 8
   numberOfDashes: 1
   dashDuration: 0.2
+  dashJustDuration: 0.07
+  dashEndLag: 0.1
+  enemyLagWhenJustDash: 0.8
   baseKnockbackTime: 0.5
   knockbackPowerForWallBounce: 10
   knockbackImpactReductionRate: 0.8

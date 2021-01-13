@@ -156,8 +156,8 @@ public class AttackController : MonoBehaviour
 
     public void JustDash(PlayerController target, float enemyLag)
     {
-        user.SetCharacterMotionSpeed(0.35f, HitStop);
-        target.SetCharacterMotionSpeed(0.35f, enemyLag);
+        user.SetCharacterMotionSpeed(0.35f, enemyLag);
+        target.SetCharacterMotionSpeed(0.35f, HitStop);
     }
 
     public void StopUser(float motionSpeed, float time)
