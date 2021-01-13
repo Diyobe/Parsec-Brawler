@@ -83,7 +83,7 @@ public class BattleManager : MonoBehaviour
             player.Direction = (int)Mathf.Sign(spawnPosition[i].localScale.x);
             player.gameObject.tag = "Player" + (playerID + 1);
             player.SetCharacterIndex(i);
-            player.teamID = playerData.CharacterInfos[i].TeamID;
+            player.team = playerData.CharacterInfos[i].Team;
 
             playersAlive.Add(player);
             playersLives.Add(playerData.NumberOfLives);
@@ -167,11 +167,11 @@ public class BattleManager : MonoBehaviour
                     playersLives.RemoveAt(i);
                     battleHuds[i].DrawLivesFeedback(0);
                     battleHuds.RemoveAt(i);
-                    if(playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                    if(playerData.GameMode == TypeOfGameMode.TeamVsTeam)
                     {
                         if (playersAlive.Count == 2)
                         {
-                            if (playersAlive[0].teamID == playersAlive[1].teamID)
+                            if (playersAlive[0].team == playersAlive[1].team)
                             {
                                 StartCoroutine(WinGameCoroutine());
                                 return;

@@ -14,11 +14,11 @@ public struct CharacterInfos
 	}
 
 	[SerializeField]
-	private int teamID;
-	public int TeamID
+	private Team team;
+	public Team Team
 	{
-		get { return teamID; }
-		set { teamID = value; }
+		get { return team; }
+		set { team = value; }
 	}
 
 	[SerializeField]
@@ -36,6 +36,14 @@ public struct CharacterInfos
 		get { return characterData; }
 		set { characterData = value; }
 	}
+}
+public enum Team
+{
+	NoTeam = 0,
+	TeamRed = 1,
+	TeamBlue = 2,
+	TeamGreen = 3,
+	TeamPurple = 4,
 }
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
@@ -68,5 +76,5 @@ public class PlayerData : ScriptableObject
 
 public enum TypeOfGameMode{
 	FreeForAll,
-	TwoVsTwo,
+	TeamVsTeam,
 }
