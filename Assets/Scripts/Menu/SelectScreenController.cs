@@ -119,10 +119,7 @@ public class SelectScreenController : InputControllable
     {
         for (int i = 0; i < charTeamParents.Length; i++)
         {
-            if (playerData.GameMode == TypeOfGameMode.FreeForAll)
-                charTeamParents[i].SetActive(false);
-            else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
-                charTeamParents[i].SetActive(true);
+            charTeamParents[i].SetActive(false);
         }
 
         for (int i = 0; i < 4; i++)
@@ -218,6 +215,7 @@ public class SelectScreenController : InputControllable
                 charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 0.4f);
                 charNameTexts[i].text = characterDatas[0].CharName;
                 TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
+                charTeamParents[i].SetActive(true);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Jump") && jumpPressed[i] == true)
             {
@@ -236,6 +234,8 @@ public class SelectScreenController : InputControllable
                 textPlayerID[i].gameObject.SetActive(false);
                 characterPortraits[i].gameObject.SetActive(false);
                 charNameBackgrounds[i].gameObject.SetActive(false);
+
+                charTeamParents[i].SetActive(false);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonDown("Action") && !cursors[i].gameObject.activeSelf && actionPressed[i] == false)
             {
@@ -437,12 +437,22 @@ public class SelectScreenController : InputControllable
                         charInfos.Team = playerTeam[3];
                     playerData.CharacterInfos.Add(charInfos);
                 }
-                if(canStart())
+                if (canStart())
+                {
                     StartBattle();
+                    for (int z = 0; z < charTeamParents.Length; z++)
+                    {
+                        charTeamParents[z].SetActive(false);
+                    }
+                }
             }
         }
         if(canStart())
             CheckBattle();
+        else
+        {
+            textBattleStart.gameObject.SetActive(false);
+        }
     }
 
     public bool canStart()
