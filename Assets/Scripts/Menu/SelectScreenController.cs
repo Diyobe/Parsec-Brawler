@@ -35,6 +35,9 @@ public class SelectScreenController : InputControllable
     string stageToLoad;
 
     [SerializeField]
+    CharacterSelectedVisualizer characterSelectedVisualizer;
+
+    [SerializeField]
     CharacterData[] characterDatas;
 
     [SerializeField]
@@ -145,6 +148,10 @@ public class SelectScreenController : InputControllable
                 charTeamTexts[i].text = "team 4";
             }
         }
+        for (int i = 0; i < 4; i++)
+        {
+            characterSelectedVisualizer.SetActiveUniqueInstance(isPlayersReady[i], i);
+        }
     }
 
     public override void UpdateBuffer(List<input> inputBuffer, int inputID)
@@ -215,7 +222,10 @@ public class SelectScreenController : InputControllable
                 charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 0.4f);
                 charNameTexts[i].text = characterDatas[0].CharName;
                 TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
-                charTeamParents[i].SetActive(true);
+                if(playerData.GameMode == TypeOfGameMode.TeamVsTeam)
+                    charTeamParents[i].SetActive(true);
+
+                characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[0]);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Jump") && jumpPressed[i] == true)
             {
@@ -236,11 +246,13 @@ public class SelectScreenController : InputControllable
                 charNameBackgrounds[i].gameObject.SetActive(false);
 
                 charTeamParents[i].SetActive(false);
+                characterSelectedVisualizer.SetActiveUniqueInstance(false, i);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonDown("Action") && !cursors[i].gameObject.activeSelf && actionPressed[i] == false)
             {
                 previousScreen.SetActive(true);
                 this.gameObject.SetActive(false);
+                characterSelectedVisualizer.SetActiveInstance(false);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Action") && actionPressed[i] == true)
             {
@@ -258,30 +270,40 @@ public class SelectScreenController : InputControllable
                     characterPortraits[i].sprite = characterDatas[1].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[1].position;
                     charNameTexts[i].text = characterDatas[1].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[1]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[1].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[2].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[2].position;
                     charNameTexts[i].text = characterDatas[2].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[2]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[2].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[3].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[3].position;
                     charNameTexts[i].text = characterDatas[3].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[3]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[3].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[4].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[4].position;
                     charNameTexts[i].text = characterDatas[4].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[4]);
                 }
                 else
                 {
                     characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[0].position;
                     charNameTexts[i].text = characterDatas[0].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[0]);
                 }
             }
             else if (ReInput.players.GetPlayer(i).GetAxis("Horizontal") < -0.5f && cursors[i].gameObject.activeSelf && joystickPushed[i] == false && !isPlayersReady[i])
@@ -293,30 +315,40 @@ public class SelectScreenController : InputControllable
                     characterPortraits[i].sprite = characterDatas[4].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[4].position;
                     charNameTexts[i].text = characterDatas[4].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[4]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[1].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[0].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[0].position;
                     charNameTexts[i].text = characterDatas[0].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[0]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[2].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[1].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[1].position;
                     charNameTexts[i].text = characterDatas[1].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[1]);
                 }
                 else if (characterPortraits[i].sprite == characterDatas[4].CharacterSelectionSprite)
                 {
                     characterPortraits[i].sprite = characterDatas[3].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[3].position;
                     charNameTexts[i].text = characterDatas[3].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[3]);
                 }
                 else
                 {
                     characterPortraits[i].sprite = characterDatas[2].CharacterSelectionSprite;
                     cursors[i].position = characterPositions[2].position;
                     charNameTexts[i].text = characterDatas[2].CharName;
+
+                    characterSelectedVisualizer.SetCharacterInstance(i, characterDatas[2]);
                 }
 
             }
@@ -450,9 +482,7 @@ public class SelectScreenController : InputControllable
         if(canStart())
             CheckBattle();
         else
-        {
             textBattleStart.gameObject.SetActive(false);
-        }
     }
 
     public bool canStart()
