@@ -12,7 +12,8 @@ public enum CharacterState
     Hit,
     Ejected,
     Dead,
-    Dash
+    Dash,
+    DashJust
 }
 
 
@@ -94,7 +95,12 @@ public class PlayerController : InputControllable
     int currentNumberOfDashes;
 
     [SerializeField] float dashDuration = .2f;
+    [SerializeField] float dashJustDuration = .05f;
+    [SerializeField] float dashEndLag = .1f;
+
+    [SerializeField] float enemyLagWhenJustDash = 0.8f;
     float dashTimer;
+    float dashEndLagTimer;
 
     [Space]
     [Header("Knockback")]
@@ -237,13 +243,14 @@ public class PlayerController : InputControllable
         {
             ApplyGravity();
             UpdateControls();
+            UpdateDashEndLag();
         }
         else if (state == CharacterState.Acting)
         {
             CheckCrouch();
             ApplyGravity();
         }
-        else if (state == CharacterState.Dash)
+        else if (state == CharacterState.Dash || state == CharacterState.DashJust)
         {
             UpdateDash();
         }
@@ -258,6 +265,11 @@ public class PlayerController : InputControllable
 
     private void UpdateDash()
     {
+        if (dashTimer >= dashJustDuration)
+        {
+            state = CharacterState.Dash;
+        }
+
         if (dashTimer >= dashDuration)
         {
             state = CharacterState.Idle;
@@ -267,12 +279,26 @@ public class PlayerController : InputControllable
             {
                 currentNumberOfDashes = numberOfDashes;
             }
+            dashEndLagTimer = dashEndLag;
         }
         else
         {
             dashTimer += Time.deltaTime * GetMotionSpeed();
         }
     }
+
+    private void UpdateDashEndLag()
+    {
+        if (dashEndLagTimer > 0)
+        {
+            dashEndLagTimer -= Time.deltaTime * GetMotionSpeed();
+        }
+        else
+        {
+            dashEndLagTimer = 0;
+        }
+    }
+
 
     private void ResetJump()
     {
@@ -316,6 +342,8 @@ public class PlayerController : InputControllable
         float vertical;
         float horizontal;
         if (state != CharacterState.Idle)
+            return;
+        if (dashEndLagTimer > 0)
             return;
 
         for (int i = 0; i < buffer.Count; i++)
@@ -487,7 +515,7 @@ public class PlayerController : InputControllable
 
     public void Dash(float horizontal, float vertical)
     {
-        state = CharacterState.Dash;
+        state = CharacterState.DashJust;
 
         characterCollision.IsGrounded = false;
 
@@ -666,7 +694,7 @@ public class PlayerController : InputControllable
     private void OnTriggerEnter(Collider other)
     {
         //Attaque ennemi détecté
-        if (other.tag != this.transform.tag && state != CharacterState.Dash && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
+        if (other.tag != this.transform.tag && state != CharacterState.Dash && state != CharacterState.DashJust && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
             if (team != 0)
             {
@@ -683,7 +711,7 @@ public class PlayerController : InputControllable
 
             Knockback(other.GetComponent<AttackController>());
         }
-        else if (other.tag != this.transform.tag && state == CharacterState.Dash && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
+        else if (other.tag != this.transform.tag && state == CharacterState.DashJust && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
             if (team != 0)
             {
@@ -698,7 +726,11 @@ public class PlayerController : InputControllable
                 }
             }
             AttackController a = other.GetComponent<AttackController>();
-            if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
+            if (a != null) // Le just dash
+            { 
+                a.JustDash(this, enemyLagWhenJustDash); 
+                OnFlashMove.Invoke(this); 
+            }
 
         }
     }
