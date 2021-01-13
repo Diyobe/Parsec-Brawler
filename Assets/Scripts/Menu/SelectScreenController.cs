@@ -176,28 +176,24 @@ public class SelectScreenController : InputControllable
                 {
                     playerTeam[i] = (Team)2;
                     charTeamTexts[i].text = "team 2";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 2" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)3;
                     charTeamTexts[i].text = "team 3";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 3" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)4;
                     charTeamTexts[i].text = "team 4";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 4" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)1;
                     charTeamTexts[i].text = "team 1";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
             }
@@ -458,7 +454,7 @@ public class SelectScreenController : InputControllable
                 case 2:
                     for (int z = 0; z < 2; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1])
                         {
                             return false;
                         }
@@ -467,7 +463,7 @@ public class SelectScreenController : InputControllable
                 case 3:
                     for (int z = 0; z < 3; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1] && playerTeam[z] == playerTeam[2])
                         {
                             return false;
                         }
@@ -476,7 +472,7 @@ public class SelectScreenController : InputControllable
                 case 4:
                     for (int z = 0; z < 4; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team && playerTeam[z] == playerData.CharacterInfos[3].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1] && playerTeam[z] == playerTeam[2] && playerTeam[z] == playerTeam[3])
                         {
                             return false;
                         }
