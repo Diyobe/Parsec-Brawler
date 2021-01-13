@@ -672,23 +672,31 @@ public class PlayerController : InputControllable
             {
                 if (other.GetComponent<AttackController>() != null)
                 {
-                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>() != null)
+                    var playerCtrl = other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>();
+                    if (playerCtrl != null)
                     {
-                        if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>().teamID == teamID)
+                        if (playerCtrl.teamID == teamID)
                             return;
                     }
-                    //else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
-                    //{
-                    //    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
-                    //        return;
-                    //}
                 }
             }
 
             Knockback(other.GetComponent<AttackController>());
         }
-        else if (other.tag != this.transform.tag && state == CharacterState.Dash)
+        else if (other.tag != this.transform.tag && state == CharacterState.Dash && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
+            if (teamID != 0)
+            {
+                if (other.GetComponent<AttackController>() != null)
+                {
+                    var playerCtrl = other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>();
+                    if (playerCtrl != null)
+                    {
+                        if (playerCtrl.teamID == teamID)
+                            return;
+                    }
+                }
+            }
             AttackController a = other.GetComponent<AttackController>();
             if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
 
