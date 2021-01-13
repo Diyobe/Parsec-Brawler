@@ -668,17 +668,20 @@ public class PlayerController : InputControllable
         //Attaque ennemi détecté
         if (other.tag != this.transform.tag && state != CharacterState.Dash && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
-            if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent != null)
+            if (teamID != 0)
             {
-                if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>() != null)
+                if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent != null)
                 {
-                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>().teamID == teamID)
-                        return;
-                }
-                else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
-                {
-                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
-                        return;
+                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>() != null)
+                    {
+                        if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>().teamID == teamID)
+                            return;
+                    }
+                    else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
+                    {
+                        if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
+                            return;
+                    }
                 }
             }
 
