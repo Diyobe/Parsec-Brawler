@@ -131,7 +131,7 @@ MonoBehaviour:
   lifetime: 1
   keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
-  knockbackPower: 25
+  knockbackPower: 35
   knockbackAngle: {x: 0, y: 0.5, z: 0}
   hitStopUser: 1
   hitStop: 0.5
