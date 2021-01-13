@@ -169,6 +169,14 @@ public class BattleManager : MonoBehaviour
                     battleHuds.RemoveAt(i);
                     if(playerData.GameMode == TypeOfGameMode.TeamVsTeam)
                     {
+                        if (playersAlive.Count == 3)
+                        {
+                            if (playersAlive[0].team == playersAlive[1].team && playersAlive[1].team == playersAlive[2].team && playersAlive[0].team == playersAlive[2].team)
+                            {
+                                StartCoroutine(WinGameCoroutine());
+                                return;
+                            }
+                        }
                         if (playersAlive.Count == 2)
                         {
                             if (playersAlive[0].team == playersAlive[1].team)
