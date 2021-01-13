@@ -169,10 +169,18 @@ public class BattleManager : MonoBehaviour
                     battleHuds.RemoveAt(i);
                     if(playerData.GameMode == TypeOfGameMode.TwoVsTwo)
                     {
-                        if (playersAlive.Count <= 2)
+                        if (playersAlive.Count == 2)
                         {
                             if (playersAlive[0].teamID == playersAlive[1].teamID)
+                            {
                                 StartCoroutine(WinGameCoroutine());
+                                return;
+                            }
+                        }
+                        else if (playersAlive.Count < 2)
+                        {
+                            StartCoroutine(WinGameCoroutine());
+                            return;
                         }
                     }
 
