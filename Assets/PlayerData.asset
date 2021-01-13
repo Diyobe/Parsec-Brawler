@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e360525963f70241a2b7f674431c177, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  characterInfos: []
+  characterInfos:
+  - playerID: 0
+    teamID: 1
+    characterColorID: 0
+    characterData: {fileID: 11400000, guid: 44481f64110b65c4991fe12493aa14fb, type: 2}
+  - playerID: 1
+    teamID: 2
+    characterColorID: 0
+    characterData: {fileID: 11400000, guid: b66915fd82c406a4195fca4a39bbcdef, type: 2}
   numberOfLives: 3
-  gameMode: 0
+  gameMode: 1
