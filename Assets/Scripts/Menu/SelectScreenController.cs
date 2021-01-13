@@ -68,6 +68,8 @@ public class SelectScreenController : InputControllable
 
     bool[] actionPressed = new bool[4];
 
+    bool[] teamPressed = new bool[4];
+
     bool[] isPlayersReady = new bool[4];
 
     bool[] isPlayerAddedInData = new bool[4];
@@ -168,28 +170,40 @@ public class SelectScreenController : InputControllable
             //    actionPressed[i] = false;
             //}
 
-            if(ReInput.players.GetPlayer(i).GetButtonDown("Taunt"))
+            if(ReInput.players.GetPlayer(i).GetButtonDown("Taunt") && teamPressed[i] == false)
             {
                 if(charTeamTexts[i].text == "team 1")
                 {
                     playerTeam[i] = (Team)2;
                     charTeamTexts[i].text = "team 2";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 2")
                 {
                     playerTeam[i] = (Team)3;
                     charTeamTexts[i].text = "team 3";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 3")
                 {
                     playerTeam[i] = (Team)4;
                     charTeamTexts[i].text = "team 4";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 4")
                 {
                     playerTeam[i] = (Team)1;
                     charTeamTexts[i].text = "team 1";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
                 }
+            }
+            else if(ReInput.players.GetPlayer(i).GetButtonUp("Taunt") && teamPressed[i] == true)
+            {
+                teamPressed[i] = false;
             }
 
             if (ReInput.players.GetPlayer(i).GetButtonDown("Jump") && !cursors[i].gameObject.activeSelf && jumpPressed[i] == false)
