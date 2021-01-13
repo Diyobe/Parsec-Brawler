@@ -670,18 +670,18 @@ public class PlayerController : InputControllable
         {
             if (teamID != 0)
             {
-                if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent != null)
+                if (other.GetComponent<AttackController>() != null)
                 {
                     if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>() != null)
                     {
                         if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>().teamID == teamID)
                             return;
                     }
-                    else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
-                    {
-                        if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
-                            return;
-                    }
+                    //else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
+                    //{
+                    //    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
+                    //        return;
+                    //}
                 }
             }
 
