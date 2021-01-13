@@ -119,10 +119,7 @@ public class SelectScreenController : InputControllable
     {
         for (int i = 0; i < charTeamParents.Length; i++)
         {
-            if (playerData.GameMode == TypeOfGameMode.FreeForAll)
-                charTeamParents[i].SetActive(false);
-            else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
-                charTeamParents[i].SetActive(true);
+            charTeamParents[i].SetActive(false);
         }
 
         for (int i = 0; i < 4; i++)
@@ -176,28 +173,24 @@ public class SelectScreenController : InputControllable
                 {
                     playerTeam[i] = (Team)2;
                     charTeamTexts[i].text = "team 2";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 2" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)3;
                     charTeamTexts[i].text = "team 3";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 3" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)4;
                     charTeamTexts[i].text = "team 4";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
                 else if (charTeamTexts[i].text == "team 4" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)1;
                     charTeamTexts[i].text = "team 1";
-                    Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
             }
@@ -222,6 +215,7 @@ public class SelectScreenController : InputControllable
                 charNameBackgrounds[i].color = new Color(1f, 1f, 1f, 0.4f);
                 charNameTexts[i].text = characterDatas[0].CharName;
                 TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
+                charTeamParents[i].SetActive(true);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonUp("Jump") && jumpPressed[i] == true)
             {
@@ -240,6 +234,8 @@ public class SelectScreenController : InputControllable
                 textPlayerID[i].gameObject.SetActive(false);
                 characterPortraits[i].gameObject.SetActive(false);
                 charNameBackgrounds[i].gameObject.SetActive(false);
+
+                charTeamParents[i].SetActive(false);
             }
             else if (ReInput.players.GetPlayer(i).GetButtonDown("Action") && !cursors[i].gameObject.activeSelf && actionPressed[i] == false)
             {
@@ -441,12 +437,22 @@ public class SelectScreenController : InputControllable
                         charInfos.Team = playerTeam[3];
                     playerData.CharacterInfos.Add(charInfos);
                 }
-                if(canStart())
+                if (canStart())
+                {
                     StartBattle();
+                    for (int z = 0; z < charTeamParents.Length; z++)
+                    {
+                        charTeamParents[z].SetActive(false);
+                    }
+                }
             }
         }
         if(canStart())
             CheckBattle();
+        else
+        {
+            textBattleStart.gameObject.SetActive(false);
+        }
     }
 
     public bool canStart()
@@ -458,7 +464,7 @@ public class SelectScreenController : InputControllable
                 case 2:
                     for (int z = 0; z < 2; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1])
                         {
                             return false;
                         }
@@ -467,7 +473,7 @@ public class SelectScreenController : InputControllable
                 case 3:
                     for (int z = 0; z < 3; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1] && playerTeam[z] == playerTeam[2])
                         {
                             return false;
                         }
@@ -476,7 +482,7 @@ public class SelectScreenController : InputControllable
                 case 4:
                     for (int z = 0; z < 4; z++)
                     {
-                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team && playerTeam[z] == playerData.CharacterInfos[3].Team)
+                        if (playerTeam[z] == playerTeam[0] && playerTeam[z] == playerTeam[1] && playerTeam[z] == playerTeam[2] && playerTeam[z] == playerTeam[3])
                         {
                             return false;
                         }
