@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Rewired;
 using VoiceActing;
+using System.Linq;
 
 public class SelectScreenController : InputControllable
 {
@@ -55,11 +56,19 @@ public class SelectScreenController : InputControllable
     [SerializeField]
     TextMeshProUGUI[] charNameTexts;
 
+    [SerializeField]
+    TextMeshProUGUI[] charTeamTexts;
+
+    [SerializeField]
+    GameObject[] charTeamParents;
+
     bool[] joystickPushed = new bool[4];
 
     bool[] jumpPressed = new bool[4];
 
     bool[] actionPressed = new bool[4];
+
+    bool[] teamPressed = new bool[4];
 
     bool[] isPlayersReady = new bool[4];
 
@@ -72,7 +81,7 @@ public class SelectScreenController : InputControllable
     bool active = true;
     private Player player;
 
-
+    Team[] playerTeam = new Team[4];
 
     public void SetStageToLoad(string sceneName)
     {
@@ -102,8 +111,44 @@ public class SelectScreenController : InputControllable
         {
             textPlayerID[i].gameObject.SetActive(false);
         }
+
+        Init();
     }
 
+    public void Init()
+    {
+        for (int i = 0; i < charTeamParents.Length; i++)
+        {
+            if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                charTeamParents[i].SetActive(false);
+            else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
+                charTeamParents[i].SetActive(true);
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (charTeamTexts[i].text == "team 1")
+            {
+                playerTeam[i] = (Team)1;
+                charTeamTexts[i].text = "team 1";
+            }
+            else if (charTeamTexts[i].text == "team 2")
+            {
+                playerTeam[i] = (Team)2;
+                charTeamTexts[i].text = "team 2";
+            }
+            else if (charTeamTexts[i].text == "team 3")
+            {
+                playerTeam[i] = (Team)3;
+                charTeamTexts[i].text = "team 3";
+            }
+            else if (charTeamTexts[i].text == "team 4")
+            {
+                playerTeam[i] = (Team)4;
+                charTeamTexts[i].text = "team 4";
+            }
+        }
+    }
 
     public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
@@ -124,6 +169,42 @@ public class SelectScreenController : InputControllable
             //{
             //    actionPressed[i] = false;
             //}
+
+            if(ReInput.players.GetPlayer(i).GetButtonDown("Taunt") && teamPressed[i] == false)
+            {
+                if(charTeamTexts[i].text == "team 1" && !isPlayersReady[i])
+                {
+                    playerTeam[i] = (Team)2;
+                    charTeamTexts[i].text = "team 2";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
+                }
+                else if (charTeamTexts[i].text == "team 2" && !isPlayersReady[i])
+                {
+                    playerTeam[i] = (Team)3;
+                    charTeamTexts[i].text = "team 3";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
+                }
+                else if (charTeamTexts[i].text == "team 3" && !isPlayersReady[i])
+                {
+                    playerTeam[i] = (Team)4;
+                    charTeamTexts[i].text = "team 4";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
+                }
+                else if (charTeamTexts[i].text == "team 4" && !isPlayersReady[i])
+                {
+                    playerTeam[i] = (Team)1;
+                    charTeamTexts[i].text = "team 1";
+                    Debug.Log(playerTeam[i]);
+                    teamPressed[i] = true;
+                }
+            }
+            else if(ReInput.players.GetPlayer(i).GetButtonUp("Taunt") && teamPressed[i] == true)
+            {
+                teamPressed[i] = false;
+            }
 
             if (ReInput.players.GetPlayer(i).GetButtonDown("Jump") && !cursors[i].gameObject.activeSelf && jumpPressed[i] == false)
             {
@@ -312,10 +393,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 0;
                     charInfos.CharacterColorID = 0;
                     charInfos.CharacterData = characterDatas[inputSelections[0]];
-                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
-                        charInfos.TeamID = 1;
+                    if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                        charInfos.Team = Team.NoTeam;
                     else
-                        charInfos.TeamID = 0;
+                        charInfos.Team = playerTeam[0];
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -326,10 +407,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 1;
                     charInfos.CharacterColorID = 1;
                     charInfos.CharacterData = characterDatas[inputSelections[1]];
-                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
-                        charInfos.TeamID = 1;
+                    if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                        charInfos.Team = Team.NoTeam;
                     else
-                        charInfos.TeamID = 0;
+                        charInfos.Team = playerTeam[1];
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -340,10 +421,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 2;
                     charInfos.CharacterColorID = 2;
                     charInfos.CharacterData = characterDatas[inputSelections[2]];
-                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
-                        charInfos.TeamID = 2;
+                    if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                        charInfos.Team = Team.NoTeam;
                     else
-                        charInfos.TeamID = 0;
+                        charInfos.Team = playerTeam[2];
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -354,21 +435,57 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 3;
                     charInfos.CharacterColorID = 3;
                     charInfos.CharacterData = characterDatas[inputSelections[3]];
-                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
-                        charInfos.TeamID = 2;
+                    if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                        charInfos.Team = Team.NoTeam;
                     else
-                        charInfos.TeamID = 0;
+                        charInfos.Team = playerTeam[3];
                     playerData.CharacterInfos.Add(charInfos);
                 }
-
-                StartBattle();
+                if(canStart())
+                    StartBattle();
             }
         }
-
-        //if(player.GetAxis("Horizontal"))
-        CheckBattle();
+        if(canStart())
+            CheckBattle();
     }
 
+    public bool canStart()
+    {
+        if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
+        {
+            switch (numberOfReadyPlayers)
+            {
+                case 2:
+                    for (int z = 0; z < 2; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int z = 0; z < 3; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                case 4:
+                    for (int z = 0; z < 4; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team && playerTeam[z] == playerData.CharacterInfos[3].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+            }
+        }
+        return true;
+    }
 
 
     public void DrawPlayers()
@@ -398,9 +515,9 @@ public class SelectScreenController : InputControllable
         //if (playerData.CharacterInfos.Count >= 2)
         if (numberOfReadyPlayers >= 2 && active)
         {
-            if (playerData.GameMode == TypeOfGameMode.TwoVsTwo && numberOfReadyPlayers != 4)
+            if (playerData.GameMode == TypeOfGameMode.TeamVsTeam && numberOfReadyPlayers != 4)
                 return;
-            else if (playerData.GameMode == TypeOfGameMode.TwoVsTwo && numberOfReadyPlayers == 4)
+            else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam && numberOfReadyPlayers == 4)
             {
                 TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
                 TengenToppaAudioManager.Instance.StopMusic(2f);
