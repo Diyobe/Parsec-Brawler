@@ -172,28 +172,28 @@ public class SelectScreenController : InputControllable
 
             if(ReInput.players.GetPlayer(i).GetButtonDown("Taunt") && teamPressed[i] == false)
             {
-                if(charTeamTexts[i].text == "team 1")
+                if(charTeamTexts[i].text == "team 1" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)2;
                     charTeamTexts[i].text = "team 2";
                     Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
-                else if (charTeamTexts[i].text == "team 2")
+                else if (charTeamTexts[i].text == "team 2" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)3;
                     charTeamTexts[i].text = "team 3";
                     Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
-                else if (charTeamTexts[i].text == "team 3")
+                else if (charTeamTexts[i].text == "team 3" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)4;
                     charTeamTexts[i].text = "team 4";
                     Debug.Log(playerTeam[i]);
                     teamPressed[i] = true;
                 }
-                else if (charTeamTexts[i].text == "team 4")
+                else if (charTeamTexts[i].text == "team 4" && !isPlayersReady[i])
                 {
                     playerTeam[i] = (Team)1;
                     charTeamTexts[i].text = "team 1";
@@ -441,49 +441,51 @@ public class SelectScreenController : InputControllable
                         charInfos.Team = playerTeam[3];
                     playerData.CharacterInfos.Add(charInfos);
                 }
-
-                if(playerData.GameMode == TypeOfGameMode.TeamVsTeam)
-                {
-                    switch(numberOfReadyPlayers)
-                    {
-                        case 2:
-                            for(int z = 0; z < 2; z++)
-                            {
-                                if(playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team)
-                                {
-                                    return;
-                                }
-                            }
-                            break;
-                        case 3:
-                            for (int z = 0; z < 3; z++)
-                            {
-                                if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team)
-                                {
-                                    return;
-                                }
-                            }
-                            break;
-                        case 4:
-                            for (int z = 0; z < 4; z++)
-                            {
-                                if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team && playerTeam[z] == playerData.CharacterInfos[3].Team)
-                                {
-                                    return;
-                                }
-                            }
-                            break;
-                    }
-                }
-
-                StartBattle();
+                if(canStart())
+                    StartBattle();
             }
         }
-
-        //if(player.GetAxis("Horizontal"))
-        CheckBattle();
+        if(canStart())
+            CheckBattle();
     }
 
+    public bool canStart()
+    {
+        if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
+        {
+            switch (numberOfReadyPlayers)
+            {
+                case 2:
+                    for (int z = 0; z < 2; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int z = 0; z < 3; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                case 4:
+                    for (int z = 0; z < 4; z++)
+                    {
+                        if (playerTeam[z] == playerData.CharacterInfos[0].Team && playerTeam[z] == playerData.CharacterInfos[1].Team && playerTeam[z] == playerData.CharacterInfos[2].Team && playerTeam[z] == playerData.CharacterInfos[3].Team)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+            }
+        }
+        return true;
+    }
 
 
     public void DrawPlayers()

@@ -46,7 +46,7 @@ public class WinMenu : InputControllable
         if (playerData.GameMode == TypeOfGameMode.FreeForAll)
             textWinner.text = playerData.CharacterInfos[playerID[0]].CharacterData.CharName + " WIN";
         else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
-            textWinner.text ="Team " + playerData.CharacterInfos[playerID[0]].Team + " WIN";
+            textWinner.text ="Team " + (int)playerData.CharacterInfos[playerID[0]].Team + " WIN";
         //winnerColor[playerID[0]].gameObject.SetActive(true);
 
         winnerCharacter.gameObject.SetActive(true);
