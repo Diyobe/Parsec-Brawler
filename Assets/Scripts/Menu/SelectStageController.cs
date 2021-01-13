@@ -78,6 +78,7 @@ public class SelectStageController : InputControllable
         {
             TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
             selectScreenController.gameObject.SetActive(true);
+            selectScreenController.Init();
             selectScreenController.SetStageToLoad(sceneNames[index]);
             this.gameObject.SetActive(false);
         }
@@ -97,8 +98,8 @@ public class SelectStageController : InputControllable
         else if(inputBuffer[0].taunt)
         {
             if (playerData.GameMode == TypeOfGameMode.FreeForAll)
-                playerData.GameMode = TypeOfGameMode.TwoVsTwo;
-            else if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                playerData.GameMode = TypeOfGameMode.TeamVsTeam;
+            else if (playerData.GameMode == TypeOfGameMode.TeamVsTeam)
                 playerData.GameMode = TypeOfGameMode.FreeForAll;
             textMode.text = playerData.GameMode.ToString();
         }
