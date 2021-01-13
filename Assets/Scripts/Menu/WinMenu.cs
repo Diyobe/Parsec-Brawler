@@ -43,7 +43,10 @@ public class WinMenu : InputControllable
         this.gameObject.SetActive(true);
         playerID.Reverse();
         //textWinner.text = playerNames[playerID[0]] + " WIN";
-        textWinner.text = playerData.CharacterInfos[playerID[0]].CharacterData.CharName + " WIN";
+        if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+            textWinner.text = playerData.CharacterInfos[playerID[0]].CharacterData.CharName + " WIN";
+        else if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+            textWinner.text ="Team " + playerData.CharacterInfos[playerID[0]].TeamID + " WIN";
         //winnerColor[playerID[0]].gameObject.SetActive(true);
 
         winnerCharacter.gameObject.SetActive(true);

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject blastExplosion;
     [SerializeField] private Transform respawnPosition;
 
-    [SerializeField] private MultipleTargetCamera camera;
+    [SerializeField] private MultipleTargetCamera targetCamera;
 
     public static GameManager Instance;
 
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             if (character == blastedCharacter)
             {
                 character.ResetToIdle();
-                camera.targets.Remove(blastedCharacter.transform);
+                targetCamera.targets.Remove(blastedCharacter.transform);
                 character.gameObject.SetActive(false);
                 StartCoroutine(RespawnCharacter(character.gameObject, 2f));
             }
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         character.SetActive(true);
-        camera.targets.Add(character.transform);
+        targetCamera.targets.Add(character.transform);
         character.transform.position = respawnPosition.position;
     }
 }

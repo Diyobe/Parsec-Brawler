@@ -10,6 +10,8 @@ public class SelectStageController : InputControllable
     PlayerData playerData;
     [SerializeField]
     TextMeshProUGUI textLife;
+    [SerializeField]
+    TextMeshProUGUI textMode;
 
     [SerializeField]
     string[] sceneNames;
@@ -37,6 +39,7 @@ public class SelectStageController : InputControllable
         animatorSelection = selection.GetComponent<Animator>();
         TengenToppaAudioManager.Instance.PlayMusic(menuIntro, menuTheme);
         textLife.text = playerData.NumberOfLives.ToString();
+        textMode.text = playerData.GameMode.ToString();
     }
 
 
@@ -90,6 +93,14 @@ public class SelectStageController : InputControllable
                 playerData.NumberOfLives = 1;
             }
             textLife.text = playerData.NumberOfLives.ToString();
+        }
+        else if(inputBuffer[0].taunt)
+        {
+            if (playerData.GameMode == TypeOfGameMode.FreeForAll)
+                playerData.GameMode = TypeOfGameMode.TwoVsTwo;
+            else if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                playerData.GameMode = TypeOfGameMode.FreeForAll;
+            textMode.text = playerData.GameMode.ToString();
         }
     }
 }

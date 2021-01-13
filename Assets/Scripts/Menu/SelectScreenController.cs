@@ -312,6 +312,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 0;
                     charInfos.CharacterColorID = 0;
                     charInfos.CharacterData = characterDatas[inputSelections[0]];
+                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                        charInfos.TeamID = 1;
+                    else
+                        charInfos.TeamID = 0;
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -322,6 +326,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 1;
                     charInfos.CharacterColorID = 1;
                     charInfos.CharacterData = characterDatas[inputSelections[1]];
+                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                        charInfos.TeamID = 1;
+                    else
+                        charInfos.TeamID = 0;
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -332,6 +340,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 2;
                     charInfos.CharacterColorID = 2;
                     charInfos.CharacterData = characterDatas[inputSelections[2]];
+                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                        charInfos.TeamID = 2;
+                    else
+                        charInfos.TeamID = 0;
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -342,6 +354,10 @@ public class SelectScreenController : InputControllable
                     charInfos.PlayerID = 3;
                     charInfos.CharacterColorID = 3;
                     charInfos.CharacterData = characterDatas[inputSelections[3]];
+                    if (playerData.GameMode == TypeOfGameMode.TwoVsTwo)
+                        charInfos.TeamID = 2;
+                    else
+                        charInfos.TeamID = 0;
                     playerData.CharacterInfos.Add(charInfos);
                 }
 
@@ -382,11 +398,26 @@ public class SelectScreenController : InputControllable
         //if (playerData.CharacterInfos.Count >= 2)
         if (numberOfReadyPlayers >= 2 && active)
         {
-            TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
-            TengenToppaAudioManager.Instance.StopMusic(2f);
-            active = false;
-            animatorStart.gameObject.SetActive(true);
-            StartCoroutine(StartBattleCoroutine());
+            if (playerData.GameMode == TypeOfGameMode.TwoVsTwo && numberOfReadyPlayers != 4)
+                return;
+            else if (playerData.GameMode == TypeOfGameMode.TwoVsTwo && numberOfReadyPlayers == 4)
+            {
+                TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
+                TengenToppaAudioManager.Instance.StopMusic(2f);
+                active = false;
+                animatorStart.gameObject.SetActive(true);
+                StartCoroutine(StartBattleCoroutine());
+                return;
+            }
+            else
+            {
+
+                TengenToppaAudioManager.Instance.PlaySound(startFightSound, 0.5f);
+                TengenToppaAudioManager.Instance.StopMusic(2f);
+                active = false;
+                animatorStart.gameObject.SetActive(true);
+                StartCoroutine(StartBattleCoroutine());
+            }
         }
     }
     private IEnumerator StartBattleCoroutine()

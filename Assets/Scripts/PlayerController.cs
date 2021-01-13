@@ -52,7 +52,9 @@ public class PlayerController : InputControllable
     ParticleSystem smoke;
     [SerializeField]
     protected AfterImageEffect afterImageEffect;
+    [Space]
 
+    [ReadOnly] public int teamID;
 
     [Space]
     [Header("Movement")]
@@ -291,6 +293,12 @@ public class PlayerController : InputControllable
         currentNumberOfDashes = numberOfDashes;
         afterImageEffect.EndAfterImage();
 
+    }
+
+    public void ResetWhenRespawn()
+    {
+        ResetJump();
+        ResetDash();
     }
 
     void UpdateControls()
@@ -651,15 +659,6 @@ public class PlayerController : InputControllable
     #endregion
 
 
-
-
-
-
-
-
-
-
-
     // ==========================================================================================================
     //    K N O C K B A C K
     // ==========================================================================================================
@@ -667,8 +666,22 @@ public class PlayerController : InputControllable
     private void OnTriggerEnter(Collider other)
     {
         //Attaque ennemi détecté
-        if (other.tag != this.transform.tag && state != CharacterState.Dash)
+        if (other.tag != this.transform.tag && state != CharacterState.Dash && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
+            if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent != null)
+            {
+                if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>() != null)
+                {
+                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<PlayerController>().teamID == teamID)
+                        return;
+                }
+                else if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>() != null)
+                {
+                    if (other.gameObject.GetComponent<AttackController>().gameObject.transform.parent.GetComponent<SpecialController>().teamID == teamID)
+                        return;
+                }
+            }
+
             Knockback(other.GetComponent<AttackController>());
         }
         else if (other.tag != this.transform.tag && state == CharacterState.Dash)
@@ -677,7 +690,6 @@ public class PlayerController : InputControllable
             if (a != null) { a.DoSomething(this); OnFlashMove.Invoke(this); }
 
         }
-
     }
 
     private void Knockback(AttackController attack)
