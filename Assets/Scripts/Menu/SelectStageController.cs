@@ -78,6 +78,7 @@ public class SelectStageController : InputControllable
         {
             TengenToppaAudioManager.Instance.PlaySound(menuValidateSound, 0.5f);
             selectScreenController.gameObject.SetActive(true);
+            selectScreenController.Init();
             selectScreenController.SetStageToLoad(sceneNames[index]);
             this.gameObject.SetActive(false);
         }
