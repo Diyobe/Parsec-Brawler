@@ -100,7 +100,15 @@ public class BattleManager : MonoBehaviour
         SubscribeFeedback(); // Pas opti on refait une boucle mais nique
 
         StartCoroutine(StartGameCoroutine());
-        TengenToppaAudioManager.Instance.PlayMusic(AngelBreakerIntro, AngelBreakerLoop);
+
+        if (Random.Range(0, 2) < 1)
+        {
+            TengenToppaAudioManager.Instance.PlayMusic(AngelBreakerIntro, AngelBreakerLoop);
+        }
+        else
+        {
+            TengenToppaAudioManager.Instance.PlayMusic(ShadowSakura, ShadowSakura);
+        }
     }
 
     private IEnumerator StartGameCoroutine()
