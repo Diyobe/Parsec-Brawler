@@ -41,6 +41,7 @@ public class LiaStageBackground : MonoBehaviour
     }
     public void SuperKnockbackFeedback(PlayerController p)
     {
-        cameraAnimation.SetTrigger("FeedbackSuperKnockback");
+        if(battleManager.PlayersAlive.Count <= 2)
+            cameraAnimation.SetTrigger("FeedbackSuperKnockback");
     }
 }
