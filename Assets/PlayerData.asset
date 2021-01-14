@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfos:
   - playerID: 0
-    teamID: 1
+    team: 0
     characterColorID: 0
-    characterData: {fileID: 11400000, guid: 44481f64110b65c4991fe12493aa14fb, type: 2}
+    characterData: {fileID: 11400000, guid: 061444519db4e614bb7ee00490c800ed, type: 2}
   - playerID: 1
-    teamID: 1
-    characterColorID: 0
+    team: 0
+    characterColorID: 1
     characterData: {fileID: 11400000, guid: b66915fd82c406a4195fca4a39bbcdef, type: 2}
   numberOfLives: 3
-  gameMode: 1
+  gameMode: 0
