@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 1714619801704049789}
   - component: {fileID: 1714619801704049790}
   - component: {fileID: 1714619801704049761}
-  - component: {fileID: 1714619801704049788}
   - component: {fileID: 1714619801704049786}
   - component: {fileID: 6387298547736225246}
   m_Layer: 0
@@ -170,57 +169,6 @@ MonoBehaviour:
   offsetRaycastY: 0.01
   numberRaycastVertical: 3
   numberRaycastHorizontal: 3
---- !u!114 &1714619801704049788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714619801704049760}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47ecbe2096680e4e9746721d1434f02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particlePoint: {fileID: 1714619803333939944}
-  characterCollision: {fileID: 1714619801704049761}
-  characterAnimator: {fileID: 1714619801704049786}
-  spriteRenderer: {fileID: 1714619802387836512}
-  shakeSprite: {fileID: 1714619802387836513}
-  smoke: {fileID: 6555611295522087577}
-  afterImageEffect: {fileID: 4055193919426768375}
-  team: 0
-  speedMax: 6
-  acceleration: 3
-  decceleration: 10
-  airFriction: 1.4
-  airStop: 0.97
-  gravityForce: 15
-  gravityForceMax: -10
-  jumpImpulsion: 6
-  numberOfJumps: 2
-  crouchTime: 0.08
-  invicibilityDuration: 1.5
-  respawnShield: {fileID: 7587316131219603382}
-  dashImpulsion: 8
-  numberOfDashes: 1
-  dashDuration: 0.2
-  dashJustDuration: 0.07
-  dashEndLag: 0.1
-  enemyLagWhenJustDash: 0.8
-  baseKnockbackTime: 0.5
-  knockbackPowerForWallBounce: 10
-  knockbackImpactReductionRate: 0.8
-  hitStopOnWall: 0.08
-  shakePowerOnWall: 0.2
-  crouchJump: {fileID: 5009905772876635485, guid: 98080683836a2084abeb67198fb58357, type: 3}
-  attackLeft: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
-  attackUp: {fileID: 6711955271010886810, guid: db77e3e751e2f2c44b106e2bb3e46a7d, type: 3}
-  attackDown: {fileID: 1975021917538315906, guid: bc84e45946b751245be68e993160de63, type: 3}
-  attackLeftAerial: {fileID: 8530654087378751973, guid: 94d95a07421a3524c85113318b73735b, type: 3}
-  attackUpAerial: {fileID: 6711955271010886810, guid: 3e99795c768728549a9d4125ffd2a373, type: 3}
-  attackDownAerial: {fileID: 1975021917538315906, guid: 89f9a23bf0f0f9e46a8f10275b04bcfd, type: 3}
-  dashSound: {fileID: 8300000, guid: f27250f8bf0f684469d129ba56d2a812, type: 3}
 --- !u!95 &1714619801704049786
 Animator:
   serializedVersion: 3
@@ -294,7 +242,9 @@ MonoBehaviour:
   neutralGround: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
   neutralAir: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
   upSpecial: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
-  taunt: {fileID: 0}
+  taunt: {fileID: 5009905772876635485, guid: 92f66b419f79b0548a8416d1f3cc9d7c, type: 3}
+  taunt2: {fileID: 5009905772876635485, guid: 92f66b419f79b0548a8416d1f3cc9d7c, type: 3}
+  canUse2Taunt: 0
   upSpecialImpulsion: 0
   upSpecialNumber: 1
 --- !u!1 &1714619802387836514
