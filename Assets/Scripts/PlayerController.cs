@@ -69,15 +69,31 @@ public class PlayerController : InputControllable
     [Space]
     [SerializeField]
     float airFriction = 5;
+    public float AirFriction
+    {
+        get { return airFriction; }
+        set { airFriction = value; }
+    }
+
     [SerializeField]
     float airStop = 0.9f;
 
     [Space]
     [SerializeField]
     protected float gravityForce = 8;
+    public float GravityForce
+    {
+        get { return gravityForce; }
+        set { gravityForce = value; }
+    }
+
     [SerializeField]
     protected float gravityForceMax = -10;
-
+    public float GravityForceMax
+    {
+        get { return gravityForceMax; }
+        set { gravityForceMax = value; }
+    }
 
     [Space]
     [Header("Jump")]

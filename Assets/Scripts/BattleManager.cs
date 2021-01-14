@@ -42,6 +42,11 @@ public class BattleManager : MonoBehaviour
     WinMenu winMenu;
 
     List<PlayerController> playersAlive = new List<PlayerController>();
+    public List<PlayerController> PlayersAlive
+    {
+        get { return playersAlive; }
+    }
+
     List<int> playersLives = new List<int>();
 
     public List<int> listLosers = new List<int>();
