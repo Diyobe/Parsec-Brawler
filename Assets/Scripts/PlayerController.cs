@@ -89,6 +89,12 @@ public class PlayerController : InputControllable
     float crouchTime = 0.1f;
 
     [Space]
+    [Header("Respawn")]
+    [SerializeField] float invicibilityDuration = 1.5f;
+    [SerializeField] GameObject respawnShield;
+    bool isInvicible = false;
+
+    [Space]
     [Header("Dash")]
     [SerializeField] float dashImpulsion;
     [SerializeField] int numberOfDashes = 1;
@@ -214,6 +220,7 @@ public class PlayerController : InputControllable
         characterCollision.doAction += ResetDash;
         characterCollision.OnWallCollision += WallBounce;
         characterCollision.OnGroundCollision += GroundBounce;
+        respawnShield.SetActive(false);
     }
     public override void UpdateBuffer(List<input> inputBuffer, int inputID)
     {
@@ -325,6 +332,16 @@ public class PlayerController : InputControllable
     {
         ResetJump();
         ResetDash();
+        StartCoroutine(InvicibilityAtRespawn());
+    }
+
+    IEnumerator InvicibilityAtRespawn()
+    {
+        isInvicible = true;
+        respawnShield.SetActive(true);
+        yield return new WaitForSeconds(invicibilityDuration);
+        respawnShield.SetActive(false);
+        isInvicible = false;
     }
 
     void UpdateControls()
@@ -709,7 +726,8 @@ public class PlayerController : InputControllable
                 }
             }
 
-            Knockback(other.GetComponent<AttackController>());
+            if (!isInvicible)
+                Knockback(other.GetComponent<AttackController>());
         }
         else if (other.tag != this.transform.tag && state == CharacterState.DashJust && (other.tag == "Player1" || other.tag == "Player2" || other.tag == "Player3" || other.tag == "Player4"))
         {
@@ -727,10 +745,10 @@ public class PlayerController : InputControllable
             }
             AttackController a = other.GetComponent<AttackController>();
             if (a != null) // Le just dash
-            { 
+            {
                 a.JustDash(this, enemyLagWhenJustDash);
                 a.ActionUnactive();
-                OnFlashMove.Invoke(this); 
+                OnFlashMove.Invoke(this);
             }
 
         }
