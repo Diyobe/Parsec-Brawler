@@ -476,6 +476,7 @@ public class SelectScreenController : InputControllable
                     {
                         charTeamParents[z].SetActive(false);
                     }
+                    characterSelectedVisualizer.SetActiveInstance(false);
                 }
             }
         }
