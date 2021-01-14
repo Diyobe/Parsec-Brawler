@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8def115a5b82853498e0ad9b0a590f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 7400000, guid: 29439a73352aaaa4eb8fb95b27153423, type: 2}
+  attackAnimation: {fileID: 7400000, guid: 55bfe8744fdfcbf48bc6574e28a1fe36, type: 2}
   lifetime: 1
   keepMomentum: 1
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
-  knockbackPower: 50
+  knockbackPower: 40
   knockbackAngle: {x: 0, y: 1, z: 0}
   hitStopUser: 1
   hitStop: 0.5
@@ -71,8 +71,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2050217, y: 0.82818574, z: 0.8}
-  m_Center: {x: 0.20386076, y: 0.4191902, z: 0}
+  m_Size: {x: 0.71213436, y: 0.9243587, z: 0.8}
+  m_Center: {x: 0.6426506, y: 0.49733084, z: 0}
 --- !u!1 &1975021918013321258
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6737119861941173603, guid: 26222f6ff66dd4442bb224f45b7baa6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86a2c687a3e09f84fa9affa6fcd4d4cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
