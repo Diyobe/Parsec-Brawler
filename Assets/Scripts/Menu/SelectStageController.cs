@@ -20,6 +20,11 @@ public class SelectStageController : InputControllable
     RectTransform[] rectTransforms;
 
     [SerializeField]
+    RectTransform slider;
+    [SerializeField]
+    float stageElementHeight;
+
+    [SerializeField]
     RectTransform selection;
     Animator animatorSelection;
 
@@ -40,6 +45,7 @@ public class SelectStageController : InputControllable
         TengenToppaAudioManager.Instance.PlayMusic(menuIntro, menuTheme);
         textLife.text = playerData.NumberOfLives.ToString();
         textMode.text = playerData.GameMode.ToString();
+        AdjusteSlider();
     }
 
 
@@ -57,6 +63,7 @@ public class SelectStageController : InputControllable
                 index = 0;
             selection.anchoredPosition = rectTransforms[index].anchoredPosition;
             animatorSelection.SetTrigger("Feedback");
+            AdjusteSlider();
         }
         else if (inputBuffer[0].vertical > 0.5f && inputDown == false)
         {
@@ -67,6 +74,7 @@ public class SelectStageController : InputControllable
                 index = sceneNames.Length-1;
             selection.anchoredPosition = rectTransforms[index].anchoredPosition;
             animatorSelection.SetTrigger("Feedback");
+            AdjusteSlider();
         }
         else if (Mathf.Abs(inputBuffer[0].vertical) < 0.5f)
         {
@@ -104,4 +112,25 @@ public class SelectStageController : InputControllable
             textMode.text = playerData.GameMode.ToString();
         }
     }
+
+
+    private void AdjusteSlider()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SliderTweenCoroutine(0.5f, index * stageElementHeight));
+    }
+    private IEnumerator SliderTweenCoroutine(float duration, float amount)
+    {
+        float t = 0f;
+        float speed = 1f / duration;
+        float y = slider.anchoredPosition.y;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * speed;
+            y = Mathf.Lerp(y, amount, t);
+            slider.anchoredPosition = new Vector2(0, y);
+            yield return null;
+        }
+    }
+
 }

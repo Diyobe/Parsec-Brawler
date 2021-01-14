@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LD-2.unity
     guid: fd8eaa7333680464186340c97be568dd
+  - enabled: 1
+    path: Assets/Scenes/LevelSuperman.unity
+    guid: 84a433b59e0975b479bd7c9932893404
+  - enabled: 1
+    path: Assets/Scenes/LevelLia.unity
+    guid: 391e3cf57dbe93849be3903f15ad593e
+  - enabled: 1
+    path: Assets/Scenes/SceneNicolas.unity
+    guid: 39aaecd39e91fe14fa9d8d2d243ab142
   m_configObjects: {}
