@@ -17,6 +17,10 @@ public class SpecialController : PlayerController
     [Header("Taunts")]
     [SerializeField]
     AttackController taunt;
+    [SerializeField]
+    AttackController taunt2;
+    [SerializeField]
+    bool canUse2Taunt;
 
 
     [SerializeField] float upSpecialImpulsion;
@@ -45,7 +49,27 @@ public class SpecialController : PlayerController
         {
             if (buffer[i].taunt && characterCollision.IsGrounded == true)
             {
-                Action(taunt);
+                buffer[i].taunt = false;
+                if (!canUse2Taunt)
+                    Action(taunt);
+                else
+                {
+                    int random = UnityEngine.Random.Range(1, 3);
+                    switch (random)
+                    {
+                        case 1:
+                            Action(taunt);
+                            break;
+                        case 2:
+                            Action(taunt2);
+                            break;
+                    }
+                }
+                if (i + 1 < buffer.Count)
+                {
+                    if (buffer[i + 1].taunt)
+                        buffer[i + 1].taunt = false;
+                }
             }
 
             if (buffer[i].special)

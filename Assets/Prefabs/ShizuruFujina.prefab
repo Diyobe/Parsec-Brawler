@@ -224,6 +224,8 @@ MonoBehaviour:
   neutralAir: {fileID: 6711955271010886810, guid: 1557b21e5cca830488b8a3b50f389c4a, type: 3}
   upSpecial: {fileID: 6711955271010886810, guid: a02e16b2a7cfc0b4c96f642f21a4a6e1, type: 3}
   taunt: {fileID: 5009905772876635485, guid: e98a2842e0fe96f4fa7e30a9f224e28b, type: 3}
+  taunt2: {fileID: 5009905772876635485, guid: 542dde3b24de3004ba7d48a5b8047fef, type: 3}
+  canUse2Taunt: 1
   upSpecialImpulsion: 10
   upSpecialNumber: 1
 --- !u!95 &1714619801704049786
