@@ -196,8 +196,8 @@ MonoBehaviour:
   airStop: 0.97
   gravityForce: 15
   gravityForceMax: -10
-  jumpImpulsion: 7
-  numberOfJumps: 2
+  jumpImpulsion: 15
+  numberOfJumps: 1
   crouchTime: 0.08
   invicibilityDuration: 1.5
   respawnShield: {fileID: 6687103917082020567}
