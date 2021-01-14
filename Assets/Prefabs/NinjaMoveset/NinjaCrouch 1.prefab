@@ -140,6 +140,8 @@ MonoBehaviour:
   shakeScreen: 0
   shakeScreenTime: 0
   hitbox: {fileID: 5009905772876635482}
+  hitSound: {fileID: 0}
+  swingSound: {fileID: 0}
 --- !u!65 &5009905772876635482
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -212,7 +212,7 @@ MonoBehaviour:
   knockbackImpactReductionRate: 0.8
   hitStopOnWall: 0.08
   shakePowerOnWall: 0.2
-  crouchJump: {fileID: 5009905772876635485, guid: 42ab5c3f38ff930468e3b25ac26f53fd, type: 3}
+  crouchJump: {fileID: 5009905772876635485, guid: 98080683836a2084abeb67198fb58357, type: 3}
   attackLeft: {fileID: 8530654087378751973, guid: e40b0301f4e1a3f4c80441813a1832f1, type: 3}
   attackUp: {fileID: 6711955271010886810, guid: db77e3e751e2f2c44b106e2bb3e46a7d, type: 3}
   attackDown: {fileID: 1975021917538315906, guid: bc84e45946b751245be68e993160de63, type: 3}

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5009905772876635485}
   - component: {fileID: 5009905772876635482}
   m_Layer: 9
-  m_Name: CrouchJump
+  m_Name: NinjaCrouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8def115a5b82853498e0ad9b0a590f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 7400000, guid: 964a646a37001774b9975215fa171908, type: 2}
+  attackAnimation: {fileID: 7400000, guid: ae684b8249bb5214c98457cbbbb4c4c4, type: 2}
   lifetime: 1
   keepMomentum: 0
   onHitAnimation: {fileID: 1619537833784373204, guid: e24c8f3c8d0aff6439acb94cfc270749, type: 3}
