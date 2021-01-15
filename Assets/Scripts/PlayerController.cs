@@ -165,7 +165,7 @@ public class PlayerController : InputControllable
 
     CharacterState state = CharacterState.Idle;
 
-    private int direction;
+    private int direction = 1;
     public int Direction
     {
         get { return direction; }
@@ -190,7 +190,9 @@ public class PlayerController : InputControllable
 
     bool endAction = false;
     bool canEndAction = false;
+    bool canCancel = false;
 
+    AttackController attackID;
     AttackController currentAttack;
     AttackController currentAttackController;
 
@@ -207,6 +209,7 @@ public class PlayerController : InputControllable
 
 
     List<input> buffer;
+    [SerializeField]
     bool active = false;
     public bool Active
     {
@@ -270,6 +273,8 @@ public class PlayerController : InputControllable
         }
         else if (state == CharacterState.Acting)
         {
+            if (canCancel == true)
+                CheckAttack(buffer);
             CheckCrouch();
             ApplyGravity();
         }
@@ -582,6 +587,7 @@ public class PlayerController : InputControllable
         knockbackPower = Vector2.zero;
         canEndAction = false;
         endAction = false;
+        canCancel = false;
 
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
@@ -602,13 +608,25 @@ public class PlayerController : InputControllable
         if (currentAttackController != null)
             currentAttackController.ActionEnd();
         currentAttackController = null;
+        //if(canCancel == true)
+        //    currentAttackController.c
 
-        currentAttack = action;
+        if (attackID == action)
+        {
+            currentAttack = currentAttack.ComboAction;
+        }
+        else
+        {
+            currentAttack = action;
+        }
+
+        attackID = action;
         characterAnimator.ResetTrigger("Idle");
         characterAnimator.Play(currentAttack.AttackAnimation.name, 0, 0f);
 
         endAction = false;
         canEndAction = false;
+        canCancel = false;
 
         if (action.KeepMomentum == false)
         {
@@ -650,12 +668,18 @@ public class PlayerController : InputControllable
         }
     }
 
-    private void EndAction()
+    public void EndAction()
     {
         if (currentAttackController != null)
             currentAttackController.ActionEnd();
+        attackID = null;
         state = CharacterState.Idle;
         characterAnimator.SetTrigger("Idle");
+    }
+
+    public void CanCancel()
+    {
+        canCancel = true;
     }
     #endregion
 

@@ -28,6 +28,14 @@ public class AttackController : MonoBehaviour
         get { return keepMomentum; }
     }
 
+
+    [SerializeField]
+    private AttackController comboAction;
+    public AttackController ComboAction
+    {
+        get { return comboAction; }
+    }
+
     [SerializeField]
     private GameObject onHitAnimation;
     public GameObject OnHitAnimation
