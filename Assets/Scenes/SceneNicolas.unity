@@ -30109,6 +30109,18 @@ PrefabInstance:
       propertyPath: debugPlayerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 718001653916736749, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
+      propertyPath: ShadowSakura
+      value: 
+      objectReference: {fileID: 8300000, guid: 74a41cf87bac45648a07a2d14a64a584, type: 3}
+    - target: {fileID: 718001653916736749, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
+      propertyPath: AngelBreakerIntro
+      value: 
+      objectReference: {fileID: 8300000, guid: 7734baa2027788a438da0af89d571e69, type: 3}
+    - target: {fileID: 718001653916736749, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
+      propertyPath: AngelBreakerLoop
+      value: 
+      objectReference: {fileID: 8300000, guid: 7734baa2027788a438da0af89d571e69, type: 3}
     - target: {fileID: 718001653916736750, guid: d2352d71b9392d64180fa9580c0f1884, type: 3}
       propertyPath: m_Name
       value: BattleManager
