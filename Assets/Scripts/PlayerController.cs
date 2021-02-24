@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using VoiceActing;
+using Mirror;
 
 public enum CharacterState
 {
@@ -283,6 +284,7 @@ public class PlayerController : InputControllable
             UpdateDash();
         }
         characterCollision.Move(currentSpeedX + knockbackPower.x, currentSpeedY + knockbackPower.y);
+        //if(hasAuthority)
         SetAnimation();
 
 
@@ -489,10 +491,10 @@ public class PlayerController : InputControllable
             }
             else
             {
-                currentSpeedX = 0;
-                /*currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX)) * Time.deltaTime;
+                //currentSpeedX = 0;
+                currentSpeedX -= (decceleration * Mathf.Sign(currentSpeedX)) * Time.deltaTime;
                 if (Mathf.Abs(currentSpeedX) <= decceleration * Time.deltaTime)
-                    currentSpeedX = 0;*/
+                    currentSpeedX = 0;
             }
         }
         else
@@ -613,7 +615,10 @@ public class PlayerController : InputControllable
 
         if (attackID == action)
         {
-            currentAttack = currentAttack.ComboAction;
+            if(currentAttack.ComboAction != null)
+                currentAttack = currentAttack.ComboAction;
+            else
+                currentAttack = action;
         }
         else
         {
@@ -689,6 +694,7 @@ public class PlayerController : InputControllable
     // ==========================================================================================================
     #region Animation 
 
+    //[Command]
     protected void SetAnimation()
     {
         if (direction == 1)
@@ -794,6 +800,7 @@ public class PlayerController : InputControllable
         }
     }
 
+    //[Command]
     private void Knockback(AttackController attack)
     {
         if (attack == null)
